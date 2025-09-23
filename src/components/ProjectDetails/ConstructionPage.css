@@ -1,0 +1,40 @@
+/* Construction Page Styles */
+.construction-page {
+  font-family: 'Spectral', serif;
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.construction-page h1 {
+  font-size: 2.5rem;
+  color: #DB9291;
+  margin-bottom: 1rem;
+}
+
+.construction-page p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+}
+
+.project-list li {
+  margin: 1rem 0;
+}
+
+.project-list a {
+  text-decoration: none;
+  color: #2D3E5B;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.project-list a:hover {
+  color: #DB9291;
+}

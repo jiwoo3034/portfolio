@@ -1,0 +1,43 @@
+/* Page Transition Styles */
+.page-transition {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Ensure consistent layout during transitions */
+#root {
+  overflow-x: hidden;
+}
+
+/* Smooth transitions for layout changes */
+* {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Prevent layout shifts during route changes */
+body {
+  overflow-x: hidden;
+}
+
+/* Ensure header and footer stay in place during transitions */
+header, footer {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Optimize transition performance */
+.page-transition * {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Prevent content from jumping during transition */
+main, section {
+  position: relative;
+}
+
+/* Ensure absolute positioning works correctly within page transitions */
+.page-transition {
+  transform: translateZ(0); /* Create stacking context */
+}

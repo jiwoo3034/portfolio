@@ -1,0 +1,84 @@
+/* Header container */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #262626;
+  color: white;
+  padding: 1.3rem 3rem;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding doesn't affect total width */
+  transition: transform 0.3s ease-in-out;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header p {
+  font-family: 'Spectral', serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0;
+  color: white;
+}
+
+.header.show {
+  transform: translateY(0); /* Fully visible */
+}
+
+.header.hide {
+  transform: translateY(-100%); /* Hidden above the viewport */
+}
+
+header nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+header nav button {
+  background: none;
+  border: none;
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+header nav button:hover {
+  text-decoration: underline;
+}
+
+/* Left section: Logo and Title */
+.header-left {
+  display: flex;
+  align-items: center; /* Align logo and title vertically */
+}
+
+.logo {
+  width: 35.68px; /* Adjust logo size */
+  height: 40px;
+  margin-right: 1rem; /* Add space between logo and title */
+}
+
+/* Right section: Navigation */
+.header-right a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.header-right a:hover {
+  text-decoration: underline;
+}
