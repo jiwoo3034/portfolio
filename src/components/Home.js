@@ -246,12 +246,12 @@ function Home() {
         {/* Project 1 */}
         <Link to="/projects/1" className="project-link">
           <div className="project">
-            <img src="/images/iot-overview.jpg" alt="Project 1 Thumbnail" className="project-thumbnail" />
+            <img src={process.env.PUBLIC_URL + "/images/iot-overview.jpg"} alt="Project 1 Thumbnail" className="project-thumbnail" />
             <div className="project-subtitle">UX Design</div>
             <h3>IoT Mobile App</h3>
             <p>A user-friendly app design to improve customer experience.</p>
             <div className="project-details-link">
-              View Project Details →
+              View Project Details ??
             </div>
           </div>
         </Link>
@@ -259,12 +259,12 @@ function Home() {
         {/* Project 2 */}
         <Link to="/projects/2" className="project-link">
           <div className="project">
-            <img src="/images/project2-thumbnail.jpg" alt="Project 2 Thumbnail" className="project-thumbnail" />
+            <img src={process.env.PUBLIC_URL + "/images/project2-thumbnail.jpg"} alt="Project 2 Thumbnail" className="project-thumbnail" />
             <div className="project-subtitle">Web Development</div>
             <h3>Sales Management Website</h3>
             <p>A responsive and scalable sales management platform.</p>
             <div className="project-details-link">
-              View Project Details →
+              View Project Details ??
             </div>
           </div>
         </Link>

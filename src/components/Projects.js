@@ -86,7 +86,7 @@ function Projects() {
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <div className="project-details-link">
-                View Project Details →
+                View Project Details ??
               </div>
             </div>
           </Link>

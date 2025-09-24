@@ -25,7 +25,7 @@ function Header() {
     <header className={isScrollingUp ? 'header show' : 'header hide'}>
       <Link to="/">
         <div className="header-left">
-          <img src="/images/my-logo.png" alt="Logo" className="logo" />
+          <img src={process.env.PUBLIC_URL + /images/my-logo.png} alt="Logo" className="logo" />
           <p>Jiwoo Lee</p>
         </div>
       </Link>

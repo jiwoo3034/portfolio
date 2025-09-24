@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import './IoTMobileApp.css'; 
 import PageTransition from '../PageTransition'; 
 
@@ -8,17 +9,27 @@ function IoTMobileApp() {
 
   return (
     <PageTransition>
-      <section className="project-detail">
+      <Helmet>
+        <title>Smart Home IoT Mobile App - UX Design Case Study | Jiwoo's Portfolio</title>
+        <meta name="description" content="Explore the complete UX design process for a smart home IoT mobile app. Features user research, personas, wireframes, prototyping, and usability testing results." />
+        <meta name="keywords" content="IoT App Design, Smart Home UX, Mobile App Design, User Research, Wireframes, Prototyping, Figma, UX Case Study" />
+        <meta property="og:title" content="Smart Home IoT Mobile App - UX Design Case Study" />
+        <meta property="og:description" content="Complete UX design case study for a smart home IoT app featuring user research, personas, wireframes, and prototyping process." />
+        <meta property="og:image" content="https://jiwoo3034.github.io/portfolio/images/iot-overview.jpg" />
+        <meta property="og:url" content="https://jiwoo3034.github.io/portfolio/projects/1" />
+        <link rel="canonical" href="https://jiwoo3034.github.io/portfolio/projects/1" />
+      </Helmet>
+      <main className="project-detail">
       {/* Project Header */}
-      <div className="section">
+      <header className="section">
         <br/>
         <h1>🌱 Smart Home IoT Mobile App</h1>
         <h3>UX Design</h3>
         <img src="/images/iot-overview.jpg" alt="IoT Mobile App Overview" className="project-image" />
-      </div>
+      </header>
 
       {/* Project Overview */}
-      <div className="section">
+      <section className="section">
         <h2>Project Overview</h2>
         <div className="section-content">
           <p>
@@ -31,28 +42,28 @@ function IoTMobileApp() {
             <strong>Our solution:</strong> an intuitive, user-friendly smart home system that integrates IoT to optimize irrigation control, conserve energy, and enhance overall safety.
           </p>
         </div>
-      </div>
+      </section>
 
       {/* Divider */}
       <div className="divider"></div>
 
       {/* Project Details */}
-      <div className="project-info-grid">
-        <div className="info-card">
+      <section className="project-info-grid">
+        <article className="info-card">
           <h3>Timeframe</h3>
           <p>12 weeks</p>
-        </div>
+        </article>
         
-        <div className="info-card">
+        <article className="info-card">
           <h3>My Role</h3>
           <p>UX Researcher<br/>UI Designer<br/>Prototype Developer</p>
-        </div>
+        </article>
         
-        <div className="info-card">
+        <article className="info-card">
           <h3>Tools</h3>
           <p>Figma<br/>Adobe XD<br/>Miro<br/>Google Analytics</p>
-        </div>
-      </div>
+        </article>
+      </section>
 
       {/* Divider */}
       <div className="divider"></div>
@@ -364,7 +375,7 @@ function IoTMobileApp() {
         
         Back to Previous Page
       </button>
-    </section>
+    </main>
     </PageTransition>
   );
 }

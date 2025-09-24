@@ -1,3 +1,15 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap location
+Sitemap: https://jiwoo3034.github.io/portfolio/sitemap.xml
+
+# Disallow access to build files and source maps
+Disallow: /*.js.map$
+Disallow: /*.css.map$
+
+# Allow important directories
+Allow: /images/
+Allow: /static/css/
+Allow: /static/js/
