@@ -43,6 +43,68 @@
   overflow: hidden;
 }
 
+/* Responsive Design for Landing Section */
+@media (max-width: 1024px) {
+  .left-side, .right-side {
+    padding: 1.5rem;
+  }
+  
+  .name-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .split-screen {
+    flex-direction: column;
+  }
+  
+  #landing {
+    height: auto;
+    min-height: calc(100vh - 80px);
+  }
+  
+  /* Reposition ampersand for vertical layout */
+  .center-ampersand {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  
+  .left-side, .right-side {
+    width: 100%;
+    min-height: 60vh; /* Increased from 50vh to give more space for content */
+    padding: 4rem 1.5rem;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .left-side p, .right-side p {
+    text-align: center;
+    margin: 0 auto; /* Center the paragraphs in mobile view */
+  }
+  
+  .name-title {
+    font-size: 2.2rem;
+  }
+  
+  .role-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .left-side, .right-side {
+    padding: 2.5rem 1rem;
+  }
+  
+  .name-title {
+    font-size: 1.8rem;
+  }
+}
+
 .left-side::before {
   content: '🎨';
   position: absolute;
@@ -72,6 +134,8 @@
   color: #2D3E5B;
   position: relative;
   z-index: 1;
+  text-align: left; /* Ensure text is left-aligned by default */
+  margin: 0 auto 0 0; /* Center on mobile, align left on desktop */
 }
 
 /* Right Side: Code-related */
@@ -119,6 +183,8 @@
   max-width: 400px;
   position: relative;
   z-index: 1;
+  text-align: right; /* Right align text for desktop view */
+  margin: 0 0 0 auto; /* Align right on desktop */
 }
 
 /* Centered Text */
@@ -179,6 +245,16 @@
 @media (max-width: 768px) {
   .ampersand {
     font-size: 4rem;
+    /* Change gradient orientation to top-to-bottom when stacked vertically */
+    background: linear-gradient(
+      180deg,
+      #2D3E5B 0%,
+      #2D3E5B 50%,
+      #DB9291 50%,
+      #DB9291 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 }
 
@@ -828,6 +904,25 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 2;
+  width: 90%; /* Control the width to prevent overflow */
+  max-height: 80%; /* Limit height to prevent overflow */
+  overflow-y: auto; /* Add scrolling if content is too tall */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children horizontally */
+}
+
+/* Add specific styling for h2 and paragraphs in interactive sections */
+.interactive-section .details h2 {
+  margin: 0 auto 1rem;
+  width: fit-content;
+  text-align: center;
+}
+
+.interactive-section .details p {
+  text-align: center;
+  margin: 0 auto 1rem;
+  max-width: 100%;
 }
 
 .left-side .details {
@@ -844,6 +939,75 @@
 
 .interactive-section:hover .details {
   opacity: 1;
+}
+
+/* Responsive Design for Interactive Sections */
+@media (max-width: 768px) {
+  .interactive-section .details {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.5rem;
+    max-height: none;
+    display: none; /* Hide by default instead of opacity */
+  }
+  
+  .interactive-section:hover .details {
+    display: block; /* Show on hover */
+    opacity: 1;
+  }
+  
+  .interactive-section .title {
+    font-size: 2.5rem;
+  }
+  
+  .interactive-section .details h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: fit-content;
+  }
+  
+  .interactive-section .details ul li {
+    flex: 1 1 calc(50% - 1rem); /* Maintain two items per row */
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .interactive-section .details {
+    width: 95%;
+    padding: 1rem;
+  }
+  
+  .interactive-section .title {
+    font-size: 2rem;
+  }
+  
+  .interactive-section .details h2 {
+    font-size: 1.8rem;
+  }
+  
+  .interactive-section .details ul li {
+    flex: 1 1 100%; /* Stack list items vertically */
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Make "View My Works" buttons more mobile-friendly */
+  .view-works-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    width: auto;
+    max-width: 90%;
+    white-space: normal;
+    border-radius: 20px;
+  }
 }
 
 /* Left Side Background */
@@ -907,7 +1071,7 @@
 }
 .view-works-btn {
   display: inline-block;
-  margin-top: 1.5rem;
+  margin: 1.5rem auto 0;
   padding: 0.75rem 1.5rem;
   border-radius: 25px;
   text-decoration: none;

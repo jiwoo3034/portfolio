@@ -1,27 +1,130 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import './IoTMobileApp.css'; 
 import PageTransition from '../PageTransition'; 
 
 function IoTMobileApp() {
   const navigate = useNavigate();
+  
+  // States for wireframe and prototype carousels
+  const [wireframeCurrentIndex, setWireframeCurrentIndex] = useState(0);
+  const [prototypeCurrentIndex, setPrototypeCurrentIndex] = useState(0);
+  
+  // References to wireframe images and prototype images
+  const wireframeImages = [
+    "/images/W_Start.png",
+    "/images/W_LogIn.png",
+    "/images/W_Homepage.png",
+    "/images/W_LivingRoom.png",
+    "/images/W_Statistics.png",
+    "/images/W_Menu.png",
+    "/images/W_Security.png",
+    "/images/W_Camera.png",
+    "/images/W_Scenes.png",
+    "/images/W_Smart Actions.png",
+    "/images/W_Create Scene.png",
+    "/images/W_Profile.png"
+  ];
+  
+  const prototypeImages = [
+    "/images/P_Start.png",
+    "/images/P_LogIn.png",
+    "/images/P_Homepage.png",
+    "/images/P_LivingRoom.png",
+    "/images/P_Statistics.png",
+    "/images/P_Menu.png",
+    "/images/P_Security.png",
+    "/images/P_Camera.png",
+    "/images/P_Scenes.png",
+    "/images/P_Smart Actions.png",
+    "/images/P_Create Scene.png",
+    "/images/P_Profile.png"
+  ];
+  
+  // Functions for carousel navigation
+  const navigateWireframe = (direction) => {
+    if (direction === 'next') {
+      setWireframeCurrentIndex((prevIndex) => 
+        prevIndex === wireframeImages.length - 1 ? 0 : prevIndex + 1
+      );
+    } else {
+      setWireframeCurrentIndex((prevIndex) => 
+        prevIndex === 0 ? wireframeImages.length - 1 : prevIndex - 1
+      );
+    }
+  };
+  
+  const navigatePrototype = (direction) => {
+    if (direction === 'next') {
+      setPrototypeCurrentIndex((prevIndex) => 
+        prevIndex === prototypeImages.length - 1 ? 0 : prevIndex + 1
+      );
+    } else {
+      setPrototypeCurrentIndex((prevIndex) => 
+        prevIndex === 0 ? prototypeImages.length - 1 : prevIndex - 1
+      );
+    }
+  };
+  
+  // Go to specific slide
+  const goToWireframeSlide = (index) => {
+    setWireframeCurrentIndex(index);
+  };
+  
+  const goToPrototypeSlide = (index) => {
+    setPrototypeCurrentIndex(index);
+  };
+  
+  // Touch event handling for swipe functionality
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  
+  // Minimum swipe distance required (in px)
+  const minSwipeDistance = 50;
+  
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchEnd = (carouselType) => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      // Handle left swipe - go to next slide
+      if (carouselType === 'wireframe') {
+        navigateWireframe('next');
+      } else {
+        navigatePrototype('next');
+      }
+    }
+    
+    if (isRightSwipe) {
+      // Handle right swipe - go to previous slide
+      if (carouselType === 'wireframe') {
+        navigateWireframe('prev');
+      } else {
+        navigatePrototype('prev');
+      }
+    }
+    
+    // Reset values
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   return (
     <PageTransition>
-      <Helmet>
-        <title>Smart Home IoT Mobile App - UX Design Case Study | Jiwoo's Portfolio</title>
-        <meta name="description" content="Explore the complete UX design process for a smart home IoT mobile app. Features user research, personas, wireframes, prototyping, and usability testing results." />
-        <meta name="keywords" content="IoT App Design, Smart Home UX, Mobile App Design, User Research, Wireframes, Prototyping, Figma, UX Case Study" />
-        <meta property="og:title" content="Smart Home IoT Mobile App - UX Design Case Study" />
-        <meta property="og:description" content="Complete UX design case study for a smart home IoT app featuring user research, personas, wireframes, and prototyping process." />
-        <meta property="og:image" content="https://jiwoo3034.github.io/portfolio/images/iot-overview.jpg" />
-        <meta property="og:url" content="https://jiwoo3034.github.io/portfolio/projects/1" />
-        <link rel="canonical" href="https://jiwoo3034.github.io/portfolio/projects/1" />
-      </Helmet>
-      <main className="project-detail">
+      <section className="project-detail">
       {/* Project Header */}
-      <header className="section">
+      <header className="section" style={{ background: 'transparent' }}>
         <br/>
         <h1>🌱 Smart Home IoT Mobile App</h1>
         <h3>UX Design</h3>
@@ -49,20 +152,22 @@ function IoTMobileApp() {
 
       {/* Project Details */}
       <section className="project-info-grid">
-        <article className="info-card">
-          <h3>Timeframe</h3>
-          <p>12 weeks</p>
-        </article>
-        
-        <article className="info-card">
-          <h3>My Role</h3>
-          <p>UX Researcher<br/>UI Designer<br/>Prototype Developer</p>
-        </article>
-        
-        <article className="info-card">
-          <h3>Tools</h3>
-          <p>Figma<br/>Adobe XD<br/>Miro<br/>Google Analytics</p>
-        </article>
+        <div className="info-cards-container">
+          <article className="info-card">
+            <h3>Timeframe</h3>
+            <p>12 weeks</p>
+          </article>
+          
+          <article className="info-card">
+            <h3>My Role</h3>
+            <p>UX Researcher<br/>UI Designer<br/>Prototype Developer</p>
+          </article>
+          
+          <article className="info-card">
+            <h3>Tools</h3>
+            <p>Figma<br/>Adobe XD<br/>Miro<br/>Google Analytics</p>
+          </article>
+        </div>
       </section>
 
       {/* Divider */}
@@ -75,7 +180,7 @@ function IoTMobileApp() {
           <ol className="process-list">
             <li>User Research</li>
             <li>Personas</li>
-            <li>Problem Analysis & Statement</li>
+            <li>Problem Statement</li>
             <li>Ideation</li>
             <li>Prototyping</li>
             <li>Usability Testing</li>
@@ -161,7 +266,8 @@ function IoTMobileApp() {
           <p>
             We created low-fidelity wireframes for:
           </p>
-          <div className="image-grid-4-columns">
+          {/* Desktop grid view */}
+          <div className="image-grid-4-columns wireframes-desktop-grid">
             <img src="/images/W_Start.png" alt="Start page wireframe" className="project-image" />
             <img src="/images/W_LogIn.png" alt="LogIn page wireframe" className="project-image" />
             <img src="/images/W_Homepage.png" alt="Homepage wireframe" className="project-image" />
@@ -175,25 +281,88 @@ function IoTMobileApp() {
             <img src="/images/W_Create Scene.png" alt="Create Scene wireframes" className="project-image" />
             <img src="/images/W_Profile.png" alt="Profile wireframes" className="project-image" />
           </div>
+          
+          {/* Mobile/Tablet carousel view */}
+          <div className="image-carousel">
+            <button className="carousel-arrow prev" onClick={() => navigateWireframe('prev')}>❮</button>
+            <div 
+              className="carousel-container" 
+              style={{ transform: `translateX(-${wireframeCurrentIndex * 100}%)` }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={() => handleTouchEnd('wireframe')}
+            >
+              {wireframeImages.map((img, index) => (
+                <div className="carousel-slide" key={index}>
+                  <img src={img} alt={`Wireframe ${index + 1}`} className="project-image" />
+                </div>
+              ))}
+            </div>
+            <button className="carousel-arrow next" onClick={() => navigateWireframe('next')}>❯</button>
+            <div className="carousel-dots">
+              {wireframeImages.map((_, index) => (
+                <span 
+                  key={index} 
+                  className={`dot ${index === wireframeCurrentIndex ? 'active' : ''}`} 
+                  onClick={() => goToWireframeSlide(index)}
+                />
+              ))}
+            </div>
+            <div className="carousel-caption">
+              Wireframe {wireframeCurrentIndex + 1} of {wireframeImages.length}
+            </div>
+          </div>
 
 
           <h3>High-Fidelity Prototypes (Figma)</h3>
           <p>
             We developed interactive prototypes with consistent UI patterns and accessibility-friendly colors.
           </p>
-          <div className="image-grid-4-columns">
-            <img src="/images/P_Start.png" alt="Start page wireframe" className="project-image" />
-            <img src="/images/P_LogIn.png" alt="LogIn page wireframe" className="project-image" />
-            <img src="/images/P_Homepage.png" alt="Homepage wireframe" className="project-image" />
-            <img src="/images/P_LivingRoom.png" alt="Living room wireframes" className="project-image" />
-            <img src="/images/P_Statistics.png" alt="Statistics wireframes" className="project-image" />
-            <img src="/images/P_Menu.png" alt="Menu wireframes" className="project-image" />
-            <img src="/images/P_Security.png" alt="Security wireframes" className="project-image" />
-            <img src="/images/P_Camera.png" alt="Camera wireframes" className="project-image" />
-            <img src="/images/P_Scenes.png" alt="Scenes wireframes" className="project-image" />
-            <img src="/images/P_Smart Actions.png" alt="Smart Actions wireframes" className="project-image" />
-            <img src="/images/P_Create Scene.png" alt="Create Scene wireframes" className="project-image" />
-            <img src="/images/P_Profile.png" alt="Profile wireframes" className="project-image" />
+          {/* Desktop grid view */}
+          <div className="image-grid-4-columns prototypes-desktop-grid">
+            <img src="/images/P_Start.png" alt="Start page prototype" className="project-image" />
+            <img src="/images/P_LogIn.png" alt="LogIn page prototype" className="project-image" />
+            <img src="/images/P_Homepage.png" alt="Homepage prototype" className="project-image" />
+            <img src="/images/P_LivingRoom.png" alt="Living room prototype" className="project-image" />
+            <img src="/images/P_Statistics.png" alt="Statistics prototype" className="project-image" />
+            <img src="/images/P_Menu.png" alt="Menu prototype" className="project-image" />
+            <img src="/images/P_Security.png" alt="Security prototype" className="project-image" />
+            <img src="/images/P_Camera.png" alt="Camera prototype" className="project-image" />
+            <img src="/images/P_Scenes.png" alt="Scenes prototype" className="project-image" />
+            <img src="/images/P_Smart Actions.png" alt="Smart Actions prototype" className="project-image" />
+            <img src="/images/P_Create Scene.png" alt="Create Scene prototype" className="project-image" />
+            <img src="/images/P_Profile.png" alt="Profile prototype" className="project-image" />
+          </div>
+          
+          {/* Mobile/Tablet carousel view */}
+          <div className="image-carousel">
+            <button className="carousel-arrow prev" onClick={() => navigatePrototype('prev')}>❮</button>
+            <div 
+              className="carousel-container" 
+              style={{ transform: `translateX(-${prototypeCurrentIndex * 100}%)` }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={() => handleTouchEnd('prototype')}
+            >
+              {prototypeImages.map((img, index) => (
+                <div className="carousel-slide" key={index}>
+                  <img src={img} alt={`Prototype ${index + 1}`} className="project-image" />
+                </div>
+              ))}
+            </div>
+            <button className="carousel-arrow next" onClick={() => navigatePrototype('next')}>❯</button>
+            <div className="carousel-dots">
+              {prototypeImages.map((_, index) => (
+                <span 
+                  key={index} 
+                  className={`dot ${index === prototypeCurrentIndex ? 'active' : ''}`} 
+                  onClick={() => goToPrototypeSlide(index)}
+                />
+              ))}
+            </div>
+            <div className="carousel-caption">
+              Prototype {prototypeCurrentIndex + 1} of {prototypeImages.length}
+            </div>
           </div>
         </div>
       </div>
@@ -375,7 +544,7 @@ function IoTMobileApp() {
         
         Back to Previous Page
       </button>
-    </main>
+    </section>
     </PageTransition>
   );
 }

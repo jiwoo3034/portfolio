@@ -57,7 +57,7 @@ function Home() {
           <div className="details">
             <h2>Design</h2>
             <p>
-              Crafting beautiful and user-friendly experiences through research, empathy, and creative problem-solving.
+              Crafting aesthetically pleasing and user-friendly experiences.
             </p>
             <ul>
               <li>UI/UX Design</li>
@@ -251,7 +251,7 @@ function Home() {
             <h3>IoT Mobile App</h3>
             <p>A user-friendly app design to improve customer experience.</p>
             <div className="project-details-link">
-              View Project Details ??
+              View Project Details →
             </div>
           </div>
         </Link>
@@ -264,7 +264,7 @@ function Home() {
             <h3>Sales Management Website</h3>
             <p>A responsive and scalable sales management platform.</p>
             <div className="project-details-link">
-              View Project Details ??
+              View Project Details →
             </div>
           </div>
         </Link>
