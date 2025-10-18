@@ -118,6 +118,8 @@
   justify-content: center;
   border-radius: 50%;
   z-index: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 .left-side h2 {
@@ -168,6 +170,8 @@
   justify-content: center;
   border-radius: 15px;
   z-index: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 .right-side h2 {
@@ -939,6 +943,12 @@
 
 .interactive-section:hover .details {
   opacity: 1;
+}
+
+/* Hide emojis on hover */
+.interactive-section:hover::before {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 /* Responsive Design for Interactive Sections */
