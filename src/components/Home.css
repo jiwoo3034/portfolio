@@ -215,7 +215,7 @@
 }
 
 .ampersand {
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: bold;
   font-family: 'Georgia', serif;
   background: linear-gradient(
@@ -944,7 +944,7 @@
 /* Responsive Design for Interactive Sections */
 @media (max-width: 768px) {
   .interactive-section .details {
-    position: relative;
+    position: absolute;
     top: auto;
     left: auto;
     transform: none;
