@@ -394,7 +394,7 @@ function IoTMobileApp() {
                 </svg>
                 <div className="percentage-text">95%</div>
               </div>
-              <h4>Task Completion Rate</h4>
+              <h3>Task Completion Rate</h3>
               <p>Users successfully completed core irrigation setup tasks</p>
             </div>
 
@@ -406,7 +406,7 @@ function IoTMobileApp() {
                 </svg>
                 <div className="percentage-text">88%</div>
               </div>
-              <h4>User Satisfaction</h4>
+              <h3>User Satisfaction</h3>
               <p>Participants rated the app as intuitive and helpful</p>
             </div>
 
@@ -418,7 +418,7 @@ function IoTMobileApp() {
                 </svg>
                 <div className="percentage-text">92%</div>
               </div>
-              <h4>Feature Discovery</h4>
+              <h3>Feature Discovery</h3>
               <p>Users found key features without guidance</p>
             </div>
           </div>

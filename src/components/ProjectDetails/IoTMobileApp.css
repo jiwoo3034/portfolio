@@ -620,7 +620,7 @@
   opacity: 1; /* Always visible, no animation */
 }
 
-.metric-card h4 {
+.metric-card h3 {
   color: #2D3E5B;
   margin: 1rem 0 0.5rem 0;
   font-size: 1rem;
