@@ -3,34 +3,86 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 
 function Header() {
-  const [isScrollingUp, setIsScrollingUp] = useState(true);
+  const [headerState, setHeaderState] = useState({
+    isFixed: false,
+    canAnimate: false,
+    isScrollUp: false
+  });
   const [menuOpen, setMenuOpen] = useState(false);
   
   useEffect(() => {
-    // Define lastScrollY inside the effect to preserve its value between renders
-    let lastScrollY = window.scrollY; // Initialize with current scroll position
+    let lastScroll = 0;
+    let ticking = false;
+    
+    // Throttle scroll events for better performance
+    const throttle = (callback, time = 100) => {
+      if (!ticking) {
+        ticking = true;
+        setTimeout(() => {
+          callback();
+          ticking = false;
+        }, time);
+      }
+    };
+    
+    const validateHeader = () => {
+      const windowY = window.scrollY;
+      const windowH = window.innerHeight * 0.3; // Show after 30% of window height
+      const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+      
+      if (windowY > windowH) {
+        // We've scrolled past the threshold, enable fixed positioning
+        setHeaderState(prev => {
+          // Only add body padding when first setting to fixed
+          if (!prev.isFixed) {
+            document.body.style.paddingTop = `${headerHeight}px`;
+          }
+          return {...prev, isFixed: true};
+        });
+        
+        // Check if we're far enough to add animation
+        if (windowY > windowH + 40) {
+          setHeaderState(prev => ({...prev, canAnimate: true}));
+          
+          // Determine scroll direction
+          if (windowY < lastScroll) {
+            // Scrolling up - show header
+            setHeaderState(prev => ({...prev, isScrollUp: true}));
+          } else {
+            // Scrolling down - hide header
+            setHeaderState(prev => ({...prev, isScrollUp: false}));
+          }
+        } else {
+          setHeaderState(prev => ({...prev, isScrollUp: false}));
+        }
+      } else {
+        // At top of page - default state
+        setHeaderState(prev => {
+          // Only remove body padding when switching from fixed to not fixed
+          if (prev.isFixed) {
+            document.body.style.paddingTop = '0px';
+          }
+          return {
+            isFixed: false,
+            canAnimate: false,
+            isScrollUp: false
+          };
+        });
+      }
+      
+      // Update last scroll position
+      lastScroll = windowY;
+    };
     
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      // Check if at top of page or scrolling up
-      if (currentScrollY < 10) {
-        setIsScrollingUp(true); // Always show header at top of page
-      } else if (currentScrollY < lastScrollY) {
-        setIsScrollingUp(true); // Show header when scrolling up
-      } else if (currentScrollY > lastScrollY) {
-        setIsScrollingUp(false); // Hide header when scrolling down
-      }
-      // Update the last scroll position
-      lastScrollY = currentScrollY;
+      throttle(validateHeader, 100);
     };
-
-    // Call once to set initial state
-    handleScroll();
     
-    // Add event listener with { passive: true } for better performance
+    // Call once to set initial state
+    validateHeader();
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
     
-    // Clean up
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -77,7 +129,13 @@ function Header() {
   return (
     <>
       <div className={`overlay ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(false)}></div>
-      <header className={isScrollingUp ? 'show' : 'hide'}>
+      <header 
+        className={`
+          ${headerState.isFixed ? 'is-fixed' : ''}
+          ${headerState.canAnimate ? 'can-animate' : ''}
+          ${headerState.isScrollUp ? 'scroll-up' : ''}
+        `}
+      >
         <Link to="/" aria-label="Go to homepage">
           <div className="header-left">
             <img src={process.env.PUBLIC_URL + '/images/my-logo.png'} alt="Jiwoo Lee's logo" className="logo" />
