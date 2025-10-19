@@ -127,7 +127,7 @@ function IoTMobileApp() {
       <header className="section" style={{ background: 'transparent' }}>
         <br/>
         <h1>🌱 Smart Home IoT Mobile App</h1>
-        <h3>UX Design</h3>
+        <h2 className="project-subtitle">UX Design</h2>
         <img src="/images/iot-overview.jpg" alt="IoT Mobile App Overview" className="project-image" />
       </header>
 
