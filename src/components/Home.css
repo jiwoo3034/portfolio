@@ -1002,18 +1002,27 @@
   color: #DB9291; /* Specific color for right side */
 }
 
-.interactive-section:hover .title {
+.interactive-section:hover .title,
+.interactive-section.keyboard-focus .title {
   opacity: 0;
 }
 
-.interactive-section:hover .details {
+.interactive-section:hover .details,
+.interactive-section.keyboard-focus .details {
   opacity: 1;
 }
 
-/* Hide emojis on hover */
-.interactive-section:hover::before {
+/* Hide emojis on hover/focus */
+.interactive-section:hover::before,
+.interactive-section.keyboard-focus::before {
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+/* Add focus outline for accessibility */
+.interactive-section:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: -2px;
 }
 
 /* Responsive Design for Interactive Sections */

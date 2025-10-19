@@ -52,7 +52,14 @@ function Home() {
       <section id="landing">
       <div className="split-screen">
         {/* Left Side: Design-related */}
-        <div className="left-side interactive-section">
+        <div 
+          className="left-side interactive-section" 
+          tabIndex="0" 
+          onFocus={(e) => e.currentTarget.classList.add('keyboard-focus')}
+          onBlur={(e) => e.currentTarget.classList.remove('keyboard-focus')}
+          role="region"
+          aria-label="Designer section"
+        >
           <div className="title">Designer</div>
           <div className="details">
             <h2>Design</h2>
@@ -72,7 +79,14 @@ function Home() {
         </div>
 
         {/* Right Side: Code-related */}
-        <div className="right-side interactive-section">
+        <div 
+          className="right-side interactive-section"
+          tabIndex="0"
+          onFocus={(e) => e.currentTarget.classList.add('keyboard-focus')}
+          onBlur={(e) => e.currentTarget.classList.remove('keyboard-focus')}
+          role="region"
+          aria-label="Developer section"
+        >
           <div className="title">Developer</div>
           <div className="details">
             <h2>Development</h2>

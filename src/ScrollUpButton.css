@@ -1,8 +1,8 @@
-.scroll-up-button {
+.scroll-to-top {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background-color: #DB9291;
+  background-color: #262626;
   color: white;
   border: none;
   border-radius: 50%;
@@ -13,10 +13,27 @@
   align-items: center;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
 }
 
-.scroll-up-button:hover {
+.scroll-to-top.visible {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+.scroll-to-top:hover, 
+.scroll-to-top:focus {
   transform: scale(1.1);
-  background-color: #c87f7e;
+  opacity: 1;
+  background-color: #DB9291;
+  outline: none;
+}
+
+/* Accessibility focus indicator */
+.scroll-to-top:focus-visible {
+  outline: 3px solid #4a90e2;
+  outline-offset: 2px;
 }

@@ -10,6 +10,7 @@ import IoTMobileApp from './components/ProjectDetails/IoTMobileApp';
 import ConstructionPage from './components/ProjectDetails/ConstructionPage';
 import Contact from './components/Contact';
 import ScrollToTop from './ScrollToTop';
+import ScrollUpButton from './ScrollUpButton';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -35,11 +36,12 @@ function App() {
     <Router>
       <ScrollToTop /> {/* Ensure the page scrolls to the top on route change */}
       <div id="root">
-      <Header />
-      <AnimatedRoutes />
+        <Header />
+        <AnimatedRoutes />
         <Footer />
-        </div>
-      </Router>
+        <ScrollUpButton /> {/* Add scroll-to-top button for better accessibility */}
+      </div>
+    </Router>
   );
 }
 
