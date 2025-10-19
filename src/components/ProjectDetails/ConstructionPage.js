@@ -168,6 +168,7 @@ function ConstructionPage() {
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 4px 15px rgba(219, 146, 145, 0.3)';
         }}
+        aria-label="Go back to previous page"
       >
         Back to Previous Page
       </button>
@@ -212,6 +213,7 @@ function ConstructionPage() {
               e.target.style.backgroundColor = 'transparent';
               e.target.style.color = '#2D3E5B';
             }}
+            aria-label="Go to IoT Mobile App project"
           >
             IoT Mobile App
           </a>
@@ -232,6 +234,7 @@ function ConstructionPage() {
               e.target.style.backgroundColor = '#DB9291';
               e.target.style.color = 'white';
             }}
+            aria-label="View all projects"
             onMouseLeave={(e) => {
               e.target.style.backgroundColor = 'transparent';
               e.target.style.color = '#DB9291';

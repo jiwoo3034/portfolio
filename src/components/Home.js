@@ -65,7 +65,7 @@ function Home() {
               <li>Prototyping</li>
               <li>Wireframing</li>
             </ul>
-            <Link to="/projects" className="view-works-btn design-btn" onClick={() => localStorage.setItem('selectedCategory', 'UX')}>
+            <Link to="/projects" className="view-works-btn design-btn" onClick={() => localStorage.setItem('selectedCategory', 'UX')} aria-label="View my UX design projects">
               View My Design Works
             </Link>
           </div>
@@ -84,7 +84,7 @@ function Home() {
               <li>JavaScript</li>
               <li>React.js</li>
             </ul>
-            <Link to="/projects" className="view-works-btn code-btn" onClick={() => localStorage.setItem('selectedCategory', 'Programming')}>
+            <Link to="/projects" className="view-works-btn code-btn" onClick={() => localStorage.setItem('selectedCategory', 'Programming')} aria-label="View my programming projects">
               View My Code Works
             </Link>
           </div>
@@ -244,9 +244,9 @@ function Home() {
 
       <div className="projects-container">
         {/* Project 1 */}
-        <Link to="/projects/1" className="project-link">
+          <Link to="/projects/1" className="project-link" aria-label="View IoT Mobile App project details">
           <div className="project">
-            <img src={process.env.PUBLIC_URL + "/images/iot-overview.jpg"} alt="Project 1 Thumbnail" className="project-thumbnail" />
+            <img src={process.env.PUBLIC_URL + "/images/iot-overview.jpg"} alt="IoT Mobile App Project Thumbnail" className="project-thumbnail" />
             <div className="project-subtitle">UX Design</div>
             <h3>IoT Mobile App</h3>
             <p>A user-friendly app design to improve customer experience.</p>
@@ -254,12 +254,10 @@ function Home() {
               View Project Details →
             </div>
           </div>
-        </Link>
-
-        {/* Project 2 */}
-        <Link to="/projects/2" className="project-link">
+        </Link>        {/* Project 2 */}
+        <Link to="/projects/2" className="project-link" aria-label="View Sales Management Website project details">
           <div className="project">
-            <img src={process.env.PUBLIC_URL + "/images/project2-thumbnail.jpg"} alt="Project 2 Thumbnail" className="project-thumbnail" />
+            <img src={process.env.PUBLIC_URL + "/images/project2-thumbnail.jpg"} alt="Sales Management Website Project Thumbnail" className="project-thumbnail" />
             <div className="project-subtitle">Web Development</div>
             <h3>Sales Management Website</h3>
             <p>A responsive and scalable sales management platform.</p>
@@ -272,7 +270,7 @@ function Home() {
 
       {/* See More Projects Button */}
       <div className="see-more">
-        <Link to="/projects">
+        <Link to="/projects" aria-label="View all projects">
           <button>See More Projects</button>
         </Link>
       </div>

@@ -303,6 +303,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   max-width: 800px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -528,6 +529,10 @@
   .skill-card {
     height: 200px;
   }
+  
+  .skill-card h3 {
+    font-size: 1.1rem;
+  }
 
   .skill-content {
     padding: 1.2rem 1rem;
@@ -574,7 +579,9 @@
   }
 
   #skills, #experience {
-    padding: 2rem 1rem;
+    padding: 2rem 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   #skills h2, #experience h2 {
@@ -584,26 +591,59 @@
 
 @media (max-width: 480px) {
   .skills-grid {
-    grid-template-columns: 1fr;
-    max-width: 300px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: none;
+    width: 100%;
+    gap: 0.8rem;
   }
 
   .skill-card {
-    height: 180px;
+    height: 160px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .skill-icon {
+    font-size: 1.1rem;
+    width: 32px;
+    height: 32px;
+    top: 0.6rem;
+    left: 0.6rem;
   }
 
   .skill-content {
-    padding: 1rem 0.8rem;
+    padding: 0.8rem 0.6rem;
+  }
+  
+  .skill-card h3 {
+    font-size: 0.95rem;
+    margin-top: 1.8rem;
+  }
+  
+  .skill-card:hover h3 {
+    font-size: 1rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .skill-details ul li {
+    margin-bottom: 0.2rem;
+    font-size: 0.7rem;
+    line-height: 1.2;
   }
 
   /* Mobile experience adjustments */
   .experience-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .experience-card {
     padding: 1.2rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .experience-role h3 {
@@ -630,7 +670,7 @@
 /* Experience Grid */
 .experience-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;
@@ -719,6 +759,8 @@
   padding: 2rem;
   background-color: #f9f9f9;
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 #projects-overview h2 {
@@ -728,20 +770,21 @@
 }
 
 .projects-container {
-  display: flex;
-  justify-content: space-between; /* Space between the projects */
-  gap: 2rem; /* Add spacing between the columns */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns in a row - same as projects page */
+  gap: 2rem; /* Spacing between grid items - same as projects page */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Project Link Wrapper */
 .project-link {
   text-decoration: none;
   color: inherit;
-  flex: 1;
+  display: block; /* Match projects page */
 }
 
 .project {
-  flex: 1; /* Make all projects equal width */
   padding: 1.5rem;
   text-align: left; /* Align text to the left */
   transition: all 0.3s ease;
@@ -749,6 +792,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer; /* Add cursor pointer like projects page */
 }
 
 .project:hover {
@@ -775,10 +819,10 @@
 .project-thumbnail {
   width: 100%; /* Make the thumbnail take the full width of the project card */
   height: auto;
-  border-radius: 8px; /* Add rounded corners to the thumbnail */
-  margin-bottom: 1rem; /* Add spacing below the thumbnail */
+  border-radius: 0; /* Ensure straight corners - match projects page */
   transition: transform 0.3s ease, filter 0.3s ease;
   overflow: hidden;
+  margin-bottom: 1rem; /* Keep some spacing below thumbnail */
 }
 
 .project:hover .project-thumbnail {
@@ -850,13 +894,34 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .projects-container {
+    gap: 1.5rem; /* Match projects page */
+  }
+}
+
 @media (max-width: 768px) {
   .projects-container {
-    flex-direction: column; /* Stack projects vertically on smaller screens */
+    grid-template-columns: 1fr; /* Single column on mobile - match projects page */
+    gap: 1.5rem;
   }
 
   .project {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0; /* Reset margin as grid handles spacing */
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-container {
+    gap: 1rem; /* Smaller gap for mobile */
+  }
+  
+  .project {
+    padding: 1.2rem; /* Slightly reduced padding for mobile */
+  }
+  
+  .project h3 {
+    font-size: 1.3rem; /* Slightly smaller headings for mobile */
   }
 }
 

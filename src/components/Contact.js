@@ -33,29 +33,38 @@ function Contact() {
           <div className="contact-form">
             <form>
               <div className="form-group">
+                <label htmlFor="name" className="sr-only">Name</label>
                 <input 
+                  id="name"
                   type="text" 
                   placeholder="Name" 
                   className="form-input"
                   required
+                  aria-required="true"
                 />
               </div>
               
               <div className="form-group">
+                <label htmlFor="email" className="sr-only">Email</label>
                 <input 
+                  id="email"
                   type="email" 
                   placeholder="Email" 
                   className="form-input"
                   required
+                  aria-required="true"
                 />
               </div>
               
               <div className="form-group">
+                <label htmlFor="message" className="sr-only">Message</label>
                 <textarea 
+                  id="message"
                   placeholder="Message"
                   className="form-textarea"
                   rows="4"
                   required
+                  aria-required="true"
                 ></textarea>
               </div>
               

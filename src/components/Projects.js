@@ -75,11 +75,11 @@ function Projects() {
       {/* Projects Grid */}
       <div className="projects-grid">
         {filteredProjects.map((project) => (
-          <Link to={`/projects/${project.id}`} key={project.id} className="project-card-link">
+          <Link to={`/projects/${project.id}`} key={project.id} className="project-card-link" aria-label={`View ${project.title} project details`}>
             <div className="project-card">
               <img
                 src={project.thumbnail}
-                alt={`${project.title} Thumbnail`}
+                alt={`${project.title} project thumbnail`}
                 className="project-thumbnail"
               />
               <div className="project-subtitle">{project.subtitle}</div>

@@ -284,13 +284,15 @@ function IoTMobileApp() {
           
           {/* Mobile/Tablet carousel view */}
           <div className="image-carousel">
-            <button className="carousel-arrow prev" onClick={() => navigateWireframe('prev')}>❮</button>
+            <button className="carousel-arrow prev" onClick={() => navigateWireframe('prev')} aria-label="Previous wireframe image">❮</button>
             <div 
               className="carousel-container" 
               style={{ transform: `translateX(-${wireframeCurrentIndex * 100}%)` }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={() => handleTouchEnd('wireframe')}
+              role="region"
+              aria-label="Wireframe images carousel"
             >
               {wireframeImages.map((img, index) => (
                 <div className="carousel-slide" key={index}>
@@ -298,13 +300,16 @@ function IoTMobileApp() {
                 </div>
               ))}
             </div>
-            <button className="carousel-arrow next" onClick={() => navigateWireframe('next')}>❯</button>
-            <div className="carousel-dots">
+            <button className="carousel-arrow next" onClick={() => navigateWireframe('next')} aria-label="Next wireframe image">❯</button>
+            <div className="carousel-dots" role="tablist">
               {wireframeImages.map((_, index) => (
-                <span 
+                <button 
                   key={index} 
                   className={`dot ${index === wireframeCurrentIndex ? 'active' : ''}`} 
                   onClick={() => goToWireframeSlide(index)}
+                  aria-label={`Go to wireframe slide ${index + 1}`}
+                  aria-selected={index === wireframeCurrentIndex}
+                  role="tab"
                 />
               ))}
             </div>
@@ -336,13 +341,15 @@ function IoTMobileApp() {
           
           {/* Mobile/Tablet carousel view */}
           <div className="image-carousel">
-            <button className="carousel-arrow prev" onClick={() => navigatePrototype('prev')}>❮</button>
+            <button className="carousel-arrow prev" onClick={() => navigatePrototype('prev')} aria-label="Previous prototype image">❮</button>
             <div 
               className="carousel-container" 
               style={{ transform: `translateX(-${prototypeCurrentIndex * 100}%)` }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={() => handleTouchEnd('prototype')}
+              role="region"
+              aria-label="Prototype images carousel"
             >
               {prototypeImages.map((img, index) => (
                 <div className="carousel-slide" key={index}>
@@ -350,13 +357,16 @@ function IoTMobileApp() {
                 </div>
               ))}
             </div>
-            <button className="carousel-arrow next" onClick={() => navigatePrototype('next')}>❯</button>
-            <div className="carousel-dots">
+            <button className="carousel-arrow next" onClick={() => navigatePrototype('next')} aria-label="Next prototype image">❯</button>
+            <div className="carousel-dots" role="tablist">
               {prototypeImages.map((_, index) => (
-                <span 
+                <button 
                   key={index} 
                   className={`dot ${index === prototypeCurrentIndex ? 'active' : ''}`} 
                   onClick={() => goToPrototypeSlide(index)}
+                  aria-label={`Go to prototype slide ${index + 1}`}
+                  aria-selected={index === prototypeCurrentIndex}
+                  role="tab"
                 />
               ))}
             </div>
@@ -540,8 +550,8 @@ function IoTMobileApp() {
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 4px 15px rgba(219, 146, 145, 0.3)';
         }}
+        aria-label="Go back to previous page"
       >
-        
         Back to Previous Page
       </button>
     </section>

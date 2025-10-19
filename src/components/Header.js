@@ -78,9 +78,9 @@ function Header() {
     <>
       <div className={`overlay ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(false)}></div>
       <header className={isScrollingUp ? 'show' : 'hide'}>
-        <Link to="/">
+        <Link to="/" aria-label="Go to homepage">
           <div className="header-left">
-            <img src={process.env.PUBLIC_URL + '/images/my-logo.png'} alt="Logo" className="logo" />
+            <img src={process.env.PUBLIC_URL + '/images/my-logo.png'} alt="Jiwoo Lee's logo" className="logo" />
             <p>Jiwoo Lee</p>
           </div>
         </Link>
