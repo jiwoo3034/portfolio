@@ -6,7 +6,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <div className="social-links">
-          <a href="https://www.instagram.com/jiwooniq/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Visit Jiwoo's Instagram profile">
+          <a href="https://www.instagram.com/ewj.3lll/" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Visit Jiwoo's Instagram profile">
             <i className="fab fa-instagram"></i>
           </a>
           <a href="https://linkedin.com/in/jiwoo--lee" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Visit Jiwoo's LinkedIn profile">
