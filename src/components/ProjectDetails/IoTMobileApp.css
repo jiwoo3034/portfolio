@@ -55,6 +55,23 @@
   letter-spacing: 1px;
 }
 
+/* Style for the project subtitle h2 to match previous h3 style */
+header.section h2.project-subtitle {
+  color: #DB9291;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  /* Override the general section h2 styles */
+  position: static;
+  text-align: center;
+  grid-column: auto;
+  align-self: auto;
+}
+
 .section p {
   font-family: 'Lato', sans-serif;
   font-size: 1rem;
