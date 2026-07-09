@@ -20,7 +20,7 @@ function Projects() {
       title: 'IoT Mobile App',
       subtitle: 'UX Design',
       description: 'A user-friendly app design to improve customer experience.',
-      thumbnail: '/images/iot-overview.jpg',
+      thumbnail: '/images/IoT/iot-overview.jpg',
       category: 'UX',
     },
     {

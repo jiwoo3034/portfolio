@@ -260,7 +260,7 @@ function Home() {
         {/* Project 1 */}
           <Link to="/projects/1" className="project-link" aria-label="View IoT Mobile App project details">
           <div className="project">
-            <img src={process.env.PUBLIC_URL + "/images/iot-overview.jpg"} alt="IoT Mobile App Project Thumbnail" className="project-thumbnail" />
+            <img src={process.env.PUBLIC_URL + "/images/IoT/iot-overview.jpg"} alt="IoT Mobile App Project Thumbnail" className="project-thumbnail" />
             <div className="project-subtitle">UX Design</div>
             <h3>IoT Mobile App</h3>
             <p>A user-friendly app design to improve customer experience.</p>

@@ -5,6 +5,7 @@ import PageTransition from '../PageTransition';
 
 function IoTMobileApp() {
   const navigate = useNavigate();
+  const iotImageBase = process.env.PUBLIC_URL + '/images/IoT';
   
   // States for wireframe and prototype carousels
   const [wireframeCurrentIndex, setWireframeCurrentIndex] = useState(0);
@@ -12,33 +13,33 @@ function IoTMobileApp() {
   
   // References to wireframe images and prototype images
   const wireframeImages = [
-    "/images/W_Start.png",
-    "/images/W_LogIn.png",
-    "/images/W_Homepage.png",
-    "/images/W_LivingRoom.png",
-    "/images/W_Statistics.png",
-    "/images/W_Menu.png",
-    "/images/W_Security.png",
-    "/images/W_Camera.png",
-    "/images/W_Scenes.png",
-    "/images/W_Smart Actions.png",
-    "/images/W_Create Scene.png",
-    "/images/W_Profile.png"
+    `${iotImageBase}/W_Start.png`,
+    `${iotImageBase}/W_LogIn.png`,
+    `${iotImageBase}/W_Homepage.png`,
+    `${iotImageBase}/W_LivingRoom.png`,
+    `${iotImageBase}/W_Statistics.png`,
+    `${iotImageBase}/W_Menu.png`,
+    `${iotImageBase}/W_Security.png`,
+    `${iotImageBase}/W_Camera.png`,
+    `${iotImageBase}/W_Scenes.png`,
+    `${iotImageBase}/W_Smart Actions.png`,
+    `${iotImageBase}/W_Create Scene.png`,
+    `${iotImageBase}/W_Profile.png`
   ];
   
   const prototypeImages = [
-    "/images/P_Start.png",
-    "/images/P_LogIn.png",
-    "/images/P_Homepage.png",
-    "/images/P_LivingRoom.png",
-    "/images/P_Statistics.png",
-    "/images/P_Menu.png",
-    "/images/P_Security.png",
-    "/images/P_Camera.png",
-    "/images/P_Scenes.png",
-    "/images/P_Smart Actions.png",
-    "/images/P_Create Scene.png",
-    "/images/P_Profile.png"
+    `${iotImageBase}/P_Start.png`,
+    `${iotImageBase}/P_LogIn.png`,
+    `${iotImageBase}/P_Homepage.png`,
+    `${iotImageBase}/P_LivingRoom.png`,
+    `${iotImageBase}/P_Statistics.png`,
+    `${iotImageBase}/P_Menu.png`,
+    `${iotImageBase}/P_Security.png`,
+    `${iotImageBase}/P_Camera.png`,
+    `${iotImageBase}/P_Scenes.png`,
+    `${iotImageBase}/P_Smart Actions.png`,
+    `${iotImageBase}/P_Create Scene.png`,
+    `${iotImageBase}/P_Profile.png`
   ];
   
   // Functions for carousel navigation
@@ -128,7 +129,7 @@ function IoTMobileApp() {
         <br/>
         <h1>🌱 Smart Home IoT Mobile App</h1>
         <h2 className="project-subtitle">UX Design</h2>
-        <img src="/images/iot-overview.jpg" alt="IoT Mobile App Overview" className="project-image" />
+        <img src={`${iotImageBase}/iot-overview.jpg`} alt="IoT Mobile App Overview" className="project-image" />
       </header>
 
       {/* Project Overview */}
@@ -221,8 +222,8 @@ function IoTMobileApp() {
       <div className="section">
         <h2>Personas</h2>
         <div className="section-content">
-          <img src="/images/iot-personas.png" alt="Personas" className="project-image" />
-          <img src="/images/iot-personas-2.png" alt="Personas" className="project-image" />
+          <img src={`${iotImageBase}/iot-personas.png`} alt="Personas" className="project-image" />
+          <img src={`${iotImageBase}/iot-personas-2.png`} alt="Personas" className="project-image" />
         </div>
       </div>
 
@@ -250,10 +251,10 @@ function IoTMobileApp() {
             <li><strong>Sketching:</strong> Four different sketches from each team member; combined the strongest ideas.</li>
           </ul>
           <div className="image-grid-2x2">
-            <img src="/images/iot-sketch-2.png" alt="Sketch 2" className="project-image" />
-            <img src="/images/iot-sketch-3.png" alt="Sketch 3" className="project-image" />
-            <img src="/images/iot-sketch-4.png" alt="Sketch 4" className="project-image" />
-            <img src="/images/iot-sketch-1.png" alt="Sketch 1" className="project-image" />
+            <img src={`${iotImageBase}/iot-sketch-2.png`} alt="Sketch 2" className="project-image" />
+            <img src={`${iotImageBase}/iot-sketch-3.png`} alt="Sketch 3" className="project-image" />
+            <img src={`${iotImageBase}/iot-sketch-4.png`} alt="Sketch 4" className="project-image" />
+            <img src={`${iotImageBase}/iot-sketch-1.png`} alt="Sketch 1" className="project-image" />
           </div>
         </div>
       </div>
@@ -268,18 +269,18 @@ function IoTMobileApp() {
           </p>
           {/* Desktop grid view */}
           <div className="image-grid-4-columns wireframes-desktop-grid">
-            <img src="/images/W_Start.png" alt="Start page wireframe" className="project-image" />
-            <img src="/images/W_LogIn.png" alt="LogIn page wireframe" className="project-image" />
-            <img src="/images/W_Homepage.png" alt="Homepage wireframe" className="project-image" />
-            <img src="/images/W_LivingRoom.png" alt="Living room wireframes" className="project-image" />
-            <img src="/images/W_Statistics.png" alt="Statistics wireframes" className="project-image" />
-            <img src="/images/W_Menu.png" alt="Menu wireframes" className="project-image" />
-            <img src="/images/W_Security.png" alt="Security wireframes" className="project-image" />
-            <img src="/images/W_Camera.png" alt="Camera wireframes" className="project-image" />
-            <img src="/images/W_Scenes.png" alt="Scenes wireframes" className="project-image" />
-            <img src="/images/W_Smart Actions.png" alt="Smart Actions wireframes" className="project-image" />
-            <img src="/images/W_Create Scene.png" alt="Create Scene wireframes" className="project-image" />
-            <img src="/images/W_Profile.png" alt="Profile wireframes" className="project-image" />
+            <img src={`${iotImageBase}/W_Start.png`} alt="Start page wireframe" className="project-image" />
+            <img src={`${iotImageBase}/W_LogIn.png`} alt="LogIn page wireframe" className="project-image" />
+            <img src={`${iotImageBase}/W_Homepage.png`} alt="Homepage wireframe" className="project-image" />
+            <img src={`${iotImageBase}/W_LivingRoom.png`} alt="Living room wireframes" className="project-image" />
+            <img src={`${iotImageBase}/W_Statistics.png`} alt="Statistics wireframes" className="project-image" />
+            <img src={`${iotImageBase}/W_Menu.png`} alt="Menu wireframes" className="project-image" />
+            <img src={`${iotImageBase}/W_Security.png`} alt="Security wireframes" className="project-image" />
+            <img src={`${iotImageBase}/W_Camera.png`} alt="Camera wireframes" className="project-image" />
+            <img src={`${iotImageBase}/W_Scenes.png`} alt="Scenes wireframes" className="project-image" />
+            <img src={`${iotImageBase}/W_Smart Actions.png`} alt="Smart Actions wireframes" className="project-image" />
+            <img src={`${iotImageBase}/W_Create Scene.png`} alt="Create Scene wireframes" className="project-image" />
+            <img src={`${iotImageBase}/W_Profile.png`} alt="Profile wireframes" className="project-image" />
           </div>
           
           {/* Mobile/Tablet carousel view */}
@@ -325,18 +326,18 @@ function IoTMobileApp() {
           </p>
           {/* Desktop grid view */}
           <div className="image-grid-4-columns prototypes-desktop-grid">
-            <img src="/images/P_Start.png" alt="Start page prototype" className="project-image" />
-            <img src="/images/P_LogIn.png" alt="LogIn page prototype" className="project-image" />
-            <img src="/images/P_Homepage.png" alt="Homepage prototype" className="project-image" />
-            <img src="/images/P_LivingRoom.png" alt="Living room prototype" className="project-image" />
-            <img src="/images/P_Statistics.png" alt="Statistics prototype" className="project-image" />
-            <img src="/images/P_Menu.png" alt="Menu prototype" className="project-image" />
-            <img src="/images/P_Security.png" alt="Security prototype" className="project-image" />
-            <img src="/images/P_Camera.png" alt="Camera prototype" className="project-image" />
-            <img src="/images/P_Scenes.png" alt="Scenes prototype" className="project-image" />
-            <img src="/images/P_Smart Actions.png" alt="Smart Actions prototype" className="project-image" />
-            <img src="/images/P_Create Scene.png" alt="Create Scene prototype" className="project-image" />
-            <img src="/images/P_Profile.png" alt="Profile prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Start.png`} alt="Start page prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_LogIn.png`} alt="LogIn page prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Homepage.png`} alt="Homepage prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_LivingRoom.png`} alt="Living room prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Statistics.png`} alt="Statistics prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Menu.png`} alt="Menu prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Security.png`} alt="Security prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Camera.png`} alt="Camera prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Scenes.png`} alt="Scenes prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Smart Actions.png`} alt="Smart Actions prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Create Scene.png`} alt="Create Scene prototype" className="project-image" />
+            <img src={`${iotImageBase}/P_Profile.png`} alt="Profile prototype" className="project-image" />
           </div>
           
           {/* Mobile/Tablet carousel view */}
@@ -454,14 +455,14 @@ function IoTMobileApp() {
             <div className="before-after-container">
               <div className="before-after-item">
                 <span className="before-after-label">Before</span>
-                <img src="/images/LivingRoomBefore.png" alt="Living Room Before" className="project-image" />
+                <img src={`${iotImageBase}/LivingRoomBefore.png`} alt="Living Room Before" className="project-image" />
               </div>
               <div className="arrow-container">
                 <div className="arrow">→</div>
               </div>
               <div className="before-after-item">
                 <span className="before-after-label">After</span>
-                <img src="/images/LivingRoomAfter.png" alt="Living Room After" className="project-image" />
+                <img src={`${iotImageBase}/LivingRoomAfter.png`} alt="Living Room After" className="project-image" />
               </div>
             </div>
           </div>
@@ -471,14 +472,14 @@ function IoTMobileApp() {
             <div className="before-after-container">
               <div className="before-after-item">
                 <span className="before-after-label">Before</span>
-                <img src="/images/StatisticsBefore.png" alt="Statistics Before" className="project-image" />
+                <img src={`${iotImageBase}/StatisticsBefore.png`} alt="Statistics Before" className="project-image" />
               </div>
               <div className="arrow-container">
                 <div className="arrow">→</div>
               </div>
               <div className="before-after-item">
                 <span className="before-after-label">After</span>
-                <img src="/images/StatisticsAfter.png" alt="Statistics After" className="project-image" />
+                <img src={`${iotImageBase}/StatisticsAfter.png`} alt="Statistics After" className="project-image" />
               </div>
             </div>
           </div>
