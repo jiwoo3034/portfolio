@@ -41,9 +41,9 @@ function Projects() {
     },
     {
       id: 4,
-      title: 'Purolator Mobile App',
-      subtitle: 'Redesign',
-      description: 'An intuitive package tracking mobile app.',
+      title: 'Purolator Mobile App Redesign',
+      subtitle: 'UX Design',
+      description: 'Modernizing an enterprise mobile experience while keeping the design system consistent.',
       thumbnail: '/images/project5-thumbnail.jpg',
       category: 'UX',
     },

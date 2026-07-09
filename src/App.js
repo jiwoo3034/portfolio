@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Projects from './components/Projects';
 import IoTMobileApp from './components/ProjectDetails/IoTMobileApp';
+import PurolatorMobileApp from './components/ProjectDetails/PurolatorMobileApp';
 import ConstructionPage from './components/ProjectDetails/ConstructionPage';
 import Contact from './components/Contact';
 import ScrollToTop from './ScrollToTop';
@@ -23,7 +24,7 @@ function AnimatedRoutes() {
         <Route path="/projects/1" element={<IoTMobileApp />} />
         <Route path="/projects/2" element={<ConstructionPage />} />
         <Route path="/projects/3" element={<ConstructionPage />} />
-        <Route path="/projects/4" element={<ConstructionPage />} />
+        <Route path="/projects/4" element={<PurolatorMobileApp />} />
         <Route path="/projects/5" element={<ConstructionPage />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

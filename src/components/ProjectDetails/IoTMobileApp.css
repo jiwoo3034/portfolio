@@ -256,6 +256,244 @@ header.section h2.project-subtitle {
   margin-top: 1rem;
 }
 
+/* Purolator project theme overrides */
+.purolator-project .section h3,
+.purolator-project .info-card h3,
+.purolator-project .hero-meta-card h3 {
+  color: #D71920;
+}
+
+.purolator-project .section ul li {
+  border-left-color: #D71920;
+}
+
+.purolator-project .project-subtitle,
+.purolator-project .placeholder-kicker {
+  color: #D71920;
+}
+
+.purolator-project .hero-description {
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+}
+
+.purolator-project .hero-mockup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.purolator-project .mockup-placeholder,
+.purolator-project .comparison-panel,
+.purolator-project .iteration-placeholder,
+.purolator-project .hero-meta-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(215, 25, 32, 0.18);
+  border-left: 4px solid #D71920;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.purolator-project .mockup-placeholder,
+.purolator-project .iteration-placeholder {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.purolator-project .comparison-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.purolator-project .mockup-placeholder strong,
+.purolator-project .comparison-panel strong,
+.purolator-project .iteration-placeholder strong,
+.purolator-project .hero-meta-card p {
+  font-family: 'Lato', sans-serif;
+}
+
+.purolator-project .mockup-placeholder span,
+.purolator-project .comparison-panel span,
+.purolator-project .iteration-placeholder span {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.purolator-project .hero-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.purolator-project .hero-meta-card h3 {
+  margin-bottom: 0.35rem;
+}
+
+.purolator-project .hero-meta-card p {
+  color: #242424;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.purolator-project .comparison-grid,
+.purolator-project .iteration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.purolator-project .comparison-block {
+  margin-bottom: 2rem;
+}
+
+.purolator-project .comparison-block:last-child {
+  margin-bottom: 0;
+}
+
+.purolator-project .comparison-panel {
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.purolator-project .comparison-panel strong {
+  font-size: 1rem;
+}
+
+.purolator-project .supporting-shots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.purolator-project .supporting-shot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+.purolator-project .comparison-bullets {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0.75rem 0 0;
+}
+
+.purolator-project .comparison-bullets li {
+  background: transparent;
+  border-left: 0;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+
+.purolator-project .responsibilities-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0.75rem 0 0;
+}
+
+.purolator-project .responsibilities-list li {
+  background: transparent;
+  border-left: 0;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+
+.purolator-project .feature-highlight {
+  margin-bottom: 2rem;
+}
+
+.purolator-project .single-image-placeholder {
+  min-height: 200px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(215, 25, 32, 0.35);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.purolator-project .supporting-pages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.purolator-project .supporting-page-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(215, 25, 32, 0.18);
+  border-left: 4px solid #D71920;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.purolator-project .supporting-page-card h4 {
+  margin-bottom: 0.35rem;
+  color: #2D3E5B;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+}
+
+.purolator-project .supporting-page-card p {
+  margin: 0 0 1rem;
+}
+
+.purolator-project .supporting-page-placeholder {
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  text-align: center;
+  border: 1px dashed rgba(215, 25, 32, 0.35);
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 1024px) {
+  .purolator-project .hero-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .purolator-project .supporting-pages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .purolator-project .hero-mockup-grid,
+  .purolator-project .comparison-grid,
+  .purolator-project .iteration-grid,
+  .purolator-project .supporting-pages-grid,
+  .purolator-project .supporting-shots-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* 2x2 Image Grid */
 .image-grid-2x2 {
   display: grid;
