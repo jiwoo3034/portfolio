@@ -789,6 +789,82 @@ header.section h2.project-subtitle {
   }
 }
 
+/* Iteration Table Styling */
+.oscar-project .iteration-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background: white;
+  border: 1px solid rgba(45, 156, 170, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.oscar-project .iteration-table thead {
+  background: rgba(45, 156, 170, 0.08);
+  border-bottom: 2px solid rgba(45, 156, 170, 0.3);
+}
+
+.oscar-project .iteration-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #2D9CAA;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  border-right: 1px solid rgba(45, 156, 170, 0.15);
+}
+
+.oscar-project .iteration-table th:last-child {
+  border-right: none;
+}
+
+.oscar-project .iteration-table tbody tr {
+  border-bottom: 1px solid rgba(45, 156, 170, 0.15);
+  transition: background-color 0.2s ease;
+}
+
+.oscar-project .iteration-table tbody tr:hover {
+  background: rgba(45, 156, 170, 0.04);
+}
+
+.oscar-project .iteration-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.oscar-project .iteration-table td {
+  padding: 1rem;
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border-right: 1px solid rgba(45, 156, 170, 0.1);
+}
+
+.oscar-project .iteration-table td:last-child {
+  border-right: none;
+}
+
+.oscar-project .iteration-table td:first-child {
+  font-weight: 600;
+  color: #2D9CAA;
+}
+
+.oscar-project .iteration-table td:nth-child(3) {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .oscar-project .iteration-table {
+    font-size: 0.85rem;
+  }
+
+  .oscar-project .iteration-table th,
+  .oscar-project .iteration-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
 /* Divider Styling */
 .divider {
   width: 90%;
@@ -1164,5 +1240,147 @@ header.section h2.project-subtitle {
   .banner-content {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+/* ============================================
+   OSCAR PROJECT THEME
+   ============================================ */
+
+.oscar-project .friction-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.oscar-project .friction-pillar-card {
+  background: rgba(45, 156, 170, 0.08);
+  border: 1px solid rgba(45, 156, 170, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.oscar-project .friction-pillar-card h4 {
+  color: #2D3E5B;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.oscar-project .friction-pillar-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.oscar-project .role-impact-box {
+  background: rgba(45, 156, 170, 0.08);
+  padding: 1rem;
+  border-left: 4px solid #2D9CAA;
+  border-radius: 0 8px 8px 0;
+  margin-top: 1rem;
+}
+
+.oscar-project .design-decision-item {
+  background: rgba(45, 156, 170, 0.08);
+  border-left: 4px solid #2D9CAA;
+  border-radius: 0 8px 8px 0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.oscar-project .design-decision-item p {
+  margin: 0;
+}
+
+.color-system-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.color-system-table thead {
+  background: rgba(45, 156, 170, 0.1);
+}
+
+.color-system-table th {
+  padding: 1rem;
+  text-align: left;
+  color: #2D3E5B;
+  font-weight: 600;
+  border-bottom: 2px solid #2D9CAA;
+}
+
+.color-system-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(45, 156, 170, 0.2);
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  margin-right: 0.75rem;
+  vertical-align: middle;
+}
+
+.oscar-project .challenge-item {
+  background: rgba(45, 156, 170, 0.08);
+  border: 1px solid rgba(45, 156, 170, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.oscar-project .challenge-item h3 {
+  color: #2D3E5B;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.oscar-project .finding-item {
+  background: rgba(45, 156, 170, 0.08);
+  border-left: 4px solid #2D9CAA;
+  border-radius: 0 8px 8px 0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.oscar-project .finding-item p {
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.oscar-project .finding-item p:last-child {
+  margin-bottom: 0;
+}
+
+.oscar-project .reflection-item {
+  background: rgba(45, 156, 170, 0.08);
+  border: 1px solid rgba(45, 156, 170, 0.2);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.oscar-project .reflection-item h3 {
+  color: #2D3E5B;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.oscar-project .reflection-item p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .oscar-project .friction-pillars {
+    grid-template-columns: 1fr;
   }
 }
