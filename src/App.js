@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/App.css';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -14,6 +14,7 @@ import ConstructionPage from './components/ProjectDetails/ConstructionPage';
 import Contact from './components/Contact';
 import ScrollToTop from './ScrollToTop';
 import ScrollUpButton from './ScrollUpButton';
+import { projectPaths } from './data/projects';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -23,13 +24,19 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/1" element={<IoTMobileApp />} />
-        <Route path="/projects/2" element={<ConstructionPage />} />
-        <Route path="/projects/3" element={<ConstructionPage />} />
-        <Route path="/projects/4" element={<PurolatorMobileApp />} />
-        <Route path="/projects/6" element={<PurolatorCouponPortal />} />
-        <Route path="/projects/7" element={<OSCARMobilePro />} />
-        <Route path="/projects/5" element={<ConstructionPage />} />
+        <Route path={projectPaths.iotMobileApp} element={<IoTMobileApp />} />
+        <Route path={projectPaths.salesManagementWebsite} element={<ConstructionPage />} />
+        <Route path={projectPaths.brandingPackage} element={<ConstructionPage />} />
+        <Route path={projectPaths.purolatorMobileAppRedesign} element={<PurolatorMobileApp />} />
+        <Route path={projectPaths.purolatorEmployeeCouponPortal} element={<PurolatorCouponPortal />} />
+        <Route path={projectPaths.oscarMobilePro} element={<OSCARMobilePro />} />
+        <Route path="/projects/1" element={<Navigate replace to={projectPaths.iotMobileApp} />} />
+        <Route path="/projects/2" element={<Navigate replace to={projectPaths.salesManagementWebsite} />} />
+        <Route path="/projects/3" element={<Navigate replace to={projectPaths.brandingPackage} />} />
+        <Route path="/projects/4" element={<Navigate replace to={projectPaths.purolatorMobileAppRedesign} />} />
+        <Route path="/projects/5" element={<Navigate replace to={projectPaths.salesManagementWebsite} />} />
+        <Route path="/projects/6" element={<Navigate replace to={projectPaths.purolatorEmployeeCouponPortal} />} />
+        <Route path="/projects/7" element={<Navigate replace to={projectPaths.oscarMobilePro} />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </AnimatePresence>

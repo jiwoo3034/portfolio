@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Projects.css';
 import { Link } from 'react-router-dom';
 import PageTransition from './PageTransition';
+import { projects } from '../data/projects';
 
 function Projects() {
   // Retrieve the initial category from localStorage or default to 'All'
@@ -13,57 +14,6 @@ function Projects() {
   useEffect(() => {
     localStorage.setItem('selectedCategory', activeCategory);
   }, [activeCategory]);
-
-  const projects = [
-    {
-      id: 1,
-      title: 'IoT Mobile App',
-      subtitle: 'UX Design',
-      description: 'A user-friendly app design to improve customer experience.',
-      thumbnail: '/images/IoT/iot-overview.jpg',
-      category: 'UX',
-    },
-    {
-      id: 2,
-      title: 'Sales Management Website',
-      subtitle: 'Web Development',
-      description: 'A responsive and scalable sales management platform.',
-      thumbnail: '/images/project2-thumbnail.jpg',
-      category: 'Programming',
-    },
-    {
-      id: 3,
-      title: 'Branding Package',
-      subtitle: 'Graphic Design',
-      description: 'A complete branding solution for a startup company.',
-      thumbnail: '/images/project3-thumbnail.jpg',
-      category: 'Design',
-    },
-    {
-      id: 4,
-      title: 'Purolator Mobile App Redesign',
-      subtitle: 'UX Design',
-      description: 'Modernizing an enterprise mobile experience while keeping the design system consistent.',
-      thumbnail: '/images/purolator-mobile-app/purolator-mobile-redesign-overview.jpg',
-      category: 'UX',
-    },
-    {
-      id: 6,
-      title: 'Purolator Employee Coupon Portal',
-      subtitle: 'UI / UX Design',
-      description: 'A lightweight internal portal for quick access to shipping discount coupons.',
-      thumbnail: '/images/purolator-coupon-portal/purolator-coupon-portal-overview.jpg',
-      category: 'UX',
-    },
-    {
-      id: 7,
-      title: 'OSCAR Mobile Pro',
-      subtitle: 'Product Design • UX/UI • Frontend Development',
-      description: 'Designing and building a mobile EMR to improve clinician workflows.',
-      thumbnail: '/images/oscar/oscar-overview.jpg',
-      category: 'UX',
-    }
-  ];
 
   const filteredProjects =
     activeCategory === 'All'
@@ -91,7 +41,7 @@ function Projects() {
       {/* Projects Grid */}
       <div className="projects-grid">
         {filteredProjects.map((project) => (
-          <Link to={`/projects/${project.id}`} key={project.id} className="project-card-link" aria-label={`View ${project.title} project details`}>
+        <Link to={project.path} key={project.title} className="project-card-link" aria-label={`View ${project.title} project details`}>
             <div className="project-card">
               <img
                 src={project.thumbnail}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ConstructionPage.css';
 import PageTransition from '../PageTransition';
+import { Link } from 'react-router-dom';
+import { projectPaths } from '../../data/projects';
 
 function ConstructionPage() {
   const [dots, setDots] = useState('');
@@ -192,8 +194,8 @@ function ConstructionPage() {
           justifyContent: 'center',
           flexWrap: 'wrap'
         }}>
-          <a 
-            href="/projects/1"
+          <Link 
+            to={projectPaths.iotMobileApp}
             style={{
               color: '#2D3E5B',
               textDecoration: 'none',
@@ -216,9 +218,8 @@ function ConstructionPage() {
             aria-label="Go to IoT Mobile App project"
           >
             IoT Mobile App
-          </a>
-          <a 
-            href="/projects"
+          </Link>
+          <Link 
             style={{
               color: '#DB9291',
               textDecoration: 'none',
@@ -234,6 +235,7 @@ function ConstructionPage() {
               e.target.style.backgroundColor = '#DB9291';
               e.target.style.color = 'white';
             }}
+            to="/projects"
             aria-label="View all projects"
             onMouseLeave={(e) => {
               e.target.style.backgroundColor = 'transparent';
@@ -241,7 +243,7 @@ function ConstructionPage() {
             }}
           >
             View All Projects
-          </a>
+          </Link>
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
 import PageTransition from './PageTransition';
+import { featuredProjects } from '../data/projects';
 
 function Home() {
   const skillsRef = useRef(null);
@@ -257,65 +258,28 @@ function Home() {
       <h2>Projects Overview</h2>
 
       <div className="projects-container">
-        {/* Project 1 */}
-          <Link to="/projects/1" className="project-link" aria-label="View IoT Mobile App project details">
-          <div className="project">
-            <img src={process.env.PUBLIC_URL + "/images/IoT/iot-overview.jpg"} alt="IoT Mobile App Project Thumbnail" className="project-thumbnail" />
-            <div className="project-subtitle">UX Design</div>
-            <h3>IoT Mobile App</h3>
-            <p>A user-friendly app design to improve customer experience.</p>
-            <div className="project-details-link">
-              View Project Details →
+        {featuredProjects.map((project) => (
+          <Link
+            key={project.title}
+            to={project.path}
+            className="project-link"
+            aria-label={`View ${project.title} project details`}
+          >
+            <div className="project">
+              <img
+                src={process.env.PUBLIC_URL + project.thumbnail}
+                alt={`${project.title} Project Thumbnail`}
+                className="project-thumbnail"
+              />
+              <div className="project-subtitle">{project.subtitle}</div>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <div className="project-details-link">
+                View Project Details →
+              </div>
             </div>
-          </div>
-        </Link>        {/* Project 2 */}
-        <Link to="/projects/2" className="project-link" aria-label="View Sales Management Website project details">
-          <div className="project">
-            <img src={process.env.PUBLIC_URL + "/images/project2-thumbnail.jpg"} alt="Sales Management Website Project Thumbnail" className="project-thumbnail" />
-            <div className="project-subtitle">Web Development</div>
-            <h3>Sales Management Website</h3>
-            <p>A responsive and scalable sales management platform.</p>
-            <div className="project-details-link">
-              View Project Details →
-            </div>
-          </div>
-        </Link>
-        {/* Project 3 */}
-        <Link to="/projects/4" className="project-link" aria-label="View Purolator Mobile App Redesign project details">
-          <div className="project">
-            <img src={process.env.PUBLIC_URL + "/images/purolator-mobile-app/purolator-mobile-redesign-overview.jpg"} alt="Purolator Mobile App Redesign Project Thumbnail" className="project-thumbnail" />
-            <div className="project-subtitle">UX Design</div>
-            <h3>Purolator Mobile App Redesign</h3>
-            <p>Modernizing an enterprise mobile experience with Purolator's evolving design system.</p>
-            <div className="project-details-link">
-              View Project Details →
-            </div>
-          </div>
-        </Link>
-
-        <Link to="/projects/6" className="project-link" aria-label="View Purolator Employee Coupon Portal project details">
-          <div className="project">
-            <img src={process.env.PUBLIC_URL + "/images/purolator-coupon-portal/purolator-coupon-portal-overview.jpg"} alt="Purolator Employee Coupon Portal Project Thumbnail" className="project-thumbnail" />
-            <div className="project-subtitle">UI / UX Design</div>
-            <h3>Purolator Employee Coupon Portal</h3>
-            <p>Designing a lightweight internal portal for quick access to shipping coupons.</p>
-            <div className="project-details-link">
-              View Project Details →
-            </div>
-          </div>
-        </Link>
-
-        <Link to="/projects/7" className="project-link" aria-label="View OSCAR Mobile Pro project details">
-          <div className="project">
-            <img src={process.env.PUBLIC_URL + "/images/oscar/oscar-overview.jpg"} alt="OSCAR Mobile Pro Project Thumbnail" className="project-thumbnail" />
-            <div className="project-subtitle">Product Design • UX/UI • Frontend</div>
-            <h3>OSCAR Mobile Pro</h3>
-            <p>Design and development of a mobile EMR focused on clinician workflows.</p>
-            <div className="project-details-link">
-              View Project Details →
-            </div>
-          </div>
-        </Link>
+          </Link>
+        ))}
       </div>
 
       {/* See More Projects Button */}
