@@ -60,7 +60,7 @@ function Projects() {
       title: 'OSCAR Mobile Pro',
       subtitle: 'Product Design • UX/UI • Frontend Development',
       description: 'Designing and building a mobile EMR to improve clinician workflows.',
-      thumbnail: '/images/oscar-mobile-pro/oscar-mobile-pro-overview.jpg',
+      thumbnail: '/images/oscar/oscar-overview.jpg',
       category: 'UX',
     }
   ];

@@ -307,7 +307,7 @@ function Home() {
 
         <Link to="/projects/7" className="project-link" aria-label="View OSCAR Mobile Pro project details">
           <div className="project">
-            <img src={process.env.PUBLIC_URL + "/images/oscar-mobile-pro/oscar-mobile-pro-overview.jpg"} alt="OSCAR Mobile Pro Project Thumbnail" className="project-thumbnail" />
+            <img src={process.env.PUBLIC_URL + "/images/oscar/oscar-overview.jpg"} alt="OSCAR Mobile Pro Project Thumbnail" className="project-thumbnail" />
             <div className="project-subtitle">Product Design • UX/UI • Frontend</div>
             <h3>OSCAR Mobile Pro</h3>
             <p>Design and development of a mobile EMR focused on clinician workflows.</p>
