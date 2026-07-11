@@ -280,6 +280,42 @@ function Home() {
             </div>
           </div>
         </Link>
+        {/* Project 3 */}
+        <Link to="/projects/4" className="project-link" aria-label="View Purolator Mobile App Redesign project details">
+          <div className="project">
+            <img src={process.env.PUBLIC_URL + "/images/purolator-mobile-app/purolator-mobile-redesign-overview.jpg"} alt="Purolator Mobile App Redesign Project Thumbnail" className="project-thumbnail" />
+            <div className="project-subtitle">UX Design</div>
+            <h3>Purolator Mobile App Redesign</h3>
+            <p>Modernizing an enterprise mobile experience with Purolator's evolving design system.</p>
+            <div className="project-details-link">
+              View Project Details →
+            </div>
+          </div>
+        </Link>
+
+        <Link to="/projects/6" className="project-link" aria-label="View Purolator Employee Coupon Portal project details">
+          <div className="project">
+            <img src={process.env.PUBLIC_URL + "/images/purolator-coupon-portal/purolator-coupon-portal-overview.jpg"} alt="Purolator Employee Coupon Portal Project Thumbnail" className="project-thumbnail" />
+            <div className="project-subtitle">UI / UX Design</div>
+            <h3>Purolator Employee Coupon Portal</h3>
+            <p>Designing a lightweight internal portal for quick access to shipping coupons.</p>
+            <div className="project-details-link">
+              View Project Details →
+            </div>
+          </div>
+        </Link>
+
+        <Link to="/projects/7" className="project-link" aria-label="View OSCAR Mobile Pro project details">
+          <div className="project">
+            <img src={process.env.PUBLIC_URL + "/images/oscar-mobile-pro/oscar-mobile-pro-overview.jpg"} alt="OSCAR Mobile Pro Project Thumbnail" className="project-thumbnail" />
+            <div className="project-subtitle">Product Design • UX/UI • Frontend</div>
+            <h3>OSCAR Mobile Pro</h3>
+            <p>Design and development of a mobile EMR focused on clinician workflows.</p>
+            <div className="project-details-link">
+              View Project Details →
+            </div>
+          </div>
+        </Link>
       </div>
 
       {/* See More Projects Button */}

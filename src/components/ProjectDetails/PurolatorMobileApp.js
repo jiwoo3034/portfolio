@@ -6,11 +6,7 @@ function PurolatorMobileApp() {
   const purolatorImage = (fileName) =>
     encodeURI(`${process.env.PUBLIC_URL}/images/purolator-mobile-app/${fileName}`);
 
-  const heroMockups = [
-    { label: 'Redesigned Home', src: purolatorImage('After-Home-Page-(Default).png') },
-    { label: 'Shipment Tracking', src: purolatorImage('After-Tracking.png') },
-    { label: 'Delivery Details', src: purolatorImage('After-Tacking-Pin-Deatils.png') }
-  ];
+  const heroImage = purolatorImage('purolator-mobile-redesign-overview.jpg');
 
   const heroMeta = [
     { label: 'Role', value: 'UX Designer' },
@@ -62,35 +58,25 @@ function PurolatorMobileApp() {
         'Removed the outdated Drop Off shortcut',
         'Updated Favorite Location icons and visual language'
       ],
-      before: purolatorImage('Before-Homepage.png'),
-      after: purolatorImage('After-Home-Page-(Default).png'),
+        before: purolatorImage('Before-Homepage.png'),
+      after: purolatorImage('After-Home-Page.png'),
       beforeLabel: 'Before homepage screenshot',
       afterLabel: 'After homepage screenshot'
     },
     {
-      title: 'Search & Tracking Experience',
-      description:
-        'Search and tracking were reworked to better support frequent shipment lookups, clearer navigation, and more flexible organization.',
+      title: 'Tracking Improvements',
+      description: 'Enhanced the tracking experience with new features and improved usability.',
       bullets: [
-        'Redesigned Search page',
-        'Updated search bars',
-        'Added Favorite Tracking functionality',
         'Introduced a custom filtering system',
         'Updated Tracking Pins',
-        'Redesigned Tracking Pin Details page',
         'Added nickname support for tracking pins',
-        'Improved shipment organization'
+        'Improved shipment organization',
+        'Redesigned Tracking Pin Details page',
       ],
-      before: purolatorImage('Before-Search.png'),
-      after: purolatorImage('After-Search-Barcode.png'),
-      beforeLabel: 'Before search screenshot',
-      afterLabel: 'After search barcode screenshot',
-      supportingShots: [
-        { label: 'Filter state', src: purolatorImage('Before-Filters.png') },
-        { label: 'Applied filters', src: purolatorImage('After-Filter-applied.png') },
-        { label: 'Filter picker', src: purolatorImage('After-Filter-DateTimePicker.png') },
-        { label: 'Tracking pin details', src: purolatorImage('After-Tacking-Pin-Deatils.png') }
-      ]
+      before: purolatorImage('Before-Tracking.png'),
+      after: purolatorImage('After-Nickname.png'),
+      beforeLabel: 'Before tracking pins screenshot',
+      afterLabel: 'After tracking pins screenshot'
     },
     {
       title: 'Transit History',
@@ -103,8 +89,8 @@ function PurolatorMobileApp() {
         'Timeline redesign',
         'Clearer shipment status'
       ],
-      before: purolatorImage('Before-Tracking.png'),
-      after: purolatorImage('After-Tracking.png'),
+      before: purolatorImage('Before-Tracking-Pin-Deatils.png'),
+      after: purolatorImage('After-Tacking-Pin-Deatils.png'),
       beforeLabel: 'Before transit history screenshot',
       afterLabel: 'After transit history screenshot'
     }
@@ -125,6 +111,12 @@ function PurolatorMobileApp() {
     { label: 'Iteration 3', src: purolatorImage('After-Tacking-Pin-Nickname.png') }
   ];
 
+  // Flexible image placeholders usable for single or multiple images
+  const proofOfDeliveryImages = [
+    purolatorImage('After-Tacking-Pin-Deatils.png'),
+    purolatorImage('After-Tacking-Pin-Nickname.png')
+  ];
+
   return (
     <PageTransition>
       <section className="project-detail purolator-project">
@@ -136,13 +128,8 @@ function PurolatorMobileApp() {
             Modernizing an enterprise mobile experience by redesigning legacy screens while maintaining consistency with Purolator's evolving design system.
           </p>
 
-          <div className="hero-mockup-grid" aria-label="Purolator mobile app mockups">
-            {heroMockups.map((mockup) => (
-              <div className="mockup-placeholder" key={mockup.label}>
-                <img src={mockup.src} alt={mockup.label} className="comparison-image" />
-                <strong>{mockup.label}</strong>
-              </div>
-            ))}
+          <div style={{ background: 'transparent' }}>
+            <img src={heroImage} alt="Purolator Mobile App Redesign overview" className="project-image" />
           </div>
 
           <div className="hero-meta-grid">
@@ -305,8 +292,28 @@ function PurolatorMobileApp() {
               <p>
                 Added a Proof of Delivery feature to improve shipment transparency and provide users with quick access to delivery confirmation.
               </p>
-              <div className="single-image-placeholder">
-                <img src={purolatorImage('After-Proof-of-Delivery.png')} alt="Proof of Delivery screenshot" className="comparison-image" />
+              <div className="image-placeholder">
+                {proofOfDeliveryImages && proofOfDeliveryImages.length ? (
+                  proofOfDeliveryImages.map((src, idx) => (
+                    <img key={idx} src={src} alt={`Proof of Delivery ${idx + 1}`} className="comparison-image" />
+                  ))
+                ) : (
+                  <div className="supporting-page-placeholder">
+                    <span className="placeholder-kicker">TODO</span>
+                    <strong>Proof of Delivery screenshot</strong>
+                  </div>
+                )}
+              </div>
+            </article>
+
+            <article className="comparison-block feature-highlight">
+              <h3>Extending an Existing Design System</h3>
+              <p>
+                Instead of creating a new visual language, I focused on extending Purolator's evolving design system. By studying previously redesigned screens, I ensured that every new interface followed the same design principles, resulting in a consistent and unified product experience.
+              </p>
+              <div className="image-placeholder">
+                <img src={purolatorImage('After-Find-Location-Search-Active.png')} alt="Find location search screenshot" className="comparison-image" />
+                <img src={purolatorImage('After-Location-Details-Page.png')} alt="Location details page screenshot" className="comparison-image" />
               </div>
             </article>
 

@@ -284,6 +284,11 @@ header.section h2.project-subtitle {
   margin: 1rem 0 1.5rem;
 }
 
+.purolator-project .hero-mockup-single {
+  grid-template-columns: minmax(0, 520px);
+  justify-content: center;
+}
+
 .purolator-project .mockup-placeholder,
 .purolator-project .comparison-panel,
 .purolator-project .iteration-placeholder,
@@ -304,6 +309,10 @@ header.section h2.project-subtitle {
   justify-content: center;
   gap: 0.5rem;
   text-align: center;
+}
+
+.purolator-project .hero-mockup-single .mockup-placeholder {
+  min-height: auto;
 }
 
 .purolator-project .comparison-image {
@@ -419,19 +428,26 @@ header.section h2.project-subtitle {
   margin-bottom: 2rem;
 }
 
-.purolator-project .single-image-placeholder {
-  min-height: 200px;
+.purolator-project .image-placeholder {
+  min-height: 160px;
   margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
   align-items: center;
+  justify-items: center;
   text-align: center;
   background: rgba(255, 255, 255, 0.7);
   border: 1px dashed rgba(215, 25, 32, 0.35);
   border-radius: 10px;
   padding: 1rem;
+}
+
+.purolator-project .image-placeholder .comparison-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 480px;
 }
 
 .purolator-project .supporting-pages-grid {

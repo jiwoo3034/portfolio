@@ -44,9 +44,25 @@ function Projects() {
       title: 'Purolator Mobile App Redesign',
       subtitle: 'UX Design',
       description: 'Modernizing an enterprise mobile experience while keeping the design system consistent.',
-      thumbnail: '/images/project5-thumbnail.jpg',
+      thumbnail: '/images/purolator-mobile-app/purolator-mobile-redesign-overview.jpg',
       category: 'UX',
     },
+    {
+      id: 6,
+      title: 'Purolator Employee Coupon Portal',
+      subtitle: 'UI / UX Design',
+      description: 'A lightweight internal portal for quick access to shipping discount coupons.',
+      thumbnail: '/images/purolator-coupon-portal/purolator-coupon-portal-overview.jpg',
+      category: 'UX',
+    },
+    {
+      id: 7,
+      title: 'OSCAR Mobile Pro',
+      subtitle: 'Product Design • UX/UI • Frontend Development',
+      description: 'Designing and building a mobile EMR to improve clinician workflows.',
+      thumbnail: '/images/oscar-mobile-pro/oscar-mobile-pro-overview.jpg',
+      category: 'UX',
+    }
   ];
 
   const filteredProjects =

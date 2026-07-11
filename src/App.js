@@ -8,6 +8,8 @@ import Home from './components/Home';
 import Projects from './components/Projects';
 import IoTMobileApp from './components/ProjectDetails/IoTMobileApp';
 import PurolatorMobileApp from './components/ProjectDetails/PurolatorMobileApp';
+import PurolatorCouponPortal from './components/ProjectDetails/PurolatorCouponPortal';
+import OSCARMobilePro from './components/ProjectDetails/OSCARMobilePro';
 import ConstructionPage from './components/ProjectDetails/ConstructionPage';
 import Contact from './components/Contact';
 import ScrollToTop from './ScrollToTop';
@@ -25,6 +27,8 @@ function AnimatedRoutes() {
         <Route path="/projects/2" element={<ConstructionPage />} />
         <Route path="/projects/3" element={<ConstructionPage />} />
         <Route path="/projects/4" element={<PurolatorMobileApp />} />
+        <Route path="/projects/6" element={<PurolatorCouponPortal />} />
+        <Route path="/projects/7" element={<OSCARMobilePro />} />
         <Route path="/projects/5" element={<ConstructionPage />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
