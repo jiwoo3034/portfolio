@@ -7,6 +7,10 @@
   margin: 0 auto;
 }
 
+/* Ensure images never overflow their containers */
+img { max-width: 100%; height: auto; display: block; }
+
+
 .section {
   width: 80%;
   margin-bottom: 2rem;
@@ -250,12 +254,15 @@ header.section h2.project-subtitle {
 }
 
 .project-image {
-  width: 80%;
+  width: 100%;
+  max-width: 900px; /* constrain hero/project overview images on large screens */
   height: auto;
   border-radius: 8px;
   display: block;
   margin: 1rem auto;
+  object-fit: contain;
 }
+
 
 /* Purolator project theme overrides */
 
@@ -339,10 +346,14 @@ header.section h2.project-subtitle {
 
 .purolator-project .comparison-image {
   width: 100%;
+  max-width: 640px; /* limit large screenshots so they fit within layout */
   height: auto;
   display: block;
   border-radius: 8px;
+  object-fit: contain;
+  max-height: 75vh; /* allow taller images on large viewports but keep them bounded */
 }
+
 
 .purolator-project .mockup-placeholder strong,
 .purolator-project .comparison-panel strong,
@@ -375,12 +386,96 @@ header.section h2.project-subtitle {
   line-height: 1.5;
 }
 
-.purolator-project .comparison-grid,
-.purolator-project .iteration-grid {
+.purolator-project .comparison-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 1rem;
+}
+
+/* Iteration flow: horizontal on wide screens, stacked on small screens */
+.purolator-project .iteration-grid {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+/* Individual iteration card */
+.purolator-project .iteration-card {
+  min-width: 220px;
+  max-width: 360px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(215, 25, 32, 0.18);
+  border-left: 4px solid #D71920;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+}
+
+/* Thumbnails inside each iteration; wrap on small screens */
+.purolator-project .iteration-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Individual thumbnail */
+.purolator-project .iteration-thumb {
+  width: 120px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+/* Arrow between iteration cards (right-facing) */
+.purolator-project .iteration-arrow {
+  font-size: 1.6rem;
+  color: #D71920;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+/* Responsive: stack iterations vertically on narrow screens */
+@media (max-width: 900px) {
+  .purolator-project .iteration-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .purolator-project .iteration-arrow {
+    transform: rotate(90deg); /* show down-like arrow if desired */
+  }
+  .purolator-project .iteration-card {
+    width: 100%;
+    max-width: none;
+  }
+  .purolator-project .iteration-thumb {
+    width: 100px;
+  }
+}
+
+/* Update-note style for missing images */
+.purolator-project .update-note,
+.oscar-project .update-note {
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(215, 25, 32, 0.25);
+  background: rgba(255, 247, 247, 0.9);
+  color: #D71920;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
 }
 
 .purolator-project .comparison-block {
@@ -467,10 +562,12 @@ header.section h2.project-subtitle {
 
 .purolator-project .image-placeholder .comparison-image {
   width: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
-  max-height: 480px;
+  max-height: 60vh; /* scale images relative to viewport so they don't overflow */
 }
+
 
 .purolator-project .supporting-pages-grid {
   display: grid;
@@ -496,6 +593,64 @@ header.section h2.project-subtitle {
 
 .purolator-project .supporting-page-card p {
   margin: 0 0 1rem;
+}
+
+/* Smaller supporting page thumbnails (compact grid) */
+.purolator-project .supporting-thumbs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+  align-items: start;
+}
+
+.purolator-project .supporting-thumb {
+  width: 100%;
+  max-width: 220px; /* keep thumbnails modest */
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  cursor: pointer;
+  margin: 0.5rem auto;
+}
+
+/* Iteration cards: compact, stacked with small thumbnails and notes */
+.purolator-project .iteration-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.purolator-project .iteration-card {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(215,25,32,0.12);
+  border-radius: 8px;
+  padding: 0.75rem;
+  width: 220px;
+  text-align: center;
+}
+
+.purolator-project .iteration-thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.purolator-project .iteration-note {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.25rem;
+}
+
+/* Ensure supporting small grids don't make images overflow */
+.purolator-project .supporting-thumbs-grid img, .purolator-project .iteration-card img {
+  max-width: 100%;
+  height: auto;
 }
 
 .purolator-project .supporting-page-placeholder {

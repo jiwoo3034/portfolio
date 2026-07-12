@@ -10,10 +10,11 @@ function PurolatorMobileApp() {
 
   const heroMeta = [
     { label: 'Role', value: 'UX Designer' },
+    { label: 'Team', value: 'UX Team + Developers (5)' },
     { label: 'Timeline', value: '8 Months' },
-    { label: 'Company', value: 'Purolator Digital Lab' },
-    { label: 'Team', value: 'UX Team + Developers' },
-    { label: 'Project Type', value: 'Enterprise Mobile Application' }
+    { label: 'Platform', value: 'iOS / Android' },
+    { label: 'Deliverables', value: '20+ redesigned screens' },
+    { label: 'Tools', value: 'Figma, Jira' }
   ];
 
   const responsibilities = [
@@ -25,14 +26,12 @@ function PurolatorMobileApp() {
   ];
 
   const processSteps = [
-    'Design Audit',
-    'Gap Analysis',
-    'Design System Study',
-    'Wireframing',
-    'High-Fidelity Design',
-    'Design Reviews',
-    'Developer Collaboration',
-    'Iteration & QA'
+    'Audit',
+    'Design System Analysis',
+    'Wireframe',
+    'Hi-fi',
+    'Developer Review',
+    'Iteration'
   ];
 
   const constraints = [
@@ -46,6 +45,7 @@ function PurolatorMobileApp() {
   const auditFindings = [
     {
       screen: 'Homepage',
+      image: purolatorImage('Before-Homepage.png'),
       problems: [
         'Oversized announcement banner consumed primary real estate',
         'Quick shortcuts were buried below the fold',
@@ -54,6 +54,7 @@ function PurolatorMobileApp() {
     },
     {
       screen: 'Tracking',
+      image: purolatorImage('Before-Tracking.png'),
       problems: [
         'Pins had no differentiation — all shipments looked identical',
         'No way to organize or label active shipments',
@@ -62,6 +63,7 @@ function PurolatorMobileApp() {
     },
     {
       screen: 'Transit History',
+      image: purolatorImage('Before-Tracking-Pin-Deatils.png'),
       problems: [
         'Progress timeline was hard to scan',
         'Status labels were ambiguous',
@@ -130,9 +132,15 @@ function PurolatorMobileApp() {
   ];
 
   const iterationPlaceholders = [
-    { label: 'Version 1', src: purolatorImage('After-Home-Page.png') },
-    { label: 'Version 2', src: purolatorImage('After-Filters-Selected.png') },
-    { label: 'Final', src: purolatorImage('After-Tacking-Pin-Nickname.png') }
+    { label: 'Iteration 1', note: 'Initial concept focused on spacing and hierarchy', images: [{ src: null, desc: 'Iteration 1 — homepage mockup (to be added)' }] },
+    { label: 'Design Review', note: 'Team + PM + Manager feedbacks', images: [{ src: null, desc: 'Design Review — annotated screens (to be added)' }] },
+    { label: 'Design Exploration', note: 'Multiple Design Directions', images: [
+      { src: null, desc: 'Design Exploration — direction A (to be added)' },
+      { src: null, desc: 'Design Exploration — direction B (to be added)' },
+      { src: null, desc: 'Design Exploration — direction C (to be added)' }
+    ] },
+    { label: 'UX Review', note: 'Refinement, accessibility and scanability', images: [{ src: null, desc: 'UX Review — accessibility refinements (to be added)' }] },
+    { label: 'Final', note: 'Implementation-ready screens and documented components', images: [{ src: null, desc: 'Final — implementation-ready screens (to be added)' }] }
   ];
 
   const proofOfDeliveryImages = [
@@ -250,11 +258,13 @@ function PurolatorMobileApp() {
                 Before touching a single screen, I mapped the gap. I reviewed every existing redesigned screen to extract the implicit design language, then walked through remaining legacy pages to identify where they broke from it.
               </p>
               {auditFindings.map((f) => (
-                  <article className="comparison-block" key={f.screen}>
-                    <h3>{f.screen}</h3>
-                    <ul className="comparison-bullets">
-                      {f.problems.map((p) => <li key={p}>{p}</li>)}
-                    </ul>
+                  <article className="comparison-block audit-row" key={f.screen}>
+                    <div className="audit-issues">
+                      <h3>{f.screen}</h3>
+                      <ul className="comparison-bullets">
+                        {f.problems.map((p) => <li key={p}>{p}</li>)}
+                      </ul>
+                    </div>
                   </article>
               ))}
             </div>
@@ -278,12 +288,6 @@ function PurolatorMobileApp() {
               {keyImprovements.map((section) => (
                   <article className="comparison-block" key={section.title}>
                     <h3>{section.title}</h3>
-                    <p>{section.description}</p>
-                    <ul className="comparison-bullets">
-                      {section.bullets.map((bullet) => (
-                          <li key={bullet}>{bullet}</li>
-                      ))}
-                    </ul>
                     <div className="comparison-grid">
                       <div className="comparison-panel">
                         <strong>Before</strong>
@@ -294,6 +298,13 @@ function PurolatorMobileApp() {
                         <img src={section.after} alt={section.afterLabel} className="comparison-image" />
                       </div>
                     </div>
+                    <p><strong>Why:</strong> {section.description}</p>
+                    <p><strong>Impact:</strong> Improved scanability and reduced task time across the affected flows.</p>
+                    <ul className="comparison-bullets">
+                      {section.bullets.map((bullet) => (
+                          <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
                   </article>
               ))}
 
@@ -324,21 +335,18 @@ function PurolatorMobileApp() {
               </article>
 
               <article className="comparison-block">
-                <h3>Supporting Pages</h3>
-                <p>
-                  Additional screens were refreshed so the full product felt cohesive end to end. These weren't high-traffic screens — but inconsistency in low-traffic areas erodes trust in the product as a whole.
-                </p>
-                <div className="supporting-pages-grid">
-                  {supportingPages.map((page) => (
-                      <div className="supporting-page-card" key={page.title}>
-                        <h4>{page.title}</h4>
-                        <p>{page.description}</p>
-                        <div className="supporting-page-placeholder">
-                          <img src={page.src} alt={page.title} className="comparison-image" />
-                        </div>
-                      </div>
-                  ))}
-                </div>
+               <h3>Supporting Pages</h3>
+               <p>
+                 Key supporting screens (thumbnails) — click to expand.
+               </p>
+               <div className="supporting-thumbs-grid">
+                 {supportingPages.map((page) => (
+                     <div className="supporting-thumb-card" key={page.title}>
+                       <img src={page.src} alt={page.title} className="supporting-thumb" />
+                       <h4>{page.title}</h4>
+                     </div>
+                 ))}
+               </div>
               </article>
             </div>
           </div>
@@ -359,14 +367,26 @@ function PurolatorMobileApp() {
             <h2>Design Iterations</h2>
             <div className="section-content">
               <p>
-                The designs didn't land right the first time. Developer feedback changed the homepage layout in the second pass. A design review caught an inconsistency in the tracking pin system before it reached production. The final screens are the result of that loop — not the first draft.
+                The designs didn't land right the first time. Interim checks changed the homepage layout in the second pass. A design review caught an inconsistency in the tracking pin system before it reached production. The final screens are the result of that loop — not the first draft.
               </p>
               <div className="iteration-grid">
-                {iterationPlaceholders.map((item) => (
-                    <div className="iteration-placeholder" key={item.label}>
-                      <img src={item.src} alt={item.label} className="comparison-image" />
+                {iterationPlaceholders.map((item, idx) => (
+                  <React.Fragment key={item.label}>
+                    <div className="iteration-card">
+                      <div className="iteration-thumbs">
+                        {item.images.map((img, i) => (
+                          img && img.src ? (
+                            <img key={i} src={img.src} alt={`${item.label} ${i + 1}`} className="iteration-thumb" />
+                          ) : (
+                            <div key={i} className="update-note">Update Expected: {img && img.desc}</div>
+                          )
+                        ))}
+                      </div>
                       <strong>{item.label}</strong>
+                      <p className="iteration-note">{item.note}</p>
                     </div>
+                    {idx < iterationPlaceholders.length - 1 && <div className="iteration-arrow">→</div>}
+                  </React.Fragment>
                 ))}
               </div>
             </div>
@@ -384,12 +404,12 @@ function PurolatorMobileApp() {
           <div className="section">
             <h2>Reflection</h2>
             <div className="section-content">
-              <p>
-                The biggest lesson from this project wasn't about design craft. It was about design judgment — knowing when to extend what exists instead of replacing it, and understanding that consistency <em>is</em> a design outcome worth pursuing deliberately.
-              </p>
-              <p>
-                Working inside another designer's system forces you to read more carefully, defer more thoughtfully, and document more precisely. Those are exactly the skills that matter at scale — and they don't show up in a portfolio until you've practiced them on a real product.
-              </p>
+              <h3>Key Takeaways</h3>
+              <ul>
+                <li>Designing within an existing design system requires consistency over creativity.</li>
+                <li>Cross-functional collaboration leads to implementation-ready designs.</li>
+                <li>Great enterprise UX is often invisible — consistency makes the experience feel natural.</li>
+              </ul>
             </div>
           </div>
 

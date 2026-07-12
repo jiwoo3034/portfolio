@@ -222,40 +222,24 @@ function OSCARMobilePro() {
   const iterationEvidence = [
     {
       label: 'Search',
-      before: wireframes[2].src,
-      after: prototypes[0].src,
+      before: { src: null, desc: 'Search — wireframe (before)' },
+      after: { src: null, desc: 'Search — prototype (after)' },
       beforeLabel: 'Search tab',
       afterLabel: 'Persistent bar on Home',
       reason: 'Search is an entry point, not a destination.'
     },
     {
       label: 'Status',
-      before: wireframes[6].src,
-      after: prototypes[4].src,
+      before: { src: null, desc: 'Status — wireframe (before)' },
+      after: { src: null, desc: 'Status — prototype (after)' },
       beforeLabel: 'Text-only status',
       afterLabel: 'Color-coded badge',
       reason: 'Color scans faster under time pressure.'
     },
     {
-      label: 'Cancel',
-      before: prototypes[4].src,
-      after: prototypes[6].src,
-      beforeLabel: 'Blocking cancel modal',
-      afterLabel: 'Transient confirmation feedback',
-      reason: 'One word was doing two jobs in the same interaction.'
-    },
-    {
-      label: 'SOAP',
-      before: wireframes[5].src,
-      after: prototypes[3].src,
-      beforeLabel: 'Single text box',
-      afterLabel: 'Structured form',
-      reason: 'Explicit sections reduce cognitive load.'
-    },
-    {
       label: 'Feedback',
-      before: prototypes[6].src,
-      after: prototypes[5].src,
+      before: { src: null, desc: 'Feedback — blocking modal (before)' },
+      after: { src: null, desc: 'Feedback — transient toast (after)' },
       beforeLabel: 'Blocking modal',
       afterLabel: 'Transient toast',
       reason: 'Clinicians should not stop documenting just to dismiss a dialog.'
@@ -519,7 +503,7 @@ function OSCARMobilePro() {
                 <strong style={{ color: '#1F4E79' }}>Low Fidelity</strong>
                 <p style={{ margin: '0.4rem 0 1rem', color: '#555', fontSize: '0.88rem' }}>Wireframes established layout, hierarchy, and core navigation.</p>
                 <div className="image-grid-4-columns" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))' }}>
-                  {wireframes.slice(0, 4).map((item) => (
+                  {wireframes.slice(2, 4).map((item) => (
                     <div key={item.title}>
                       <h4>{item.title}</h4>
                       <img src={item.src} alt={`${item.title} wireframe`} className="project-image" />
@@ -532,7 +516,7 @@ function OSCARMobilePro() {
                 <strong style={{ color: '#1F4E79' }}>Final</strong>
                 <p style={{ margin: '0.4rem 0 1rem', color: '#555', fontSize: '0.88rem' }}>High-fidelity prototypes refined the visual system and interaction details.</p>
                 <div className="image-grid-4-columns" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))' }}>
-                  {prototypes.slice(0, 4).map((item) => (
+                  {prototypes.slice(0, 2).map((item) => (
                     <div key={item.title}>
                       <h4>{item.title}</h4>
                       <img src={item.src} alt={`${item.title} prototype`} className="project-image" />
@@ -603,12 +587,20 @@ function OSCARMobilePro() {
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem', marginBottom: '0.85rem', alignItems: 'center' }}>
                           <div>
                             <div style={{ fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#888', marginBottom: '0.4rem' }}>Before</div>
-                            <img src={item.before} alt={`${item.label} before`} className="project-image" />
+                            {item.before && item.before.src ? (
+                              <img src={item.before.src} alt={`${item.label} before`} className="project-image" />
+                            ) : (
+                              <div className="update-note">Update Expected: {item.before && item.before.desc}</div>
+                            )}
                             <p style={{ margin: '0.5rem 0 0', fontSize: '0.82rem', color: '#555' }}>{item.beforeLabel}</p>
                           </div>
                           <div>
                             <div style={{ fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#888', marginBottom: '0.4rem' }}>After</div>
-                            <img src={item.after} alt={`${item.label} after`} className="project-image" />
+                            {item.after && item.after.src ? (
+                              <img src={item.after.src} alt={`${item.label} after`} className="project-image" />
+                            ) : (
+                              <div className="update-note">Update Expected: {item.after && item.after.desc}</div>
+                            )}
                             <p style={{ margin: '0.5rem 0 0', fontSize: '0.82rem', color: '#555' }}>{item.afterLabel}</p>
                           </div>
                         </div>

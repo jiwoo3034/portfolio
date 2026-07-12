@@ -251,17 +251,6 @@ function PurolatorCouponPortal() {
             </div>
           </div>
 
-          <div className="section">
-            <h2>Final Screens</h2>
-            <div className="section-content">
-              <div className="image-grid-2x2">
-                <img src={purolatorCouponImage('DektopTablet Login.png')} alt="Login screen" className="project-image" />
-                <img src={purolatorCouponImage('DektopTablet Coupon page.png')} alt="Coupon loaded" className="project-image" />
-                <img src={purolatorCouponImage('DektopTablet Loading Skeleton (for 3 seconds).png')} alt="Skeleton loading" className="project-image" />
-                <img src={purolatorCouponImage('Mobile Coupon page.png')} alt="Mobile view" className="project-image" />
-              </div>
-            </div>
-          </div>
 
           <div className="section">
             <h2>Final Outcome</h2>
@@ -275,12 +264,12 @@ function PurolatorCouponPortal() {
           <div className="section">
             <h2>Reflection</h2>
             <div className="section-content">
-              <p>
-                Internal tools are easy to under-design — they're not customer-facing, they're not in the roadmap, and no one is watching closely. But employees interact with internal tools constantly, and bad feedback loops compound over time.
-              </p>
-              <p>
-                This project reinforced something worth carrying: <strong>even simple workflows deserve careful UX.</strong> The difference between a spinner and a staged loading system is small in implementation terms and significant in user trust.
-              </p>
+              <h3>Key Takeaways</h3>
+              <ul>
+                <li>Progressive loading keeps users informed and reduces frustration.</li>
+                <li>Design simple flows that work across devices and contexts.</li>
+                <li>Errors should surface recovery actions prominently.</li>
+              </ul>
             </div>
           </div>
 
