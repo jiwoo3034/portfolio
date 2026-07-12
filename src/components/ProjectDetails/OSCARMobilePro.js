@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './IoTMobileApp.css';
 import PageTransition from '../PageTransition';
 
@@ -7,6 +7,12 @@ function OSCARMobilePro() {
     encodeURI(`${process.env.PUBLIC_URL}/images/oscar/${filePath}`);
 
   const heroImage = oscarImage('oscar-overview.jpg');
+  const [activeIteration, setActiveIteration] = useState(0);
+  const overviewStats = [
+    { label: 'Scope', value: '11 Core Clinical Workflows' },
+    { label: 'Outcome', value: '98% Task Completion Rate' },
+    { label: 'Role', value: 'Product + UX + Front-end' }
+  ];
 
   // SECTION 0: Hero metrics - displayed in Project Overview section instead
 
@@ -68,23 +74,13 @@ function OSCARMobilePro() {
     'Component-Based Architecture'
   ];
 
-  const projectConstraints = [
-    {
-      title: 'Working Within the Existing OSCAR Ecosystem',
-      description: 'OSCAR is an established EMR platform with existing workflows and data structures. Our goal was not to redesign OSCAR itself, but to extend the experience to mobile while maintaining consistency with the existing system.'
-    },
-    {
-      title: 'Limited Access to End Users',
-      description: 'Direct access to practicing clinicians was limited during the early research phase. This required us to validate assumptions through workflow analysis, healthcare domain research, and continuous feedback throughout usability testing.'
-    },
-    {
-      title: 'Project Timeline',
-      description: 'With fixed academic milestones and limited development time, every feature required prioritization. Rather than attempting to deliver every possible capability, we focused on building a reliable MVP that solved the most important clinical workflows first.'
-    },
-    {
-      title: 'Balancing Design and Development',
-      description: 'Because our team was responsible for both designing and developing the application, every design decision needed to be technically achievable within the available timeframe. This encouraged close collaboration between design and implementation from the beginning.'
-    }
+  const processSteps = [
+    { label: 'Research', detail: 'Workflow analysis' },
+    { label: 'Information Architecture', detail: 'Core navigation' },
+    { label: 'Wireframing', detail: 'Low-fidelity layout' },
+    { label: 'High Fidelity', detail: 'Visual system + prototypes' },
+    { label: 'Development', detail: 'React Native build' },
+    { label: 'Testing', detail: 'UAT + refinement' }
   ];
 
   const tradeoffs = [
@@ -129,22 +125,37 @@ function OSCARMobilePro() {
     { name: 'Danger Red', hex: '#DC3545', use: 'Cancelled, error, destructive actions' }
   ];
 
-  // SECTION 6: Technical Architecture (displayed inline)
-  const challenges = [
+  const techHighlights = [
+    { label: 'Mobile app', value: 'React Native' },
+    { label: 'Local storage', value: 'Encrypted SQLite' },
+    { label: 'Server layer', value: 'Node / Express' },
+    { label: 'Testing', value: 'Vitest, 16 suites' }
+  ];
+
+  const technicalFlow = [
+    'User action',
+    'Local SQLite save',
+    'Sync queue',
+    'Server / PostgreSQL',
+    'EMR state update'
+  ];
+
+  const reflectionCards = [
     {
-      title: 'Scope Containment Under Clinical Complexity',
-      insight: 'Every workflow mapped revealed new edge cases: conflict resolution, suspended SOAP notes, no-show handling. We made explicit decisions to handle some states (offline sync, SOAP suspension) and defer others (full conflict UI, biometric auth) based on clinical impact.',
-      lesson: 'Scope discipline saves development velocity.'
+      title: 'What changed',
+      body: 'I stopped treating design and development as separate phases. The best decisions were the ones that worked for both the clinician and the codebase.'
     },
     {
-      title: 'Designing for Clinicians You Couldn\'t Access',
-      insight: 'UAT participants were proxies—acquaintances briefed on clinical context. Design decisions had to be grounded in workflow logic and domain research, not direct observation. The 98% UAT success rate validated the approach.',
-      lesson: 'Direct clinical observation should be the first priority in follow-up iteration.'
+      title: 'What I learned',
+      body: 'Simplifying the product mattered more than adding features. The strongest design move was removing things clinicians did not need on mobile.'
     },
     {
-      title: 'Balancing Design Leadership with Implementation',
-      insight: 'Leading design while co-developing created productive tension. I was aware of implementation cost at every decision. The toast system went through three design iterations before landing on the implementation balancing quality with velocity.',
-      lesson: 'Embedded designers ship smarter, faster designs.'
+      title: 'What I would do next',
+      body: 'Bring practicing clinicians into research earlier, then design the conflict-resolution flow with real-world sync cases in mind.'
+    },
+    {
+      title: 'Constraints I would revisit',
+      body: 'The project timeline and limited end-user access shaped several choices. I would treat those as design inputs earlier in the process, not just delivery constraints.'
     }
   ];
 
@@ -156,6 +167,14 @@ function OSCARMobilePro() {
     {
       issue: 'Search bar placeholder "Search patient" caused scan delay',
       resolution: 'Updated to "Search patients by name or ID" for clarity'
+    },
+    {
+      issue: 'Appointment status labels were harder to scan under time pressure',
+      resolution: 'Added color-coded pills to surface status at a glance'
+    },
+    {
+      issue: 'Save feedback initially required extra attention to understand',
+      resolution: 'Replaced blocking alerts with transient toast messages'
     }
   ];
 
@@ -183,6 +202,73 @@ function OSCARMobilePro() {
     { title: 'Sync Status', src: oscarImage('Prorotypes/Sync Status.png') }
   ];
 
+  const decisionVisuals = [
+    {
+      title: 'Patient Safety First',
+      decisionIndex: 0,
+      image: prototypes[2].src,
+      annotation: 'Highlight the allergy banner at the top of the patient record.',
+      bullets: ['Always visible', 'Supports patient safety', 'Reduces medication errors']
+    },
+    {
+      title: 'Bottom Navigation',
+      decisionIndex: 1,
+      image: prototypes[0].src,
+      annotation: 'Highlight the bottom tab bar for one-handed reach.',
+      bullets: ['Four primary workflows', '48px touch targets', 'Thumb-accessible']
+    },
+    {
+      title: 'Structured SOAP Notes',
+      decisionIndex: 2,
+      image: prototypes[3].src,
+      annotation: 'Highlight the Subjective / Objective / Assessment / Plan layout.',
+      bullets: ['Reduces cognitive load', 'Typed clinical data', 'Future billing-ready']
+    }
+  ];
+
+  const iterationEvidence = [
+    {
+      label: 'Search',
+      before: wireframes[2].src,
+      after: prototypes[0].src,
+      beforeLabel: 'Search tab',
+      afterLabel: 'Persistent bar on Home',
+      reason: 'Search is an entry point, not a destination.'
+    },
+    {
+      label: 'Status',
+      before: wireframes[6].src,
+      after: prototypes[4].src,
+      beforeLabel: 'Text-only status',
+      afterLabel: 'Color-coded badge',
+      reason: 'Color scans faster under time pressure.'
+    },
+    {
+      label: 'Cancel',
+      before: prototypes[4].src,
+      after: prototypes[6].src,
+      beforeLabel: 'Blocking cancel modal',
+      afterLabel: 'Transient confirmation feedback',
+      reason: 'One word was doing two jobs in the same interaction.'
+    },
+    {
+      label: 'SOAP',
+      before: wireframes[5].src,
+      after: prototypes[3].src,
+      beforeLabel: 'Single text box',
+      afterLabel: 'Structured form',
+      reason: 'Explicit sections reduce cognitive load.'
+    },
+    {
+      label: 'Feedback',
+      before: prototypes[6].src,
+      after: prototypes[5].src,
+      beforeLabel: 'Blocking modal',
+      afterLabel: 'Transient toast',
+      reason: 'Clinicians should not stop documenting just to dismiss a dialog.'
+    }
+  ];
+
   const diagrams = [
     { title: 'Use Case Diagram', src: oscarImage('Diagrams/Use Case Diagram.jpg') },
     { title: 'Navigation Diagram', src: oscarImage('Diagrams/Navigation Diagram.jpg') }
@@ -191,62 +277,78 @@ function OSCARMobilePro() {
   return (
     <PageTransition>
       <section className="project-detail oscar-project">
-        {/* Project Header */}
         <header className="section" style={{ background: 'transparent' }}>
-          <br/>
+          <br />
           <h1>OSCAR Mobile Pro</h1>
-          <h2 className="project-subtitle">Healthcare Mobile Application • Product Design • UX/UI • Frontend Development</h2>
+          <h2 className="project-subtitle">Product Design • UX Research • Front-end Development • Healthcare EMR</h2>
           <img src={heroImage} alt="OSCAR Mobile Pro preview" className="project-image" />
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', marginTop: '1.5rem' }}>
+            {overviewStats.map((stat) => (
+              <div key={stat.label} style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                <div style={{ fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#2D9CAA', marginBottom: '0.35rem' }}>{stat.label}</div>
+                <div style={{ fontSize: '0.95rem', color: '#0f1f35', fontWeight: '600', lineHeight: '1.4' }}>{stat.value}</div>
+              </div>
+            ))}
+          </div>
         </header>
 
-        {/* Hero metrics and role */}
         <section className="section">
           <h2>Project Overview</h2>
           <div className="section-content">
             <p>
-              <strong>The Clinical Problem:</strong> Clinicians using OSCAR EMR throughout the day had no access to patient information while moving between examination rooms. This created a two-system workflow: desktop access for comprehensive chart review, manual memory-based documentation when away from the desk. Appointment updates and message responses required returning to a workstation.
+              OSCAR Mobile Pro extended a desktop EMR into a mobile-first experience for clinicians working between rooms,
+              with offline-first sync and workflows designed for point-of-care use.
             </p>
-            
-            <p>
-              <strong>The Design Challenge:</strong> OSCAR is a comprehensive desktop system. The task wasn't to replicate it on mobile. It was to identify which workflows clinicians actually needed on mobile, design specifically for point-of-care use, and solve the connectivity and data consistency problems that mobile introduces.
-            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', marginTop: '1.5rem' }}>
+              <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                <strong>Problem</strong>
+                <p style={{ margin: '0.5rem 0 0', color: '#555' }}>Desktop-only EMR left clinicians without access between patient rooms.</p>
+              </div>
+              <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                <strong>Solution</strong>
+                <p style={{ margin: '0.5rem 0 0', color: '#555' }}>A focused mobile app for search, records, notes, scheduling, and messages.</p>
+              </div>
+              <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                <strong>Impact</strong>
+                <p style={{ margin: '0.5rem 0 0', color: '#555' }}>98% task success rate across 11 use cases in UAT.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <p>
-              <strong>My Approach:</strong> Led a complete product design cycle from research through implementation. Conducted workflow analysis to prioritize the highest-value use cases, designed the complete information architecture and user flows, created high-fidelity prototypes, and implemented the frontend in React Native. Achieved 98% task success rate in UAT with zero critical failures.
+        <div className="divider"></div>
+
+        <section className="section">
+          <h2>Process Overview</h2>
+          <div className="section-content">
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch', gap: '0.65rem' }}>
+              {processSteps.map((step, idx) => (
+                <React.Fragment key={step.label}>
+                  <div style={{ flex: '1 1 160px', minWidth: '150px', background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '12px', padding: '1rem' }}>
+                    <div style={{ width: '30px', height: '30px', borderRadius: '50%', background: '#2D9CAA', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.82rem', fontWeight: '700', marginBottom: '0.8rem' }}>
+                      {idx + 1}
+                    </div>
+                    <div style={{ fontSize: '0.82rem', fontWeight: '700', color: '#1F4E79' }}>{step.label}</div>
+                    <div style={{ fontSize: '0.76rem', color: '#777', marginTop: '0.25rem', lineHeight: '1.5' }}>{step.detail}</div>
+                  </div>
+                  {idx < processSteps.length - 1 && (
+                    <div style={{ flex: '0 0 24px', alignSelf: 'center', textAlign: 'center', color: '#2D9CAA', fontSize: '1.1rem', fontWeight: '700' }}>→</div>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+            <p style={{ marginTop: '1rem' }}>
+              The project moved from research to implementation, not research to prototype. I stayed involved across design and frontend work.
             </p>
           </div>
         </section>
 
         <div className="divider"></div>
 
-        {/* Project Details */}
-        <section className="project-info-grid">
-          <div className="info-cards-container">
-            <article className="info-card">
-              <h3>My Role</h3>
-              <p>Project Lead<br/>UX/UI Designer<br/>Frontend Developer</p>
-            </article>
-            
-            <article className="info-card">
-              <h3>Tech Stack</h3>
-              <p>React Native<br/>Express.js<br/>PostgreSQL<br/>SQLite<br/>Vitest</p>
-            </article>
-            
-            <article className="info-card">
-              <h3>Key Metrics</h3>
-              <p>11 Use Cases<br/>14 DB Tables<br/>16 Test Suites<br/>98% UAT Success</p>
-            </article>
-          </div>
-        </section>
-
-        <div className="divider"></div>
-
-        {/* SECTION 1: THE PROBLEM */}
         <section className="section">
           <h2>The Problem</h2>
           <div className="section-content">
-            <h3>Three Friction Points in Clinical Workflows</h3>
-            
             <div className="friction-pillars">
               {frictionPillars.map((pillar) => (
                 <div key={pillar.title} className="friction-pillar-card">
@@ -255,141 +357,141 @@ function OSCARMobilePro() {
                 </div>
               ))}
             </div>
+            <div style={{ marginTop: '1.25rem', padding: '1rem 1.15rem', background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px' }}>
+              <strong style={{ color: '#1F4E79' }}>Opportunity</strong>
+              <p style={{ margin: '0.5rem 0 0', color: '#555', lineHeight: '1.65' }}>
+                Rather than recreating the desktop EMR, we identified an opportunity to redesign only the workflows clinicians rely on during patient care.
+              </p>
+            </div>
           </div>
         </section>
 
         <div className="divider"></div>
 
-        {/* SECTION 2: MY ROLE - Enhanced with Product Lead emphasis */}
         <section className="section">
-          <h2>My Role & Leadership</h2>
+          <h2>My Contribution</h2>
           <div className="section-content">
-            <p>
-              Beyond designing the user experience, I guided the overall product direction throughout the project.
-            </p>
-            
-            <p>
-              As <strong>Project Lead</strong>, I coordinated design discussions, facilitated sprint planning, prioritized features as project scope evolved, and worked closely with development to ensure design decisions remained technically feasible. I conducted clinical workflow analysis to define our use case scope, designed the complete information architecture, and produced both wireframe and high-fidelity prototypes in Figma. I implemented core frontend screens in React Native alongside our development team.
-            </p>
-
-            <p className="role-impact-box">
-              <strong>Why this matters:</strong> Because I was embedded in both design and implementation, every design decision was informed by technical feasibility. This prevented designs that looked good on paper but created implementation bottlenecks. The reverse was equally important—implementation decisions were continuously evaluated from a user perspective, catching usability issues before they shipped.
-            </p>
+            <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderLeft: '4px solid #2D9CAA', borderRadius: '12px', padding: '1.25rem', marginBottom: '1.25rem' }}>
+              <p style={{ margin: '0 0 1rem', color: '#444', lineHeight: '1.75' }}>
+                I led product direction through research, IA, design, and implementation. That meant prioritizing scope,
+                facilitating sprint decisions, and keeping the UI aligned with what was technically feasible.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.75rem' }}>
+                {[
+                  'Product Direction',
+                  'UX Research',
+                  'Information Architecture',
+                  'UI Design',
+                  'Front-end Development',
+                  'Sprint Planning',
+                  'User Testing'
+                ].map((item) => (
+                  <div key={item} style={{ background: 'white', border: '1px solid #e8edf2', borderRadius: '999px', padding: '0.7rem 0.9rem', textAlign: 'center', fontSize: '0.82rem', fontWeight: '600', color: '#1F4E79' }}>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem', margin: '0 0 1.5rem' }}>
+              {[
+                ['Timeline', '16 weeks'],
+                ['Team', '4 members'],
+                ['Role', 'Project Lead']
+              ].map(([label, value]) => (
+                <div key={label} style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                  <div style={{ fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#2D9CAA', marginBottom: '0.3rem' }}>{label}</div>
+                  <div style={{ fontSize: '0.92rem', fontWeight: '600', color: '#0f1f35' }}>{value}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', marginTop: '1.5rem' }}>
+              {[
+                ['Project Lead', 'Kept scope, sprint planning, and feature priority moving'],
+                ['UX/UI Designer', 'Mapped workflows and designed the mobile experience'],
+                ['Frontend Developer', 'Implemented core screens and reusable UI patterns']
+              ].map(([title, text]) => (
+                <div key={title} style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                  <h4 style={{ margin: '0 0 0.4rem', color: '#1F4E79' }}>{title}</h4>
+                  <p style={{ margin: 0, color: '#555', fontSize: '0.9rem', lineHeight: '1.6' }}>{text}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         <div className="divider"></div>
 
-        {/* SECTION 3: RESEARCH & DISCOVERY - Enhanced */}
         <section className="section">
           <h2>Research & Discovery</h2>
           <div className="section-content">
-            {/* Key Takeaways */}
-            <div style={{ marginBottom: '2.5rem', padding: '1.5rem', backgroundColor: '#f8fafb', borderRadius: '8px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
+            <p>
+              We didn’t jump into screens first. We started by understanding clinician workflows, OSCAR documentation,
+              and how mobile use changes the task.
+            </p>
+
+            <div style={{ margin: '1.5rem 0', padding: '1.25rem', background: '#f8fafb', borderRadius: '10px', border: '1px solid #e8edf2', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.75rem' }}>
               {researchKeyTakeaways.map((takeaway) => (
-                <div key={takeaway} style={{ padding: '1rem', backgroundColor: 'white', borderRadius: '6px', textAlign: 'center', borderLeft: '4px solid #2D9CAA', fontSize: '0.95rem', fontWeight: '500', color: '#1a1a1a' }}>
-                  ✨ {takeaway}
+                <div key={takeaway} style={{ background: 'white', border: '1px solid #e8edf2', borderRadius: '999px', padding: '0.7rem 0.9rem', textAlign: 'center', fontSize: '0.84rem', fontWeight: '600' }}>
+                  {takeaway}
                 </div>
               ))}
             </div>
 
-            <h3>Research Approach</h3>
-            <p>
-              Rather than jumping directly into interface design, we first focused on understanding how clinicians actually interact with an EMR throughout a typical workday.
-            </p>
-            <p>
-              Because direct access to practicing clinicians was limited during the early stages of the project, we relied on workflow analysis, healthcare domain research, existing OSCAR documentation, and continuous feedback from our healthcare advisor and usability testing participants. Instead of treating these limitations as obstacles, we used them to build a more structured and evidence-based design process.
-            </p>
+            <h3>Key Insights</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+              {[
+                ['Clinicians use a small subset of features on mobile', 'Patient search, appointments, and documentation came up repeatedly.', 'Prioritized the top workflows in the primary UI.'],
+                ['Speed matters more than completeness', 'Users need information immediately between patient rooms.', 'Reduced interaction depth and kept common actions direct.'],
+                ['The interface should stay out of the way', 'Too much information at once slows decision-making.', 'Used hierarchy, whitespace, and progressive disclosure.'],
+                ['Offline is not an edge case', 'Connectivity is inconsistent in real clinical environments.', 'Built offline-first with local write + background sync.']
+              ].map(([title, body, impact]) => (
+                <div key={title} style={{ background: 'white', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1.1rem' }}>
+                  <h4 style={{ margin: '0 0 0.5rem', color: '#1F4E79', fontSize: '0.95rem' }}>{title}</h4>
+                  <p style={{ margin: '0 0 0.5rem', color: '#555', fontSize: '0.9rem', lineHeight: '1.6' }}>{body}</p>
+                  <p style={{ margin: 0, color: '#2D9CAA', fontSize: '0.82rem', fontWeight: '600' }}>{impact}</p>
+                </div>
+              ))}
+            </div>
 
-            <h3 style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(45, 156, 170, 0.2)' }}>Scope Decision: 13 Use Cases → 11 Features</h3>
-            <p>
-              We initially scoped 13 use cases. After workflow analysis, we removed Book Appointment (UC-08) and Send Message (UC-12). Both required complex administrative logic better suited to the desktop system. Removing them sharpened the mobile product to its core value: <strong>point-of-care access and real-time documentation.</strong>
-            </p>
-
-            <h3 style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(45, 156, 170, 0.2)' }}>Design Principles</h3>
-            <ul>
+            <h3 style={{ marginTop: '2rem' }}>Design Principles</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
               {designPrinciples.map((principle) => (
-                <li key={principle.title}>
-                  <strong>{principle.title}:</strong> {principle.description}
-                </li>
-              ))}
-            </ul>
-
-            <h3 style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(45, 156, 170, 0.2)' }}>Key Research Insights</h3>
-            <div style={{ marginTop: '1.5rem' }}>
-              <div style={{ marginBottom: '2rem', paddingLeft: '1.5rem', borderLeft: '4px solid #2D9CAA' }}>
-                <h4 style={{ margin: '0 0 0.5rem 0', color: '#1F4E79' }}>Insight 01 — Mobile Usage Prioritizes Only a Small Subset of Features</h4>
-                <p style={{ margin: '0 0 0.5rem 0', color: '#555' }}>Although OSCAR contains hundreds of functions, clinicians only rely on a relatively small number of workflows while using mobile devices. Patient search, appointments, and clinical documentation consistently emerged as the highest-priority tasks.</p>
-                <p style={{ margin: '0', color: '#2D9CAA', fontStyle: 'italic', fontSize: '0.95rem' }}>💡 Design Impact: Simplified navigation structure, prioritized only the most frequently used workflows within the primary interface.</p>
-              </div>
-
-              <div style={{ marginBottom: '2rem', paddingLeft: '1.5rem', borderLeft: '4px solid #2D9CAA' }}>
-                <h4 style={{ margin: '0 0 0.5rem 0', color: '#1F4E79' }}>Insight 02 — Speed Is More Valuable Than Feature Completeness</h4>
-                <p style={{ margin: '0 0 0.5rem 0', color: '#555' }}>In clinical environments, users often need information immediately. Reducing the number of interactions required to complete common tasks became more valuable than exposing every available feature.</p>
-                <p style={{ margin: '0', color: '#2D9CAA', fontStyle: 'italic', fontSize: '0.95rem' }}>💡 Design Impact: Prioritized direct access to high-frequency actions while moving secondary features deeper into the interface.</p>
-              </div>
-
-              <div style={{ marginBottom: '2rem', paddingLeft: '1.5rem', borderLeft: '4px solid #2D9CAA' }}>
-                <h4 style={{ margin: '0 0 0.5rem 0', color: '#1F4E79' }}>Insight 03 — Information Should Support, Not Distract</h4>
-                <p style={{ margin: '0 0 0.5rem 0', color: '#555' }}>Clinicians should spend their attention on patients rather than software. Presenting too much information simultaneously increases cognitive load and slows decision-making.</p>
-                <p style={{ margin: '0', color: '#2D9CAA', fontStyle: 'italic', fontSize: '0.95rem' }}>💡 Design Impact: Information hierarchy, whitespace, progressive disclosure, and simplified card layouts reduced unnecessary visual complexity.</p>
-              </div>
-
-              <div style={{ marginBottom: '0', paddingLeft: '1.5rem', borderLeft: '4px solid #2D9CAA' }}>
-                <h4 style={{ margin: '0 0 0.5rem 0', color: '#1F4E79' }}>Insight 04 — Mobile Experiences Must Remain Reliable</h4>
-                <p style={{ margin: '0 0 0.5rem 0', color: '#555' }}>Clinical work continues regardless of internet connectivity. The application needed to support uninterrupted workflows even when network conditions were unstable.</p>
-                <p style={{ margin: '0', color: '#2D9CAA', fontStyle: 'italic', fontSize: '0.95rem' }}>💡 Design Impact: Offline-first approach allowed clinicians to continue documenting information while synchronization occurred automatically when connectivity returned.</p>
-              </div>
-            </div>
-
-            <h3 style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(45, 156, 170, 0.2)' }}>Clinical Feedback Validation</h3>
-            <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
-              <li style={{ marginBottom: '0.75rem', paddingLeft: '1.5rem', position: 'relative' }}>
-                <em>"This is laid out like a real chart."</em> — Attending Physician
-              </li>
-              <li style={{ marginBottom: '0.75rem', paddingLeft: '1.5rem', position: 'relative' }}>
-                <em>"I know something happened because of the green message at the bottom."</em> — Clinic Nurse (on toast notifications)
-              </li>
-              <li style={{ paddingLeft: '1.5rem', position: 'relative' }}>
-                <em>"The Synced badge provided a clear audit trail."</em> — Clinical Quality Officer
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <div className="divider"></div>
-
-        {/* SECTION 3B: PROJECT CONSTRAINTS - New */}
-        <section className="section">
-          <h2>Project Constraints</h2>
-          <div className="section-content">
-            <p>
-              Every product is shaped by constraints. Rather than treating them as limitations, we used them to guide priorities and make more intentional design decisions throughout the project.
-            </p>
-
-            <div style={{ marginTop: '1.5rem' }}>
-              {projectConstraints.map((constraint, idx) => (
-                <div key={idx} style={{ marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: idx < projectConstraints.length - 1 ? '1px solid rgba(45, 156, 170, 0.2)' : 'none' }}>
-                  <h4 style={{ color: '#1F4E79', marginBottom: '0.5rem' }}>{constraint.title}</h4>
-                  <p style={{ color: '#555', margin: '0' }}>{constraint.description}</p>
+                <div key={principle.title} style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                  <h4 style={{ margin: '0 0 0.4rem', color: '#1F4E79', fontSize: '0.95rem' }}>{principle.title}</h4>
+                  <p style={{ margin: 0, color: '#555', fontSize: '0.88rem', lineHeight: '1.65' }}>{principle.description}</p>
                 </div>
               ))}
             </div>
+
+            <h3 style={{ marginTop: '2rem' }}>Clinical Feedback</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+              <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}><em>"This is laid out like a real chart."</em></div>
+              <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}><em>"I know something happened because of the green message at the bottom."</em></div>
+              <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}><em>"The Synced badge provided a clear audit trail."</em></div>
+            </div>
           </div>
         </section>
 
         <div className="divider"></div>
 
-        {/* SECTION 4: INFORMATION ARCHITECTURE */}
         <section className="section">
           <h2>Information Architecture</h2>
           <div className="section-content">
-            <p>
-              The <strong>Four-Flow Architecture</strong> organized the entire app around four clinical workflows: Home, Patients, Schedule, and Inbox. This maps to four core questions clinicians ask: What's happening today? Who is my next patient? What's on my schedule? What messages need attention?
-            </p>
-            <p><strong>Two-Tap Rule:</strong> Every screen is reachable in two taps or fewer, critical for clinical urgency.</p>
-            
-            <div className="image-grid-2x2">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+              {[
+                ['Home', "What's happening today?"],
+                ['Patients', 'Who is my next patient?'],
+                ['Schedule', "What's on my schedule?"],
+                ['Inbox', 'What messages need attention?']
+              ].map(([tab, q]) => (
+                <div key={tab} style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                  <h4 style={{ margin: '0 0 0.35rem', color: '#1F4E79' }}>{tab}</h4>
+                  <p style={{ margin: 0, color: '#555', fontSize: '0.88rem' }}>{q}</p>
+                </div>
+              ))}
+            </div>
+            <p><strong>Two-Tap Rule:</strong> Every core screen is reachable in two taps or fewer.</p>
+            <div className="image-grid-2x2" style={{ marginTop: '1.25rem' }}>
               {diagrams.map((item) => (
                 <div key={item.title}>
                   <h3>{item.title}</h3>
@@ -397,149 +499,112 @@ function OSCARMobilePro() {
                 </div>
               ))}
             </div>
+
+            <h3 style={{ marginTop: '2rem' }}>Evolution</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)', gap: '1rem', alignItems: 'start' }}>
+              <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '12px', padding: '1rem' }}>
+                <strong style={{ color: '#1F4E79' }}>Low Fidelity</strong>
+                <p style={{ margin: '0.4rem 0 1rem', color: '#555', fontSize: '0.88rem' }}>Wireframes established layout, hierarchy, and core navigation.</p>
+                <div className="image-grid-4-columns" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))' }}>
+                  {wireframes.slice(0, 4).map((item) => (
+                    <div key={item.title}>
+                      <h4>{item.title}</h4>
+                      <img src={item.src} alt={`${item.title} wireframe`} className="project-image" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2D9CAA', fontSize: '1.4rem', fontWeight: '700', paddingTop: '6rem' }}>→</div>
+              <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '12px', padding: '1rem' }}>
+                <strong style={{ color: '#1F4E79' }}>Final</strong>
+                <p style={{ margin: '0.4rem 0 1rem', color: '#555', fontSize: '0.88rem' }}>High-fidelity prototypes refined the visual system and interaction details.</p>
+                <div className="image-grid-4-columns" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))' }}>
+                  {prototypes.slice(0, 4).map((item) => (
+                    <div key={item.title}>
+                      <h4>{item.title}</h4>
+                      <img src={item.src} alt={`${item.title} prototype`} className="project-image" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         <div className="divider"></div>
 
-        {/* SECTION 5: DESIGN PROCESS */}
         <section className="section">
           <h2>Design Process & Decisions</h2>
           <div className="section-content">
-            {/* Key Takeaways */}
-            <div style={{ marginBottom: '2.5rem', padding: '1.5rem', backgroundColor: '#f8fafb', borderRadius: '8px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
+            <div style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: '#f8fafb', borderRadius: '8px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.75rem' }}>
               {designKeyTakeaways.map((takeaway) => (
-                <div key={takeaway} style={{ padding: '1rem', backgroundColor: 'white', borderRadius: '6px', textAlign: 'center', borderLeft: '4px solid #2D9CAA', fontSize: '0.95rem', fontWeight: '500', color: '#1a1a1a' }}>
-                  ✨ {takeaway}
+                <div key={takeaway} style={{ padding: '0.8rem', backgroundColor: 'white', borderRadius: '999px', textAlign: 'center', border: '1px solid #e8edf2', fontSize: '0.84rem', fontWeight: '600' }}>
+                  {takeaway}
                 </div>
               ))}
             </div>
 
-            <h3>Wireframe Decisions with Clinical Rationale</h3>
-            {designDecisions.map((decision, idx) => (
-              <div key={idx} className="design-decision-item">
-                <p><strong>{decision.title}:</strong> {decision.rationale}</p>
-              </div>
-            ))}
-
-            <h3 style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(45, 156, 170, 0.2)' }}>
-              Design Iterations: How Decisions Evolved
-            </h3>
-            <p style={{ marginTop: '0.5rem' }}>
-              Design doesn't move from wireframe to final prototype in one step. These are the key decisions that changed between iterations — and why they changed.
-            </p>
-
-            <div style={{ marginTop: '2rem' }}>
-              <h4>Iteration 1 → 2: Navigation Structure</h4>
-              <p>
-                <strong>What changed:</strong> The initial navigation included five tabs: Home, Patients, Schedule, Inbox, and a dedicated Search tab. After reviewing clinical workflow patterns, Search was removed as a standalone tab and merged into the Home Dashboard as an always-visible search bar.
-              </p>
-              <p style={{ marginLeft: '0', borderLeft: '4px solid #2D9CAA', paddingLeft: '1rem', color: '#555', fontStyle: 'italic' }}>
-                <strong>Why:</strong> Search is not a destination — it's the starting point of almost every clinical workflow. Giving it a dedicated tab added a tap to the most frequent action in the app. Moving it to the Home screen made it immediately accessible on login without any navigation.
-              </p>
-              <p style={{ fontSize: '0.9rem', color: '#2D9CAA', fontStyle: 'italic' }}>💡 Removed one tap from the most frequent clinical action.</p>
-            </div>
-
-            <div style={{ marginTop: '2rem' }}>
-              <h4>Iteration 1 → 2: Appointment Status Display</h4>
-              <p>
-                <strong>What changed:</strong> In Iteration 1, appointment status was shown as text labels only (Scheduled, Cancelled, Updated). In Iteration 2, color-coded pill badges were added alongside the text.
-              </p>
-              <p style={{ marginLeft: '0', borderLeft: '4px solid #2D9CAA', paddingLeft: '1rem', color: '#555', fontStyle: 'italic' }}>
-                <strong>Why:</strong> A clinician scanning a day schedule under time pressure reads color before text. The color-coded badges allow status recognition in a glance — the same principle used in physical clinical scheduling boards and EMR desktop systems. Text alone required reading each item individually.
-              </p>
-              <p style={{ fontSize: '0.9rem', color: '#2D9CAA', fontStyle: 'italic' }}>💡 Instant status recognition on schedule scan.</p>
-            </div>
-
-            <div style={{ marginTop: '2rem' }}>
-              <h4>Iteration 2 → 3: Cancel Appointment Modal (UAT-Driven)</h4>
-              <p>
-                <strong>What changed:</strong> The modal confirmation buttons were originally labeled <strong>"Yes" / "Cancel"</strong> — where "Cancel" meant dismiss the modal, not cancel the appointment. One UAT participant (P-02, Clinic Nurse) tapped "Cancel" to confirm the appointment cancellation and dismissed the modal instead.
-              </p>
-              <p style={{ marginLeft: '0', borderLeft: '4px solid #2D9CAA', paddingLeft: '1rem', color: '#555', fontStyle: 'italic' }}>
-                <strong>Why:</strong> The word "Cancel" was doing two jobs in the same interaction. It meant both "dismiss this dialog" and "this is the Cancel Appointment screen." Under task pressure, a participant read the button as the action, not the dismiss. One word change — <strong>"Cancel" → "Go Back"</strong> — eliminated the ambiguity entirely.
-              </p>
-              <p style={{ fontSize: '0.9rem', color: '#2D9CAA', fontStyle: 'italic' }}>💡 Eliminated the only Major UAT finding.</p>
-            </div>
-
-            <div style={{ marginTop: '2rem' }}>
-              <h4>Iteration 1 → 3: SOAP Note Schema and Form</h4>
-              <p>
-                <strong>What changed:</strong> The SOAP Note form originally had a single large text area for clinical content. In Iteration 3 the form was restructured into four discrete, labeled sections: Subjective, Objective (with structured vitals fields), Assessment (with a diagnosis category dropdown), and Plan (with checkboxes for common actions plus a free-text treatment plan field).
-              </p>
-              <p style={{ marginLeft: '0', borderLeft: '4px solid #2D9CAA', paddingLeft: '1rem', color: '#555', fontStyle: 'italic' }}>
-                <strong>Why:</strong> A free-text field is easy to build and hard to use. Clinicians filling a blank text box have to recall the SOAP structure from memory while simultaneously documenting a patient encounter. Explicit section headers reduce cognitive load by externalizing the structure the clinician already knows. The structured vitals fields in the Objective section also created typed data — blood pressure as two numbers, not as "130/85 mmHg" buried in prose — which is queryable, auditable, and compatible with future analytics.
-              </p>
-              <p style={{ fontSize: '0.9rem', color: '#2D9CAA', fontStyle: 'italic' }}>💡 Four typed columns, NOT NULL constraints, future billing-compatible.</p>
-            </div>
-
-            <div style={{ marginTop: '2rem' }}>
-              <h4>Iteration 1 → 3: Toast Notification System</h4>
-              <p>
-                <strong>What changed:</strong> The feedback system went through three versions. Iteration 1 had no feedback system — the app showed nothing after a save action, which was the default React Native behavior. Iteration 2 added basic alert dialogs (modal popups requiring dismissal). Iteration 3 replaced all alerts with the transient toast system.
-              </p>
-              <p style={{ marginLeft: '0', borderLeft: '4px solid #2D9CAA', paddingLeft: '1rem', color: '#555', fontStyle: 'italic' }}>
-                <strong>Why:</strong> A modal alert that requires dismissal is a clinical interruption. Any dialog requiring user action before continuing created friction during note documentation — the clinician had to stop, read, and tap before returning to the patient encounter. Toasts communicate outcome without demanding response. The system confirms; the clinician continues.
-              </p>
-              <p style={{ fontSize: '0.9rem', color: '#2D9CAA', fontStyle: 'italic' }}>💡 Zero-interaction feedback system — three iterations to eliminate one unnecessary tap.</p>
-            </div>
-
-            <h4 style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(45, 156, 170, 0.2)' }}>
-              Iteration Summary
-            </h4>
-            <table className="iteration-table">
-              <thead>
-                <tr>
-                  <th>Iteration</th>
-                  <th>What Changed</th>
-                  <th>Why</th>
-                  <th>Outcome</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>1 → 2</strong></td>
-                  <td>Search moved from tab to persistent bar</td>
-                  <td>Search is the start of every workflow, not a destination</td>
-                  <td>Removed one tap from the most frequent action</td>
-                </tr>
-                <tr>
-                  <td><strong>1 → 2</strong></td>
-                  <td>Appointment text labels → color-coded badges</td>
-                  <td>Color reads faster than text under time pressure</td>
-                  <td>Instant status recognition on schedule scan</td>
-                </tr>
-                <tr>
-                  <td><strong>2 → 3</strong></td>
-                  <td>"Cancel" button → "Go Back" in modal</td>
-                  <td>One word was doing two jobs in the same interaction</td>
-                  <td>Eliminated the only Major UAT finding</td>
-                </tr>
-                <tr>
-                  <td><strong>1 → 3</strong></td>
-                  <td>Single SOAP text area → structured form with typed fields</td>
-                  <td>Free-text loses clinical structure and produces unqueryable data</td>
-                  <td>Four typed columns, NOT NULL constraints, future billing-compatible</td>
-                </tr>
-                <tr>
-                  <td><strong>2 → 3</strong></td>
-                  <td>Modal alerts → transient toast notifications</td>
-                  <td>Modal dismissal interrupts clinical documentation flow</td>
-                  <td>Zero-interaction feedback — app confirms, clinician continues</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <h3 style={{ marginTop: '2.5rem' }}>Wireframe Gallery</h3>
-            <p>The complete set of wireframes showing the low-fidelity information architecture and layout decisions:</p>
-
-            <div className="image-grid-4-columns" style={{ marginTop: '2rem' }}>
-              {wireframes.map((item) => (
-                <div key={item.title}>
-                  <h4>{item.title}</h4>
-                  <img src={item.src} alt={`${item.title} wireframe`} className="project-image" />
-                </div>
+            <div style={{ display: 'grid', gap: '1.5rem' }}>
+              {decisionVisuals.map((decision) => (
+                <article key={decision.title} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', alignItems: 'start', background: 'white', border: '1px solid #e8edf2', borderRadius: '12px', padding: '1rem' }}>
+                  <div>
+                    <img src={decision.image} alt={decision.title} className="project-image" />
+                    <div style={{ marginTop: '0.65rem', padding: '0.7rem 0.85rem', background: '#f8fafb', borderRadius: '8px', border: '1px solid #e8edf2', fontSize: '0.82rem', color: '#555', lineHeight: '1.6' }}>
+                      <strong style={{ color: '#1F4E79' }}>Annotate:</strong> {decision.annotation}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 style={{ margin: '0 0 0.5rem', color: '#1F4E79' }}>{decision.title}</h4>
+                    <p style={{ margin: '0 0 0.85rem', color: '#555', fontSize: '0.9rem', lineHeight: '1.7' }}>{designDecisions[decision.decisionIndex].rationale}</p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.75rem' }}>
+                      {decision.bullets.map((bullet) => (
+                        <div key={bullet} style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '999px', padding: '0.65rem 0.8rem', fontSize: '0.82rem', fontWeight: '600', color: '#0f1f35', textAlign: 'center' }}>
+                          {bullet}
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: '0.85rem', padding: '0.75rem', background: '#f8fafb', borderRadius: '8px', border: '1px solid #e8edf2' }}>
+                      <div style={{ fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#2D9CAA', marginBottom: '0.25rem' }}>Implementation</div>
+                      <div style={{ fontSize: '0.84rem', color: '#444', lineHeight: '1.55' }}>{designDecisions[decision.decisionIndex].designDetail}</div>
+                    </div>
+                  </div>
+                </article>
               ))}
+            </div>
+
+            <h3 style={{ marginTop: '2rem' }}>Iteration Notes</h3>
+            <div style={{ display: 'grid', gap: '1rem' }}>
+              {iterationEvidence.map((item, idx) => {
+                const open = activeIteration === idx;
+                return (
+                  <div key={item.label} style={{ border: '1px solid #e8edf2', borderRadius: '10px', overflow: 'hidden', background: 'white' }}>
+                    <button
+                      type="button"
+                      onClick={() => setActiveIteration(open ? null : idx)}
+                      style={{ width: '100%', textAlign: 'left', padding: '1rem', background: '#fff', border: 'none', cursor: 'pointer' }}
+                    >
+                      <strong style={{ color: '#1F4E79' }}>{item.label}</strong>
+                    </button>
+                    {open && (
+                      <div style={{ padding: '1rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem', marginBottom: '0.85rem', alignItems: 'center' }}>
+                          <div>
+                            <div style={{ fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#888', marginBottom: '0.4rem' }}>Before</div>
+                            <img src={item.before} alt={`${item.label} before`} className="project-image" />
+                            <p style={{ margin: '0.5rem 0 0', fontSize: '0.82rem', color: '#555' }}>{item.beforeLabel}</p>
+                          </div>
+                          <div>
+                            <div style={{ fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#888', marginBottom: '0.4rem' }}>After</div>
+                            <img src={item.after} alt={`${item.label} after`} className="project-image" />
+                            <p style={{ margin: '0.5rem 0 0', fontSize: '0.82rem', color: '#555' }}>{item.afterLabel}</p>
+                          </div>
+                        </div>
+                        <p style={{ margin: '0', color: '#555', fontSize: '0.88rem', lineHeight: '1.65' }}><strong>Reason:</strong> {item.reason}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -549,32 +614,8 @@ function OSCARMobilePro() {
         <section className="section">
           <h2>High-Fidelity Prototypes</h2>
           <div className="section-content">
-            <h3>Color System</h3>
-            <table className="color-system-table">
-              <thead>
-                <tr>
-                  <th>Color</th>
-                  <th>Hex</th>
-                  <th>Use Case</th>
-                </tr>
-              </thead>
-              <tbody>
-                {colorSystem.map((color) => (
-                  <tr key={color.name}>
-                    <td>
-                      <span className="color-swatch" style={{ backgroundColor: color.hex }}></span>
-                      {color.name}
-                    </td>
-                    <td>{color.hex}</td>
-                    <td>{color.use}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
             <h3>Interactive Prototypes</h3>
-            <p>Screenshots showing the complete clinical workflow from login through SOAP note creation:</p>
-            <div className="image-grid-4-columns" style={{ marginTop: '1.5rem' }}>
+            <div className="image-grid-4-columns" style={{ marginTop: '1rem' }}>
               {prototypes.map((item) => (
                 <div key={item.title}>
                   <h4>{item.title}</h4>
@@ -587,19 +628,14 @@ function OSCARMobilePro() {
 
         <div className="divider"></div>
 
-        {/* SECTION 5B: TRADE-OFFS - New */}
         <section className="section">
           <h2>Trade-offs & Strategic Decisions</h2>
           <div className="section-content">
-            <p>
-              Every product decision involved balancing competing priorities. Instead of maximizing features, we focused on maximizing usability and long-term maintainability.
-            </p>
-
-            <div style={{ marginTop: '1.5rem' }}>
-              {tradeoffs.map((tradeoff, idx) => (
-                <div key={idx} style={{ marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: idx < tradeoffs.length - 1 ? '1px solid rgba(45, 156, 170, 0.2)' : 'none' }}>
-                  <h4 style={{ color: '#1F4E79', marginBottom: '0.5rem' }}>{tradeoff.title}</h4>
-                  <p style={{ color: '#555', margin: '0' }}>{tradeoff.description}</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+              {tradeoffs.map((tradeoff) => (
+                <div key={tradeoff.title} style={{ background: 'white', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                  <h4 style={{ margin: '0 0 0.4rem', color: '#1F4E79' }}>{tradeoff.title}</h4>
+                  <p style={{ margin: 0, color: '#555', fontSize: '0.88rem', lineHeight: '1.65' }}>{tradeoff.description}</p>
                 </div>
               ))}
             </div>
@@ -608,150 +644,142 @@ function OSCARMobilePro() {
 
         <div className="divider"></div>
 
-        {/* SECTION 6: TECHNICAL ARCHITECTURE */}
         <section className="section">
           <h2>Technical Architecture & Development</h2>
           <div className="section-content">
-            {/* Key Takeaways */}
-            <div style={{ marginBottom: '2.5rem', padding: '1.5rem', backgroundColor: '#f8fafb', borderRadius: '8px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
+            <div style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: '#f8fafb', borderRadius: '8px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0.75rem' }}>
               {developmentKeyTakeaways.map((takeaway) => (
-                <div key={takeaway} style={{ padding: '1rem', backgroundColor: 'white', borderRadius: '6px', textAlign: 'center', borderLeft: '4px solid #2D9CAA', fontSize: '0.95rem', fontWeight: '500', color: '#1a1a1a' }}>
-                  ✨ {takeaway}
+                <div key={takeaway} style={{ padding: '0.8rem', backgroundColor: 'white', borderRadius: '999px', textAlign: 'center', border: '1px solid #e8edf2', fontSize: '0.84rem', fontWeight: '600' }}>
+                  {takeaway}
                 </div>
+              ))}
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+              {techHighlights.map((item) => (
+                <div key={item.label} style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                  <strong style={{ color: '#1F4E79' }}>{item.label}</strong>
+                  <p style={{ margin: '0.35rem 0 0', color: '#555' }}>{item.value}</p>
+                </div>
+              ))}
+            </div>
+
+            <h3>Offline Sync Flow</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center', marginBottom: '1.5rem' }}>
+              {technicalFlow.map((item, idx) => (
+                <React.Fragment key={item}>
+                  <div style={{ flex: '1 1 150px', minWidth: '140px', background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '0.9rem 1rem', textAlign: 'center', color: '#0f1f35', fontWeight: '600' }}>{item}</div>
+                  {idx < technicalFlow.length - 1 && <div style={{ color: '#2D9CAA', fontSize: '1.2rem', fontWeight: '700' }}>→</div>}
+                </React.Fragment>
               ))}
             </div>
 
             <h3>Offline-First Design Pattern</h3>
-            <p>
-              Clinical environments have inconsistent connectivity. A WiFi dead spot cannot cause data loss. Every write saves to an encrypted local SQLite database first. A background sync worker monitors connectivity and pushes pending changes when re-established. From the user perspective, the app never fails—it only syncs.
-            </p>
+            <p>Every write saves locally first, then syncs in the background when connectivity returns.</p>
 
             <h3>SOAP Schema Decision</h3>
-            <p>
-              We restructured the ClinicalNote table from a single content column into four discrete SOAP columns (subjective, objective, assessment, plan). This enabled NOT NULL constraints on mandatory sections, prevented incomplete notes from syncing, and created a data structure compatible with future billing integrations. <strong>The schema drove the form design—not the other way around.</strong>
-            </p>
+            <p>The note schema moved from one text field to four structured fields so the UI, validation, and data model stayed aligned.</p>
 
-            <h3>Technology Choices</h3>
-            <ul>
-              <li><strong>React Native:</strong> Single codebase for future iOS/Android expansion</li>
-              <li><strong>Node.js + Express:</strong> Lightweight REST API layer between mobile and database</li>
-              <li><strong>PostgreSQL:</strong> Relational integrity required for clinical data with foreign key constraints</li>
-              <li><strong>SQLite (encrypted):</strong> Local store for offline-first persistence</li>
-              <li><strong>Vitest:</strong> Native ESM support aligned with Vite build pipeline</li>
-            </ul>
-
-            <h3 style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(45, 156, 170, 0.2)' }}>Bridging Design and Development</h3>
+            <h3>Bridging Design and Development</h3>
             <p>
-              Unlike many academic UX projects that end at high-fidelity prototypes, OSCAR Mobile Pro continued through full implementation.
-            </p>
-            <p>
-              Using React Native, I translated design concepts into reusable front-end components while maintaining consistency with the established design system. Working directly within the implementation also allowed me to identify technical constraints early and adjust design decisions before they became development bottlenecks.
-            </p>
-            <p>
-              This end-to-end involvement strengthened my understanding of how thoughtful design and practical engineering work together to create scalable products. It revealed that the most important design decisions often aren't visual—they're architectural. The offline-first sync pattern, SOAP schema structure, and component hierarchy had more impact on usability than any visual refinement could have achieved.
+              I translated design concepts into reusable front-end components while checking feasibility early, so design and implementation stayed aligned.
             </p>
           </div>
         </section>
 
         <div className="divider"></div>
 
-        {/* SECTION 7: CHALLENGES & TRADE-OFFS */}
-        <section className="section">
-          <h2>Challenges & Trade-offs</h2>
-          <div className="section-content">
-            {challenges.map((challenge, idx) => (
-              <div key={idx} className="challenge-item">
-                <h3>{challenge.title}</h3>
-                <p><strong>The Insight:</strong> {challenge.insight}</p>
-                <p><strong>The Lesson:</strong> {challenge.lesson}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className="divider"></div>
-
-        {/* SECTION 8: USER TESTING RESULTS */}
         <section className="section">
           <h2>User Testing Results</h2>
           <div className="section-content">
-            <h3>Metrics</h3>
-            <ul>
-              <li><strong>Task Success Rate:</strong> 98%</li>
-              <li><strong>Average Time-on-Task:</strong> 38 seconds</li>
-              <li><strong>Critical Failures:</strong> Zero</li>
-            </ul>
-
-            <h3>Issues Found & Fixed</h3>
-            {uatFindings.map((finding, idx) => (
-              <div key={idx} className="finding-item">
-                <p><strong>Issue {idx + 1}:</strong> {finding.issue}</p>
-                <p><strong>Resolution:</strong> {finding.resolution}</p>
+            <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '14px', padding: '1.25rem', marginBottom: '1.5rem' }}>
+              <p style={{ margin: 0, color: '#555', lineHeight: '1.75' }}>
+                The final build was validated across five user types and 11 core workflows, with strong task completion and no critical failures.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
+                {[
+                  ['98%', 'Task Completion'],
+                  ['38s', 'Avg. Time-on-Task'],
+                  ['0', 'Critical Failures'],
+                  ['5', 'User Types Tested']
+                ].map(([value, label]) => (
+                  <div key={label} style={{ background: 'white', border: '1px solid #e8edf2', borderRadius: '999px', padding: '0.7rem 0.9rem', display: 'flex', gap: '0.55rem', alignItems: 'baseline' }}>
+                    <span style={{ fontSize: '1.1rem', fontWeight: '800', color: '#1F4E79' }}>{value}</span>
+                    <span style={{ fontSize: '0.82rem', color: '#555' }}>{label}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+              {uatFindings.map((finding, idx) => (
+                <div key={idx} style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                  <h4 style={{ margin: '0 0 0.5rem', color: '#1F4E79' }}>Issue {idx + 1}</h4>
+                  <p style={{ margin: '0 0 0.5rem', color: '#555', fontSize: '0.88rem', lineHeight: '1.6' }}>{finding.issue}</p>
+                  <p style={{ margin: 0, color: '#2D9CAA', fontSize: '0.85rem', fontWeight: '600' }}>{finding.resolution}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         <div className="divider"></div>
 
-        {/* SECTION 9: REFLECTION */}
         <section className="section">
-          <h2>Reflection: What I Learned</h2>
+          <h2>Reflection</h2>
           <div className="section-content">
-            <p>
-              This project fundamentally changed the way I approach product design. At the beginning, I viewed design and development as separate phases—design first, implementation second. Through building OSCAR Mobile Pro, I realized they constantly influence one another. Every design decision introduced technical considerations, while every implementation challenge revealed opportunities to improve the user experience.
-            </p>
-
-            <h3 style={{ marginTop: '2rem' }}>The Biggest Lesson: Design Is Not About Pixels</h3>
-            <p>
-              I expected the biggest challenges to be visual. They turned out to be structural. The decision to split ClinicalNote into discrete SOAP columns was the most consequential design decision I made on this project. It reduced cognitive load for clinicians, prevented data quality issues, enabled future analytics, and simplified implementation. It came from understanding how clinicians work and how data flows through the system—not from visual design.
-            </p>
-            <p>
-              This reinforced a principle I now apply to all product work: the most impactful decisions are usually invisible. Users notice good visual design, but they live with system design.
-            </p>
-
-            <h3 style={{ marginTop: '2rem' }}>What I'd Do Differently</h3>
-            <p>
-              Involve clinicians earlier in the research process. The UAT insight about the allergy banner also needing to appear in the SOAP note editor—a genuine clinical safety insight—only came from a practicing clinician during testing. That observation should come from research, not UAT. Earlier access to healthcare professionals would have strengthened several design decisions and reduced the need for later revisions.
-            </p>
-
-            <h3 style={{ marginTop: '2rem' }}>Key Takeaway for Future Work</h3>
-            <p>
-              Effective product design is not simply about creating polished interfaces. It's about understanding problems deeply, making thoughtful decisions that balance user needs, technical feasibility, and long-term scalability, and then having the discipline to simplify rather than add.
-            </p>
-            <p>
-              The biggest challenge on this project wasn't designing more features. It was identifying which workflows mattered most and intentionally removing everything that didn't support them. In a healthcare context where clinician time directly impacts patient care, that discipline was both a design principle and a strategic one.
-            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+              {reflectionCards.map((card) => (
+                <div key={card.title} style={{ background: 'white', border: '1px solid #e8edf2', borderRadius: '10px', padding: '1rem' }}>
+                  <h4 style={{ margin: '0 0 0.4rem', color: '#1F4E79' }}>{card.title}</h4>
+                  <p style={{ margin: 0, color: '#555', fontSize: '0.88rem', lineHeight: '1.7' }}>{card.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         <div className="divider"></div>
 
-        {/* SECTION 10: OUTCOME */}
         <section className="section">
           <h2>Outcome & Impact</h2>
           <div className="section-content">
-            <p>
-              Delivered a production-ready clinical mobile app validated by five clinician user types across 11 core use cases, with a 98% task success rate and zero critical failures.
-            </p>
-            
-            <h3 style={{ marginTop: '1.5rem' }}>What Was Delivered</h3>
-            <ul>
-              <li>Complete product design from research through high-fidelity prototypes</li>
-              <li>Fully implemented React Native frontend with offline-first sync</li>
-              <li>Component library and design system for future expansion</li>
-              <li>UAT-validated workflows with practicing clinicians</li>
-              <li>Detailed technical documentation and implementation guides</li>
-            </ul>
-
-            <h3 style={{ marginTop: '1.5rem' }}>Future Priorities</h3>
-            <ul>
-              <li>Accessibility audit (WCAG 2.1 Level AA compliance)</li>
-              <li>Expanded clinical user research with practicing physicians</li>
-              <li>Biometric authentication implementation</li>
-              <li>Conflict resolution UX design for sync scenarios</li>
-              <li>Analytics integration for clinical workflow optimization</li>
-            </ul>
+            <div style={{ background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '14px', padding: '1.25rem' }}>
+              <p style={{ margin: '0 0 1rem', color: '#444', lineHeight: '1.75' }}>
+                Delivered a production-ready clinical mobile app validated by five user types across 11 workflows.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '0.75rem', marginBottom: '1rem' }}>
+                {[
+                  'Mobile-first EMR',
+                  '98% task completion',
+                  '11 workflows',
+                  'Offline-first architecture',
+                  'Reusable design system'
+                ].map((item) => (
+                  <div key={item} style={{ background: 'white', border: '1px solid #e8edf2', borderRadius: '999px', padding: '0.75rem 1rem', textAlign: 'center', fontSize: '0.84rem', fontWeight: '600', color: '#1F4E79' }}>
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+                <div>
+                  <h3 style={{ marginTop: 0 }}>What was delivered</h3>
+                  <ul>
+                    <li>Complete product design from research through high-fidelity prototypes</li>
+                    <li>React Native frontend with offline-first sync</li>
+                    <li>Reusable component patterns and a structured design system</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 style={{ marginTop: 0 }}>Next Priorities</h3>
+                  <ul>
+                    <li>Accessibility audit (WCAG 2.1 Level AA)</li>
+                    <li>Conflict resolution UX for sync scenarios</li>
+                    <li>Expanded research with practicing physicians</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

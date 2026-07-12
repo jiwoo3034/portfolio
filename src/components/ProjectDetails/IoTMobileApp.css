@@ -253,7 +253,8 @@ header.section h2.project-subtitle {
   width: 80%;
   height: auto;
   border-radius: 8px;
-  margin-top: 1rem;
+  display: block;
+  margin: 1rem auto;
 }
 
 /* Purolator project theme overrides */
