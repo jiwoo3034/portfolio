@@ -255,7 +255,7 @@ header.section h2.project-subtitle {
 
 .project-image {
   width: 100%;
-  max-width: 900px; /* constrain hero/project overview images on large screens */
+  max-width: 1200px; /* increased to allow larger hero/project overview images */
   height: auto;
   border-radius: 8px;
   display: block;
@@ -698,9 +698,12 @@ header.section h2.project-subtitle {
 
 .oscar-project .project-image {
   width: 100%;
-  max-width: 520px;
-  margin-top: 0;
+  max-width: 1200px; /* increased to allow larger hero/project overview images */
+  height: auto;
+  border-radius: 8px;
   display: block;
+  margin: 1rem auto;
+  object-fit: contain;
 }
 
 .oscar-project .hero-meta-grid {
