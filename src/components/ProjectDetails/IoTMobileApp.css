@@ -258,6 +258,27 @@ header.section h2.project-subtitle {
 }
 
 /* Purolator project theme overrides */
+
+/* Diagram accordion styles */
+.diagram-accordion { display: flex; flex-direction: column; gap: 12px; }
+.accordion-item { background: white; border: 1px solid #e8edf2; border-radius: 12px; overflow: hidden; transition: box-shadow 0.2s ease; }
+.accordion-item:hover { box-shadow: 0 8px 20px rgba(16,24,40,0.06); }
+.accordion-header { display: flex; align-items: center; justify-content: space-between; padding: 16px; cursor: pointer; }
+.accordion-meta { display: flex; flex-direction: column; gap: 6px; }
+.accordion-title { font-size: 1rem; font-weight: 700; color: #1F4E79; }
+.accordion-desc { font-size: 0.92rem; color: #555; max-width: 70ch; }
+.chevron { transition: transform 0.35s cubic-bezier(.4,0,.2,1); font-size: 1.25rem; color: #2D9CAA; }
+.chevron.open { transform: rotate(180deg); }
+.accordion-panel { max-height: 0; overflow: hidden; transition: max-height 0.55s ease, padding 0.35s ease; padding: 0 16px; }
+.accordion-panel.open { padding: 16px; max-height: 1400px; }
+.diagram-image { width: 100%; height: auto; border-radius: 8px; display: block; margin: 0.5rem auto; max-width: 1100px; }
+
+@media (max-width: 768px) {
+  .accordion-header { padding: 12px; }
+  .accordion-desc { font-size: 0.88rem; }
+  .diagram-image { max-width: 100%; }
+}
+
 .purolator-project .section h3,
 .purolator-project .info-card h3,
 .purolator-project .hero-meta-card h3 {

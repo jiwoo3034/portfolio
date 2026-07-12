@@ -262,9 +262,15 @@ function OSCARMobilePro() {
     }
   ];
 
+  const [openDiagramIndex, setOpenDiagramIndex] = useState(null);
+
   const diagrams = [
-    { title: 'Use Case Diagram', src: oscarImage('Diagrams/Use Case Diagram.jpg') },
-    { title: 'Navigation Diagram', src: oscarImage('Diagrams/Navigation Diagram.jpg') }
+    { title: 'User Flow', description: 'Mapped the complete patient journey to understand how users move through the application and identify key interaction points before designing the interface.', src: oscarImage('Diagrams/User Flow.jpg') },
+    { title: 'Navigation Diagram', description: 'Organized the application\'s information architecture to create a logical navigation structure and improve feature discoverability.', src: oscarImage('Diagrams/Navigation Diagram.jpg') },
+    { title: 'Use Case Diagram', description: 'Defined the interactions between users and the system to establish functional requirements and clarify major application features.', src: oscarImage('Diagrams/Use Case Diagram.jpg') },
+    { title: 'Statechart Diagram', description: 'Illustrated how key entities transition between different states throughout the application, ensuring predictable system behavior.', src: oscarImage('Diagrams/Patient Record Statechart.jpg') },
+    { title: 'System Sequence Diagram (SSD)', description: 'Documented the communication between users, the application, and backend services during core workflows.', srcs: [oscarImage('Diagrams/SSD 103 – Update Clinical Note (SOAP) (Design Level).jpg'), oscarImage('Diagrams/SSD 104 – Appointment Management (Design Level).jpg')] },
+    { title: 'Service Class Diagram', description: 'Outlined the application\'s service architecture and responsibilities to support scalable development and maintainable implementation.', src: oscarImage('Diagrams/Class diagram (Service Class).jpg') }
   ];
 
   return (
@@ -484,11 +490,25 @@ function OSCARMobilePro() {
               ))}
             </div>
             <p><strong>Two-Tap Rule:</strong> Every core screen is reachable in two taps or fewer.</p>
-            <div className="image-grid-2x2" style={{ marginTop: '1.25rem' }}>
-              {diagrams.map((item) => (
-                <div key={item.title}>
-                  <h3>{item.title}</h3>
-                  <img src={item.src} alt={item.title} className="project-image" />
+            <div className="diagram-accordion" style={{ marginTop: '1.25rem' }}>
+              {diagrams.map((item, idx) => (
+                <div key={item.title} className={`accordion-item ${openDiagramIndex === idx ? 'open' : ''}`}>
+                  <div className="accordion-header" onClick={() => setOpenDiagramIndex(openDiagramIndex === idx ? null : idx)}>
+                    <div className="accordion-meta">
+                      <div className="accordion-title">{item.title}</div>
+                      <div className="accordion-desc">{item.description}</div>
+                    </div>
+                    <div className={`chevron ${openDiagramIndex === idx ? 'open' : ''}`} aria-hidden="true">▾</div>
+                  </div>
+                  <div className={`accordion-panel ${openDiagramIndex === idx ? 'open' : ''}`}>
+                    {item.srcs ? (
+                      item.srcs.map((s, i) => (
+                        <img key={i} src={s} alt={`${item.title} ${i + 1}`} className="diagram-image" />
+                      ))
+                    ) : (
+                      <img src={item.src} alt={item.title} className="diagram-image" />
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
