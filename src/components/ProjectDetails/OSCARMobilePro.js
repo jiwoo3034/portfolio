@@ -117,13 +117,6 @@ function OSCARMobilePro() {
     }
   ];
 
-  const colorSystem = [
-    { name: 'Primary Blue', hex: '#1F4E79', use: 'Brand, navigation, primary actions' },
-    { name: 'Accent Blue', hex: '#2E75B6', use: 'Secondary actions, draft state toast' },
-    { name: 'Success Green', hex: '#28A745', use: 'Synced, Finished, confirmed states' },
-    { name: 'Warning Amber', hex: '#FFC107', use: 'Sync failure, offline, caution states' },
-    { name: 'Danger Red', hex: '#DC3545', use: 'Cancelled, error, destructive actions' }
-  ];
 
   const techHighlights = [
     { label: 'Mobile app', value: 'React Native' },
