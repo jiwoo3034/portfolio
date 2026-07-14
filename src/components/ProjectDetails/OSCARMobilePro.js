@@ -199,21 +199,21 @@ function OSCARMobilePro() {
     {
       title: 'Patient Safety First',
       decisionIndex: 0,
-      image: prototypes[2].src,
+      image: oscarImage('Decisions/Patient Safety First.png'),
       annotation: 'Highlight the allergy banner at the top of the patient record.',
       bullets: ['Always visible', 'Supports patient safety', 'Reduces medication errors']
     },
     {
       title: 'Bottom Navigation',
       decisionIndex: 1,
-      image: prototypes[0].src,
+      image: oscarImage('Decisions/Bottom Navigation.png'),
       annotation: 'Highlight the bottom tab bar for one-handed reach.',
       bullets: ['Four primary workflows', '48px touch targets', 'Thumb-accessible']
     },
     {
       title: 'Structured SOAP Notes',
       decisionIndex: 2,
-      image: prototypes[3].src,
+      image: oscarImage('Decisions/Structured SOAP Notes.png'),
       annotation: 'Highlight the Subjective / Objective / Assessment / Plan layout.',
       bullets: ['Reduces cognitive load', 'Typed clinical data', 'Future billing-ready']
     }
@@ -222,27 +222,27 @@ function OSCARMobilePro() {
   const iterationEvidence = [
     {
       label: 'Search',
-      before: { src: null, desc: 'Search — wireframe (before)' },
-      after: { src: null, desc: 'Search — prototype (after)' },
-      beforeLabel: 'Search tab',
+      before: { src: oscarImage('Iterations/Hompage Version 1.png'), desc: 'Search — Homepage Version 1 (before)' },
+      after: { src: oscarImage('Iterations/Hompage Version 2.png'), desc: 'Search — Homepage Version 2 (after)' },
+      beforeLabel: 'Search tab only on Patients page',
       afterLabel: 'Persistent bar on Home',
       reason: 'Search is an entry point, not a destination.'
     },
     {
-      label: 'Status',
-      before: { src: null, desc: 'Status — wireframe (before)' },
-      after: { src: null, desc: 'Status — prototype (after)' },
-      beforeLabel: 'Text-only status',
-      afterLabel: 'Color-coded badge',
-      reason: 'Color scans faster under time pressure.'
+      label: 'Add Note Button',
+      before: { src: oscarImage('Iterations/Add Note Button Version 1.png'), desc: 'Add Note Button — Version 1 (before)' },
+      after: { src: oscarImage('Iterations/Add Note Button Version 2.png'), desc: 'Add Note Button — Version 2 (after)' },
+      beforeLabel: 'Unfilled secondary-style button',
+      afterLabel: 'Filled primary-style button',
+      reason: 'Updated to a filled primary style for stronger consistency with the app’s main action buttons.'
     },
     {
       label: 'Feedback',
-      before: { src: null, desc: 'Feedback — blocking modal (before)' },
-      after: { src: null, desc: 'Feedback — transient toast (after)' },
-      beforeLabel: 'Blocking modal',
-      afterLabel: 'Transient toast',
-      reason: 'Clinicians should not stop documenting just to dismiss a dialog.'
+      before: { src: oscarImage('Iterations/Feedbacl wo toast.png'), desc: 'Feedback — without toast (before)' },
+      after: { src: oscarImage('Iterations/Feedbacl w toast.png.png'), desc: 'Feedback — with toast (after)' },
+      beforeLabel: 'Without toast message',
+      afterLabel: 'With toast message',
+      reason: 'Toast feedback was added to make task outcomes more intuitive, especially for actions that change data.'
     }
   ];
 
@@ -273,6 +273,38 @@ function OSCARMobilePro() {
                 <div style={{ fontSize: '0.95rem', color: '#0f1f35', fontWeight: '600', lineHeight: '1.4' }}>{stat.value}</div>
               </div>
             ))}
+          </div>
+
+          <div style={{ marginTop: '1rem', padding: '1rem', background: '#f8fafb', border: '1px solid #e8edf2', borderRadius: '10px', textAlign: 'center' }}>
+            <div style={{ fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#2D9CAA', marginBottom: '0.65rem', textAlign: 'center' }}>
+              Explore the Project
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+              <a
+                  href="https://www.figma.com/design/5gzNijytFHNswvBPDjjBAI/OSCAR-Mobile?node-id=0-1&t=JE9dxLNjTQriaITs-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0.7rem 1.2rem', borderRadius: '999px', background: '#1F4E79', color: '#fff', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '700', letterSpacing: '0.02em', boxShadow: '0 4px 12px rgba(31, 78, 121, 0.25)' }}
+              >
+                View Figma files
+              </a>
+              <a
+                href="https://novalab-oscar-mobile-pro-digital-brochure.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0.7rem 1.2rem', borderRadius: '999px', background: '#2D9CAA', color: '#fff', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '700', letterSpacing: '0.02em', boxShadow: '0 4px 12px rgba(45, 156, 170, 0.25)' }}
+              >
+                View Online Brochure
+              </a>
+              <a
+                href="https://github.com/kateyang1998/novalab-oscar-mobile-pro"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0.7rem 1.2rem', borderRadius: '999px', background: '#1F4E79', color: '#fff', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '700', letterSpacing: '0.02em', boxShadow: '0 4px 12px rgba(31, 78, 121, 0.25)' }}
+              >
+                Open GitHub Repository
+              </a>
+            </div>
           </div>
         </header>
 
