@@ -36,28 +36,28 @@ function PurolatorCouponPortal() {
       title: 'Button Feedback',
       desc: 'The login button transforms into an animated progress indicator the moment the user submits. The system is already working — the user sees it immediately.',
       why: 'Eliminates the dead moment between tap and response. Users know their input registered.',
-      src: purolatorCouponImage('DektopTablet Login Redirect.png')
+      src: purolatorCouponImage('Tablet/DektopTablet Login Redirect.png')
     },
     {
       step: '02',
       title: 'Skeleton Screen',
       desc: 'A skeleton placeholder with a subtle shimmer replaces the content area. The page structure appears — but no coupon yet.',
       why: 'Skeleton loading reduces perceived wait time by giving users a preview of what\'s coming. The page doesn\'t feel empty — it feels almost ready.',
-      src: purolatorCouponImage('DektopTablet Loading Skeleton (for 3 seconds).png')
+      src: purolatorCouponImage('Tablet/DektopTablet Loading Skeleton (for 3 seconds).png')
     },
     {
       step: '03',
       title: 'Progress Indicator',
       desc: 'If generation takes longer than 3 seconds, a circular progress indicator with a percentage appears. Users can see real movement.',
       why: 'At this stage, "almost ready" isn\'t enough. Users need confirmation the system is still running — a percentage gives them a sense of how much longer.',
-      src: purolatorCouponImage('DektopTablet Loading Coupon (taking more than 3 seconds).png')
+      src: purolatorCouponImage('Tablet/DektopTablet Loading Coupon (taking more than 3 seconds).png')
     },
     {
       step: '04',
       title: 'Coupon Ready',
       desc: 'The coupon appears with three clear actions surfaced immediately: Copy to clipboard, Email to my account, Use for online shipping.',
       why: 'Actions are presented at the moment of arrival — no secondary menu, no hunting.',
-      src: purolatorCouponImage('DektopTablet Coupon page.png')
+      src: purolatorCouponImage('Tablet/DektopTablet Coupon page.png')
     }
   ];
 
@@ -205,8 +205,8 @@ function PurolatorCouponPortal() {
                 Error copy: "We couldn't load your coupon. Check your connection and try again."
               </p>
               <div className="image-placeholder">
-                <img src={purolatorCouponImage('DektopTablet Coupon page Error.png')} alt="Error screen desktop" className="comparison-image" />
-                <img src={purolatorCouponImage('Mobile Coupon page Error.png')} alt="Error screen mobile" className="comparison-image" />
+                <img src={purolatorCouponImage('Tablet/DektopTablet Coupon page Error.png')} alt="Error screen desktop" className="comparison-image" />
+                <img src={purolatorCouponImage('Mobile/Mobile Coupon page Error.png')} alt="Error screen mobile" className="comparison-image" />
               </div>
             </div>
           </div>
@@ -218,8 +218,8 @@ function PurolatorCouponPortal() {
                 The portal was designed for all contexts — employees might access it from a work laptop, a shared tablet in a warehouse, or a personal phone. The layout adapts without sacrificing functionality. The coupon card, action buttons, and loading states are all equally usable at any viewport size.
               </p>
               <div className="image-placeholder">
-                <img src={purolatorCouponImage('DektopTablet Coupon page.png')} alt="Desktop view" className="comparison-image" />
-                <img src={purolatorCouponImage('Mobile Coupon page.png')} alt="Mobile view" className="comparison-image" />
+                <img src={purolatorCouponImage('Tablet/DektopTablet Coupon page.png')} alt="Desktop view" className="comparison-image" />
+                <img src={purolatorCouponImage('Mobile/Mobile Coupon page.png')} alt="Mobile view" className="comparison-image" />
               </div>
             </div>
           </div>

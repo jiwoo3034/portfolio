@@ -393,20 +393,18 @@ header.section h2.project-subtitle {
   margin-top: 1rem;
 }
 
-/* Iteration flow: horizontal on wide screens, stacked on small screens */
+/* Iteration flow: responsive grid that fills available width */
 .purolator-project .iteration-grid {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
   margin-top: 1rem;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  align-items: start;
 }
 
 /* Individual iteration card */
 .purolator-project .iteration-card {
-  min-width: 220px;
-  max-width: 360px;
+  width: 100%;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(215, 25, 32, 0.18);
   border-left: 4px solid #D71920;
@@ -414,12 +412,13 @@ header.section h2.project-subtitle {
   padding: 1rem;
   text-align: center;
   box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  box-sizing: border-box;
 }
 
-/* Thumbnails inside each iteration; wrap on small screens */
+/* Thumbnails inside each iteration */
 .purolator-project .iteration-thumbs {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
   justify-content: center;
   align-items: center;
   margin-bottom: 0.5rem;
@@ -428,10 +427,20 @@ header.section h2.project-subtitle {
 
 /* Individual thumbnail */
 .purolator-project .iteration-thumb {
-  width: 120px;
+  width: 180px; /* default desktop size */
   height: auto;
   border-radius: 6px;
   object-fit: contain;
+}
+
+/* Design Exploration: keep thumbnails in one row on desktop but allow wrapping on smaller screens */
+.purolator-project .design-exploration .iteration-thumbs {
+  flex-wrap: nowrap;
+  justify-content: center;
+  overflow-x: auto;
+}
+.purolator-project .design-exploration .iteration-thumb {
+  width: 220px; /* slightly larger for emphasis */
 }
 
 /* Arrow between iteration cards (right-facing) */
@@ -457,6 +466,12 @@ header.section h2.project-subtitle {
     width: 100%;
     max-width: none;
   }
+  .purolator-project .iteration-thumb {
+    width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
   .purolator-project .iteration-thumb {
     width: 100px;
   }
@@ -566,6 +581,23 @@ header.section h2.project-subtitle {
   height: auto;
   object-fit: contain;
   max-height: 60vh; /* scale images relative to viewport so they don't overflow */
+}
+
+.purolator-project .pod-image-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .purolator-project .pod-image-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .purolator-project .pod-image-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 

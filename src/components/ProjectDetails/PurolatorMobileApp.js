@@ -45,7 +45,7 @@ function PurolatorMobileApp() {
   const auditFindings = [
     {
       screen: 'Homepage',
-      image: purolatorImage('Before-Homepage.png'),
+      image: purolatorImage('Before/Before-Homepage.png'),
       problems: [
         'Oversized announcement banner consumed primary real estate',
         'Quick shortcuts were buried below the fold',
@@ -54,7 +54,7 @@ function PurolatorMobileApp() {
     },
     {
       screen: 'Tracking',
-      image: purolatorImage('Before-Tracking.png'),
+      image: purolatorImage('Before/Before-Tracking.png'),
       problems: [
         'Pins had no differentiation — all shipments looked identical',
         'No way to organize or label active shipments',
@@ -63,7 +63,7 @@ function PurolatorMobileApp() {
     },
     {
       screen: 'Transit History',
-      image: purolatorImage('Before-Tracking-Pin-Deatils.png'),
+      image: purolatorImage('Before/Before-Tracking-Pin-Deatils.png'),
       problems: [
         'Progress timeline was hard to scan',
         'Status labels were ambiguous',
@@ -85,8 +85,8 @@ function PurolatorMobileApp() {
         'Updated Tracking Pad styling and Quick Pickup cards',
         'Updated Favorite Location icons and visual language'
       ],
-      before: purolatorImage('Before-Homepage.png'),
-      after: purolatorImage('After-Home-Page.png'),
+      before: purolatorImage('Before/Before-Homepage.png'),
+      after: purolatorImage('After/After-Home-Page.png'),
       beforeLabel: 'Before homepage',
       afterLabel: 'After homepage'
     },
@@ -100,8 +100,8 @@ function PurolatorMobileApp() {
         'Updated Tracking Pin visual design',
         'Redesigned Tracking Pin Details page — status and ETA lead'
       ],
-      before: purolatorImage('Before-Tracking.png'),
-      after: purolatorImage('After-Nickname.png'),
+      before: purolatorImage('Before/Before-Tracking.png'),
+      after: purolatorImage('After/After-Nickname.png'),
       beforeLabel: 'Before tracking',
       afterLabel: 'After tracking'
     },
@@ -115,37 +115,38 @@ function PurolatorMobileApp() {
         'Current shipment state always highlighted',
         'Improved visual hierarchy and readability throughout'
       ],
-      before: purolatorImage('Before-Tracking-Pin-Deatils.png'),
-      after: purolatorImage('After-Tacking-Pin-Deatils.png'),
+      before: purolatorImage('Before/Before-Tracking-Pin-Deatils.png'),
+      after: purolatorImage('After/After-Tacking-Pin-Deatils.png'),
       beforeLabel: 'Before transit history',
       afterLabel: 'After transit history'
     }
   ];
 
   const supportingPages = [
-    { title: 'Favorite Locations', description: 'Organized location shortcuts for faster access.', src: purolatorImage('After-Favourite-Locations.png') },
-    { title: "What's New", description: 'Release highlights and app updates in one place.', src: purolatorImage("After-What's-new.png") },
-    { title: 'App Update', description: 'Update prompt and version messaging.', src: purolatorImage('After-App-Update.png') },
-    { title: 'Terms & Conditions', description: 'Legal content presented in the same mobile system.', src: purolatorImage('After-Term& Conditions.png') },
-    { title: 'Side Menu', description: 'Navigation shell and supporting destinations.', src: purolatorImage('After-Side-Menu.png') },
-    { title: 'Contact Page', description: 'Support entry point and contact details.', src: purolatorImage('After-Contacts.png') }
+    { title: 'Favorite Locations', description: 'Organized location shortcuts for faster access.', src: purolatorImage('After/After-Favourite-Locations.png') },
+    { title: "What's New", description: 'Release highlights and app updates in one place.', src: purolatorImage("After/After-What's-new.png") },
+    { title: 'App Update', description: 'Update prompt and version messaging.', src: purolatorImage('After/After-App-Update.png') },
+    { title: 'Terms & Conditions', description: 'Legal content presented in the same mobile system.', src: purolatorImage('After/After-Term& Conditions.png') },
+    { title: 'Side Menu', description: 'Navigation shell and supporting destinations.', src: purolatorImage('After/After-Side-Menu.png') },
+    { title: 'Contact Page', description: 'Support entry point and contact details.', src: purolatorImage('After/After-Contacts.png') }
   ];
 
   const iterationPlaceholders = [
-    { label: 'Iteration 1', note: 'Initial concept focused on spacing and hierarchy', images: [{ src: null, desc: 'Iteration 1 — homepage mockup (to be added)' }] },
-    { label: 'Design Review', note: 'Team + PM + Manager feedbacks', images: [{ src: null, desc: 'Design Review — annotated screens (to be added)' }] },
+    { label: 'Iteration 1', note: 'Initial concept focused on spacing and hierarchy', images: [{ src: purolatorImage('Design Iterations/Inital Draft.png'), desc: 'Iteration 1 — Initial Draft' }] },
+    { label: 'Design Review', note: 'Team + PM + Manager feedbacks', images: [{ src: purolatorImage('Design Iterations/Design Review.png'), desc: 'Design Review — annotated screens' }] },
     { label: 'Design Exploration', note: 'Multiple Design Directions', images: [
-      { src: null, desc: 'Design Exploration — direction A (to be added)' },
-      { src: null, desc: 'Design Exploration — direction B (to be added)' },
-      { src: null, desc: 'Design Exploration — direction C (to be added)' }
+      { src: purolatorImage('Design Iterations/Option 1.png'), desc: 'Design Exploration — Option 1' },
+      { src: purolatorImage('Design Iterations/Option 2.png'), desc: 'Design Exploration — Option 2' },
+      { src: purolatorImage('Design Iterations/Option 3.png'), desc: 'Design Exploration — Option 3' }
     ] },
-    { label: 'UX Review', note: 'Refinement, accessibility and scanability', images: [{ src: null, desc: 'UX Review — accessibility refinements (to be added)' }] },
-    { label: 'Final', note: 'Implementation-ready screens and documented components', images: [{ src: null, desc: 'Final — implementation-ready screens (to be added)' }] }
+    { label: 'UX Review', note: 'Refinement, accessibility and scanability', images: [{ src: purolatorImage('Design Iterations/UX Review.png'), desc: 'UX Review — accessibility refinements' }] },
+    { label: 'Final', note: 'Implementation-ready screens and documented components', images: [{ src: purolatorImage('Design Iterations/Final.png'), desc: 'Final — implementation-ready screens' }] }
   ];
 
   const proofOfDeliveryImages = [
-    purolatorImage('After-Tacking-Pin-Deatils.png'),
-    purolatorImage('After-Tacking-Pin-Nickname.png')
+    purolatorImage('proofOfDeliveryImages/PoD locked.png'),
+    purolatorImage('proofOfDeliveryImages/PoD authentication.png'),
+    purolatorImage('proofOfDeliveryImages/PoD authenticated.png')
   ];
 
   return (
@@ -313,7 +314,7 @@ function PurolatorMobileApp() {
                 <p>
                   Added as a net-new feature within the existing design system. Delivery confirmation — signature, timestamp, and photo — is surfaced directly from the tracking details page, reducing the need for users to contact support.
                 </p>
-                <div className="image-placeholder">
+                <div className="image-placeholder pod-image-row">
                   {proofOfDeliveryImages.map((src, idx) => (
                       <img key={idx} src={src} alt={`Proof of Delivery ${idx + 1}`} className="comparison-image" />
                   ))}
@@ -329,8 +330,8 @@ function PurolatorMobileApp() {
                   I catalogued design tokens across redesigned screens — type scale, spacing grid, elevation, icon set, button variants, card styles — and applied them consistently. When a legacy screen needed something genuinely new, I documented it as a system addition rather than a one-off exception.
                 </p>
                 <div className="image-placeholder">
-                  <img src={purolatorImage('After-Find-Location-Search-Active.png')} alt="Find location search" className="comparison-image" />
-                  <img src={purolatorImage('After-Location-Details-Page.png')} alt="Location details page" className="comparison-image" />
+                  <img src={purolatorImage('After/After-Find-Location-Search-Active.png')} alt="Find location search" className="comparison-image" />
+                  <img src={purolatorImage('After/After-Location-Details-Page.png')} alt="Location details page" className="comparison-image" />
                 </div>
               </article>
 
@@ -372,7 +373,7 @@ function PurolatorMobileApp() {
               <div className="iteration-grid">
                 {iterationPlaceholders.map((item, idx) => (
                   <React.Fragment key={item.label}>
-                    <div className="iteration-card">
+                    <div className={`iteration-card ${item.label === 'Design Exploration' ? 'design-exploration' : ''}`}>
                       <div className="iteration-thumbs">
                         {item.images.map((img, i) => (
                           img && img.src ? (
