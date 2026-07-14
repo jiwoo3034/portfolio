@@ -9,12 +9,6 @@ function PurolatorMobileApp() {
   const heroImage = purolatorImage('purolator-mobile-redesign-overview.jpg');
 
   const heroMeta = [
-    { label: 'Role', value: 'UX Designer' },
-    { label: 'Team', value: 'UX Team + Developers (5)' },
-    { label: 'Timeline', value: '8 Months' },
-    { label: 'Platform', value: 'iOS / Android' },
-    { label: 'Deliverables', value: '20+ redesigned screens' },
-    { label: 'Tools', value: 'Figma, Jira' }
   ];
 
   const responsibilities = [
@@ -28,9 +22,9 @@ function PurolatorMobileApp() {
   const processSteps = [
     'Audit',
     'Design System Analysis',
-    'Wireframe',
-    'Hi-fi',
-    'Developer Review',
+    'Digital Draft',
+    'Hi-fidelity Prototypes',
+    'Team Review',
     'Iteration'
   ];
 
@@ -193,20 +187,15 @@ function PurolatorMobileApp() {
             <div className="info-cards-container">
               <article className="info-card">
                 <h3>Timeframe</h3>
-                <p>8 Months</p>
+                <p>4 Months</p>
               </article>
               <article className="info-card">
                 <h3>My Role &amp; Responsibilities</h3>
                 <p>UX Designer · UI Designer<br />Design System Extension<br />Developer Collaboration</p>
-                <ul className="responsibilities-list">
-                  {responsibilities.map((item) => (
-                      <li key={item}>{item}</li>
-                  ))}
-                </ul>
               </article>
               <article className="info-card">
                 <h3>Tools</h3>
-                <p>Figma<br />Adobe Creative Suite<br />Miro<br />Jira<br />Microsoft Teams</p>
+                <p>Figma<br />Adobe Creative Suite<br />Azure<br />Microsoft Teams</p>
               </article>
             </div>
           </section>

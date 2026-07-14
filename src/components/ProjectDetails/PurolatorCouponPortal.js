@@ -7,10 +7,6 @@ function PurolatorCouponPortal() {
       encodeURI(`${process.env.PUBLIC_URL}/images/purolator-coupon-portal/${fileName}`);
 
   const heroMeta = [
-    { label: 'Role', value: 'UI / UX Designer' },
-    { label: 'Company', value: 'Purolator Digital Lab' },
-    { label: 'Platform', value: 'Responsive Internal Web Portal' },
-    { label: 'Project Type', value: 'Enterprise Internal Tool' }
   ];
 
   const processSteps = [
@@ -111,16 +107,16 @@ function PurolatorCouponPortal() {
           <section className="project-info-grid">
             <div className="info-cards-container">
               <article className="info-card">
+                <h3>Timeframe</h3>
+                <p>2 months</p>
+              </article>
+              <article className="info-card">
                 <h3>My Role</h3>
                 <p>UI / UX Design<br />Responsive Design<br />Wireframing<br />High-Fidelity UI</p>
               </article>
               <article className="info-card">
                 <h3>Tools</h3>
                 <p>Figma<br />Adobe Creative Suite<br />Jira<br />Microsoft Teams</p>
-              </article>
-              <article className="info-card">
-                <h3>Process</h3>
-                <p>{processSteps.join(' → ')}</p>
               </article>
             </div>
           </section>
@@ -149,6 +145,17 @@ function PurolatorCouponPortal() {
                     </li>
                 ))}
               </ul>
+            </div>
+          </div>
+
+          <div className="section">
+            <h2>Process</h2>
+            <div className="section-content">
+              <ol className="process-list">
+                {processSteps.map((step) => (
+                    <li key={step}>{step}</li>
+                ))}
+              </ol>
             </div>
           </div>
 
