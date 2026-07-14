@@ -9,12 +9,6 @@ function PurolatorMobileApp() {
   const heroImage = purolatorImage('purolator-mobile-redesign-overview.jpg');
 
   const heroMeta = [
-    { label: 'Role', value: 'UX Designer' },
-    { label: 'Team', value: 'UX Team + Developers (5)' },
-    { label: 'Timeline', value: '8 Months' },
-    { label: 'Platform', value: 'iOS / Android' },
-    { label: 'Deliverables', value: '20+ redesigned screens' },
-    { label: 'Tools', value: 'Figma, Jira' }
   ];
 
   const responsibilities = [
@@ -198,11 +192,6 @@ function PurolatorMobileApp() {
               <article className="info-card">
                 <h3>My Role &amp; Responsibilities</h3>
                 <p>UX Designer · UI Designer<br />Design System Extension<br />Developer Collaboration</p>
-                <ul className="responsibilities-list">
-                  {responsibilities.map((item) => (
-                      <li key={item}>{item}</li>
-                  ))}
-                </ul>
               </article>
               <article className="info-card">
                 <h3>Tools</h3>
