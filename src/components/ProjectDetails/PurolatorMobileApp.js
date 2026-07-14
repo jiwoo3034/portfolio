@@ -11,13 +11,13 @@ function PurolatorMobileApp() {
   const heroMeta = [
   ];
 
-  const responsibilities = [
-    'Audited legacy screens and mapped gaps against the updated design system',
-    'Created updated interfaces aligned with previously redesigned screens',
-    'Collaborated with developers, manager, and senior UX designers',
-    'Ran design reviews and iterated based on feedback and implementation constraints',
-    'Documented new component additions to the evolving design system'
-  ];
+  // const responsibilities = [
+  //   'Audited legacy screens and mapped gaps against the updated design system',
+  //   'Created updated interfaces aligned with previously redesigned screens',
+  //   'Collaborated with developers, manager, and senior UX designers',
+  //   'Ran design reviews and iterated based on feedback and implementation constraints',
+  //   'Documented new component additions to the evolving design system'
+  // ];
 
   const processSteps = [
     'Audit',
@@ -192,6 +192,11 @@ function PurolatorMobileApp() {
               <article className="info-card">
                 <h3>My Role &amp; Responsibilities</h3>
                 <p>UX Designer · UI Designer<br />Design System Extension<br />Developer Collaboration</p>
+                {/*<ul className="responsibilities-list">*/}
+                {/*  {responsibilities.map((item) => (*/}
+                {/*      <li key={item}>{item}</li>*/}
+                {/*  ))}*/}
+                {/*</ul>*/}
               </article>
               <article className="info-card">
                 <h3>Tools</h3>
