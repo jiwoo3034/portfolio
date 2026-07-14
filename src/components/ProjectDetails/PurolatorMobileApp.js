@@ -362,7 +362,7 @@ function PurolatorMobileApp() {
             <h2>Design Iterations</h2>
             <div className="section-content">
               <p>
-                The designs didn't land right the first time. Interim checks changed the homepage layout in the second pass. A design review caught an inconsistency in the tracking pin system before it reached production. The final screens are the result of that loop — not the first draft.
+                The designs didn't land right the first time. Design Review with the team changed the pages' layout in the second pass. There were multiple design directions in tracking pin layouts since there were new features. UX Review caught accessibility issues early in the process. The final screens are the result of that loop — not the first draft.
               </p>
               <div className="iteration-grid">
                 {iterationPlaceholders.map((item, idx) => (
