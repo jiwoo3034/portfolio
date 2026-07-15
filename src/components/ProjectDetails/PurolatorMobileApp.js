@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './IoTMobileApp.css';
 import PageTransition from '../PageTransition';
 
 function PurolatorMobileApp() {
+  const [selectedImage, setSelectedImage] = useState(null);
   const purolatorImage = (fileName) =>
       encodeURI(`${process.env.PUBLIC_URL}/images/purolator-mobile-app/${fileName}`);
 
@@ -364,28 +365,52 @@ function PurolatorMobileApp() {
               <p>
                 The designs didn't land right the first time. Design Review with the team changed the pages' layout in the second pass. There were multiple design directions in tracking pin layouts since there were new features. UX Review caught accessibility issues early in the process. The final screens are the result of that loop — not the first draft.
               </p>
-              <div className="iteration-grid">
+              <div className="design-timeline">
                 {iterationPlaceholders.map((item, idx) => (
-                  <React.Fragment key={item.label}>
-                    <div className={`iteration-card ${item.label === 'Design Exploration' ? 'design-exploration' : ''}`}>
-                      <div className="iteration-thumbs">
+                  <div key={item.label} className="timeline-item">
+                    <div className="timeline-marker">
+                      <div className="timeline-dot"></div>
+                      {idx < iterationPlaceholders.length - 1 && <div className="timeline-line"></div>}
+                    </div>
+                    <div className="timeline-content">
+                      <h3>{item.label}</h3>
+                      <p className="timeline-description">{item.note}</p>
+                      <div className="timeline-images">
                         {item.images.map((img, i) => (
                           img && img.src ? (
-                            <img key={i} src={img.src} alt={`${item.label} ${i + 1}`} className="iteration-thumb" />
-                          ) : (
-                            <div key={i} className="update-note">Update Expected: {img && img.desc}</div>
-                          )
+                            <div key={i} className="timeline-image-wrapper">
+                              <img 
+                                src={img.src} 
+                                alt={`${item.label} ${i + 1}`} 
+                                className="timeline-image-preview"
+                                onClick={() => setSelectedImage({ src: img.src, desc: img.desc || item.label })}
+                              />
+                              <button 
+                                className="view-full-btn"
+                                onClick={() => setSelectedImage({ src: img.src, desc: img.desc || item.label })}
+                              >
+                                View Full Image
+                              </button>
+                            </div>
+                          ) : null
                         ))}
                       </div>
-                      <strong>{item.label}</strong>
-                      <p className="iteration-note">{item.note}</p>
                     </div>
-                    {idx < iterationPlaceholders.length - 1 && <div className="iteration-arrow">→</div>}
-                  </React.Fragment>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
+
+          {selectedImage && (
+            <div className="image-modal" onClick={() => setSelectedImage(null)}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <button className="modal-close" onClick={() => setSelectedImage(null)}>✕</button>
+                <img src={selectedImage.src} alt={selectedImage.desc} className="modal-image" />
+                <p className="modal-description">{selectedImage.desc}</p>
+              </div>
+            </div>
+          )}
 
           <div className="section">
             <h2>Final Outcome</h2>

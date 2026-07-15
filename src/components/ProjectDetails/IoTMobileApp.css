@@ -396,7 +396,7 @@ header.section h2.project-subtitle {
 /* Iteration flow: responsive grid that fills available width */
 .purolator-project .iteration-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1rem;
   margin-top: 1rem;
   align-items: start;
@@ -427,7 +427,7 @@ header.section h2.project-subtitle {
 
 /* Individual thumbnail */
 .purolator-project .iteration-thumb {
-  width: 180px; /* default desktop size */
+  width: 240px; /* default desktop size */
   height: auto;
   border-radius: 6px;
   object-fit: contain;
@@ -467,13 +467,13 @@ header.section h2.project-subtitle {
     max-width: none;
   }
   .purolator-project .iteration-thumb {
-    width: 120px;
+    width: 160px;
   }
 }
 
 @media (max-width: 768px) {
   .purolator-project .iteration-thumb {
-    width: 100px;
+    width: 140px;
   }
 }
 
@@ -698,6 +698,234 @@ header.section h2.project-subtitle {
   padding: 1rem;
   background: rgba(255, 255, 255, 0.45);
 }
+
+/* Design Timeline Styles */
+.purolator-project .design-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.purolator-project .timeline-item {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.purolator-project .timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.purolator-project .timeline-dot {
+  width: 16px;
+  height: 16px;
+  background: #D71920;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #D71920;
+  z-index: 2;
+}
+
+.purolator-project .timeline-line {
+  flex: 1;
+  width: 2px;
+  background: linear-gradient(to bottom, #D71920, rgba(215, 25, 32, 0.2));
+  margin-top: 0.5rem;
+}
+
+.purolator-project .timeline-content {
+  flex: 1;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(215, 25, 32, 0.12);
+  border-radius: 8px;
+}
+
+.purolator-project .timeline-content h3 {
+  margin: 0 0 0.25rem 0;
+  color: #2D3E5B;
+  font-size: 1.1rem;
+}
+
+.purolator-project .timeline-description {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0.25rem 0 1rem 0;
+}
+
+.purolator-project .timeline-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.purolator-project .timeline-image-wrapper {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.purolator-project .timeline-image-preview {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(215, 25, 32, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.purolator-project .timeline-image-preview:hover {
+  box-shadow: 0 6px 16px rgba(215, 25, 32, 0.15);
+  transform: translateY(-2px);
+}
+
+.purolator-project .view-full-btn {
+  padding: 0.6rem 1rem;
+  background: white;
+  border: 2px solid #D71920;
+  color: #D71920;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.purolator-project .view-full-btn:hover {
+  background: #D71920;
+  color: white;
+}
+
+/* Image Modal */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.image-modal .modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.image-modal .modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.image-modal .modal-close:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.image-modal .modal-image {
+  max-width: 100%;
+  max-height: calc(90vh - 60px);
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.image-modal .modal-description {
+  padding: 1rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Timeline */
+@media (max-width: 768px) {
+  .purolator-project .timeline-item {
+    gap: 1rem;
+  }
+
+  .purolator-project .timeline-marker {
+    min-width: 50px;
+  }
+
+  .purolator-project .timeline-dot {
+    width: 12px;
+    height: 12px;
+    box-shadow: 0 0 0 2px #D71920;
+  }
+
+  .purolator-project .timeline-content {
+    padding: 0.75rem;
+  }
+
+  .purolator-project .timeline-image-preview {
+    height: 150px;
+  }
+
+  .image-modal .modal-image {
+    max-height: calc(90vh - 50px);
+  }
+}
+
+@media (max-width: 480px) {
+  .purolator-project .design-timeline {
+    gap: 1.5rem;
+  }
+
+  .purolator-project .timeline-images {
+    flex-direction: column;
+  }
+
+  .purolator-project .timeline-image-wrapper {
+    min-width: auto;
+  }
+
+  .purolator-project .timeline-image-preview {
+    height: 180px;
+  }
+}
+
 
 .oscar-project .section h3,
 .oscar-project .info-card h3,
