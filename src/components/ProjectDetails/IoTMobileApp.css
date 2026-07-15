@@ -768,6 +768,12 @@ header.section h2.project-subtitle {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.purolator-project .timeline-image-wrapper.expanded {
+  flex: 1 1 100%;
+  margin: 1rem 0;
 }
 
 .purolator-project .timeline-image-preview {
@@ -782,6 +788,53 @@ header.section h2.project-subtitle {
 
 .purolator-project .timeline-image-preview:hover {
   box-shadow: 0 6px 16px rgba(215, 25, 32, 0.15);
+  transform: translateY(-2px);
+}
+
+.purolator-project .expanded-image-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: expandIn 0.3s ease;
+}
+
+@keyframes expandIn {
+  from {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.purolator-project .timeline-image-expanded {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid rgba(215, 25, 32, 0.15);
+}
+
+.purolator-project .collapse-btn {
+  align-self: flex-start;
+  padding: 0.6rem 1rem;
+  background: #D71920;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.purolator-project .collapse-btn:hover {
+  background: #b81218;
   transform: translateY(-2px);
 }
 
@@ -804,80 +857,7 @@ header.section h2.project-subtitle {
   color: white;
 }
 
-/* Image Modal */
-.image-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.image-modal .modal-content {
-  background: white;
-  border-radius: 12px;
-  max-width: 90vw;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-.image-modal .modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 1001;
-}
-
-.image-modal .modal-close:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.1);
-}
-
-.image-modal .modal-image {
-  max-width: 100%;
-  max-height: calc(90vh - 60px);
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.image-modal .modal-description {
-  padding: 1rem;
-  text-align: center;
-  color: #666;
-  font-size: 0.95rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
+/* Image Modal - REMOVED (now using inline expansion) */
 
 /* Responsive Timeline */
 @media (max-width: 768px) {

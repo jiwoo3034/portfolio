@@ -3,7 +3,7 @@ import './IoTMobileApp.css';
 import PageTransition from '../PageTransition';
 
 function PurolatorMobileApp() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [expandedImage, setExpandedImage] = useState(null);
   const purolatorImage = (fileName) =>
       encodeURI(`${process.env.PUBLIC_URL}/images/purolator-mobile-app/${fileName}`);
 
@@ -376,24 +376,47 @@ function PurolatorMobileApp() {
                       <h3>{item.label}</h3>
                       <p className="timeline-description">{item.note}</p>
                       <div className="timeline-images">
-                        {item.images.map((img, i) => (
-                          img && img.src ? (
-                            <div key={i} className="timeline-image-wrapper">
-                              <img 
-                                src={img.src} 
-                                alt={`${item.label} ${i + 1}`} 
-                                className="timeline-image-preview"
-                                onClick={() => setSelectedImage({ src: img.src, desc: img.desc || item.label })}
-                              />
-                              <button 
-                                className="view-full-btn"
-                                onClick={() => setSelectedImage({ src: img.src, desc: img.desc || item.label })}
-                              >
-                                View Full Image
-                              </button>
+                        {item.images.map((img, i) => {
+                          const imageId = `${item.label}-${i}`;
+                          const isExpanded = expandedImage === imageId;
+                          return img && img.src ? (
+                            <div 
+                              key={i} 
+                              className={`timeline-image-wrapper ${isExpanded ? 'expanded' : ''}`}
+                            >
+                              {isExpanded ? (
+                                <div className="expanded-image-container">
+                                  <img 
+                                    src={img.src} 
+                                    alt={`${item.label} ${i + 1}`} 
+                                    className="timeline-image-expanded"
+                                  />
+                                  <button 
+                                    className="collapse-btn"
+                                    onClick={() => setExpandedImage(null)}
+                                  >
+                                    Collapse
+                                  </button>
+                                </div>
+                              ) : (
+                                <>
+                                  <img 
+                                    src={img.src} 
+                                    alt={`${item.label} ${i + 1}`} 
+                                    className="timeline-image-preview"
+                                    onClick={() => setExpandedImage(imageId)}
+                                  />
+                                  <button 
+                                    className="view-full-btn"
+                                    onClick={() => setExpandedImage(imageId)}
+                                  >
+                                    View Full Image
+                                  </button>
+                                </>
+                              )}
                             </div>
-                          ) : null
-                        ))}
+                          ) : null;
+                        })}
                       </div>
                     </div>
                   </div>
@@ -401,16 +424,6 @@ function PurolatorMobileApp() {
               </div>
             </div>
           </div>
-
-          {selectedImage && (
-            <div className="image-modal" onClick={() => setSelectedImage(null)}>
-              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <button className="modal-close" onClick={() => setSelectedImage(null)}>✕</button>
-                <img src={selectedImage.src} alt={selectedImage.desc} className="modal-image" />
-                <p className="modal-description">{selectedImage.desc}</p>
-              </div>
-            </div>
-          )}
 
           <div className="section">
             <h2>Final Outcome</h2>
