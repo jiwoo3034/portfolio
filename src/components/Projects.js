@@ -18,7 +18,12 @@ function Projects() {
   const filteredProjects =
     activeCategory === 'All'
       ? projects
-      : projects.filter((project) => project.category === activeCategory);
+      : projects.filter((project) => {
+          if (project.categories && Array.isArray(project.categories)) {
+            return project.categories.includes(activeCategory);
+          }
+          return project.category === activeCategory; // fallback for older entries
+        });
 
   return (
     <PageTransition>

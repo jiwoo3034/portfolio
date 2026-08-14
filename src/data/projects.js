@@ -14,7 +14,7 @@ export const projects = [
     subtitle: 'Product Design • UX/UI • Frontend',
     description: 'Design and development of a mobile EMR focused on clinician workflows.',
     thumbnail: '/images/oscar/oscar-overview.jpg',
-    category: 'UX',
+    categories: ['UX', 'Programming'],
     featuredHome: true,
   },
   {
@@ -23,7 +23,7 @@ export const projects = [
     subtitle: 'UX Design',
     description: "Modernizing an enterprise mobile experience with Purolator's evolving design system.",
     thumbnail: '/images/purolator-mobile-app/purolator-mobile-redesign-overview.jpg',
-    category: 'UX',
+    categories: ['UX'],
     featuredHome: true,
   },
   {
@@ -32,7 +32,7 @@ export const projects = [
     subtitle: 'UI / UX Design',
     description: 'Designing a lightweight internal portal for quick access to shipping coupons.',
     thumbnail: '/images/purolator-coupon-portal/purolator-coupon-portal-overview.jpg',
-    category: 'UX',
+    categories: ['UX'],
     featuredHome: false,
   },
   {
@@ -41,7 +41,7 @@ export const projects = [
     subtitle: 'UX Design',
     description: 'A user-friendly app design to improve customer experience.',
     thumbnail: '/images/IoT/iot-overview.jpg',
-    category: 'UX',
+    categories: ['UX'],
     featuredHome: false,
   },
   {
@@ -50,7 +50,7 @@ export const projects = [
     subtitle: 'Web Development',
     description: 'A responsive and scalable sales management platform.',
     thumbnail: '/images/project2-thumbnail.jpg',
-    category: 'Programming',
+    categories: ['Programming'],
     featuredHome: false,
   },
   {
@@ -59,7 +59,7 @@ export const projects = [
     subtitle: 'Graphic Design',
     description: 'A complete branding solution for a startup company.',
     thumbnail: '/images/project3-thumbnail.jpg',
-    category: 'Design',
+    categories: ['Design'],
     featuredHome: false,
   },
 ];

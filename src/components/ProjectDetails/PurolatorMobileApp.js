@@ -435,6 +435,13 @@ function PurolatorMobileApp() {
           </div>
 
           <div className="section">
+            <h2>Multilingual UX</h2>
+            <div className="section-content">
+              <p>Considered language expansion when designing layouts and components, allowing UI elements to accommodate variations in text length between English and French.</p>
+            </div>
+          </div>
+
+          <div className="section">
             <h2>Reflection</h2>
             <div className="section-content">
               <h3>Key Takeaways</h3>

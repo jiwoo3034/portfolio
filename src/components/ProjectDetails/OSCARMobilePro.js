@@ -763,6 +763,13 @@ function OSCARMobilePro() {
         <div className="divider"></div>
 
         <section className="section">
+          <h2>Multilingual UX</h2>
+          <div className="section-content">
+            <p>Considered language expansion when designing layouts and components, allowing UI elements to accommodate variations in text length between English and French.</p>
+          </div>
+        </section>
+
+        <section className="section">
           <h2>Reflection</h2>
           <div className="section-content">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
